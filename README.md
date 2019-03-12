@@ -1,2 +1,2 @@
-# ios-polaris
-iOS framework for interfacing with the Polaris API
+# Polaris Framework for iOS
+Polaris Framework for interfacing with the Polaris API
