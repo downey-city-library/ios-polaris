@@ -9,5 +9,7 @@
 import Foundation
 
 public class Polaris {
-    public init() {}
+
+    // MARK: - Public Properties
+    public static var authenticatedStaffUser: AuthenticatedStaffUser?
 }
