@@ -20,6 +20,8 @@
 		AAC7EB012239FA1900F999E2 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC7EB002239FA1900F999E2 /* HTTPClient.swift */; };
 		AAC7EB23223B17C900F999E2 /* AuthenticatePatronRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC7EB22223B17C900F999E2 /* AuthenticatePatronRequest.swift */; };
 		AAC7EB26223B196C00F999E2 /* AuthenticatedPatron.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC7EB25223B196C00F999E2 /* AuthenticatedPatron.swift */; };
+		AAC7EB30223B3C0200F999E2 /* BibInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC7EB2F223B3C0200F999E2 /* BibInfo.swift */; };
+		AAC7EB33223B3C8C00F999E2 /* BibRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC7EB32223B3C8C00F999E2 /* BibRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		AAC7EB002239FA1900F999E2 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		AAC7EB22223B17C900F999E2 /* AuthenticatePatronRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatePatronRequest.swift; sourceTree = "<group>"; };
 		AAC7EB25223B196C00F999E2 /* AuthenticatedPatron.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatedPatron.swift; sourceTree = "<group>"; };
+		AAC7EB2F223B3C0200F999E2 /* BibInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibInfo.swift; sourceTree = "<group>"; };
+		AAC7EB32223B3C8C00F999E2 /* BibRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				AA5CD1CA22386EB9009E39CF /* Polaris+Bib.swift */,
+				AAC7EB31223B3C1100F999E2 /* BibGet */,
 			);
 			path = Bib;
 			sourceTree = "<group>";
@@ -158,6 +163,15 @@
 				AAC7EB25223B196C00F999E2 /* AuthenticatedPatron.swift */,
 			);
 			path = AuthenticatePatron;
+			sourceTree = "<group>";
+		};
+		AAC7EB31223B3C1100F999E2 /* BibGet */ = {
+			isa = PBXGroup;
+			children = (
+				AAC7EB2F223B3C0200F999E2 /* BibInfo.swift */,
+				AAC7EB32223B3C8C00F999E2 /* BibRow.swift */,
+			);
+			path = BibGet;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,7 +257,9 @@
 				AAC7EAA62239A18700F999E2 /* AuthenticatedStaffUser.swift in Sources */,
 				AAC7EB012239FA1900F999E2 /* HTTPClient.swift in Sources */,
 				AAC7EAA42239A16700F999E2 /* AuthenticateStaffUserRequest.swift in Sources */,
+				AAC7EB33223B3C8C00F999E2 /* BibRow.swift in Sources */,
 				AA5CD1CB22386EB9009E39CF /* Polaris+Bib.swift in Sources */,
+				AAC7EB30223B3C0200F999E2 /* BibInfo.swift in Sources */,
 				AA5CD19022384099009E39CF /* Polaris.swift in Sources */,
 				AAC7EAA222399B9800F999E2 /* Polaris+Endpoints.swift in Sources */,
 				AAC7EB26223B196C00F999E2 /* AuthenticatedPatron.swift in Sources */,

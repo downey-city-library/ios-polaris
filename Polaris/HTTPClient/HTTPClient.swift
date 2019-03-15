@@ -62,6 +62,58 @@ internal class HTTPClient {
     // MARK: - HTTP Requests
     
     /**
+     Perform an HTTP GET Request
+     - parameter url: The url to be queried.
+     - parameter response: The HTTP response.
+     - parameter isAuthorizationRequired: A boolean flag indicating whether the API access secret should be used.
+     - parameter completion: A callback containing the HTTP response and/or error.
+     */
+    internal class func taskForGETRequest<ResponseType: Decodable>(url: URL, response: ResponseType.Type, authorization isAuthorizationRequired: Bool = false, completion: @escaping (ResponseType?, Error?) -> Void) {
+        // make sure that there is an authenticated staff user -- there is no point in proceeding otherwise
+        guard let authenticatedStaffUser = Polaris.authenticatedStaffUser else {
+            completion(nil, nil)
+            return
+        }
+        
+        // get date string in rfc1123 format
+        let date = DateTime.rfc1123()
+        
+        // access secret
+        let accessSecret = isAuthorizationRequired ? authenticatedStaffUser.accessSecret : ""
+        
+        // generate request signature
+        let signature = getSignature(httpMethod: HTTPMethod.get, date: date, endpoint: url.absoluteString, secret: accessSecret)
+        
+        // build url request
+        var request = generateBaseHTTPRequest(url: url, date: date, signature: signature)
+        request.httpMethod = HTTPMethod.get
+        
+        // if authorization is required, add access token header
+        if isAuthorizationRequired {
+            request.addValue(authenticatedStaffUser.accessToken, forHTTPHeaderField: "X-PAPI-AccessToken")
+        }
+        
+        // perform url request
+        task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard let data = data else {
+                completion(nil, error)
+                return
+            }
+            
+            do {
+                let responseObject = try decoder.decode(ResponseType.self, from: data)
+                completion(responseObject, nil)
+                return
+            } catch {
+                completion(nil, error)
+                return
+            }
+        }
+        
+        task.resume()
+    }
+    
+    /**
      Perform an HTTP POST Request
      - parameter url: The url to be queried.
      - parameter body: The request body.

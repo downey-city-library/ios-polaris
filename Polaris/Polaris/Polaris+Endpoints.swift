@@ -13,15 +13,24 @@ extension Polaris {
         fileprivate static let basePublic = PolarisConfiguration.shared.url.public
         fileprivate static let baseProtected = PolarisConfiguration.shared.url.protected
         
+        // Authenticate
         case authenticatePatron
         case authenticateStaffUser
         
+        // Bib
+        case bibGet(Int)
+        
         internal var stringValue: String {
             switch self {
+            // Authenticate
             case .authenticatePatron:
                 return Endpoints.basePublic + "/authenticator/patron"
             case .authenticateStaffUser:
                 return Endpoints.baseProtected + "/authenticator/staff"
+                
+            // Bib
+            case .bibGet (let bibID):
+                return Endpoints.basePublic + "/bib/\(bibID)"
             }
         }
         
