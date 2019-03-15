@@ -17,7 +17,7 @@ public struct AuthenticatedStaffUser: Codable {
     let branchId: Int
     let authExpDate: String
     
-    enum CodingKeys: String, CodingKey {
+    fileprivate enum CodingKeys: String, CodingKey {
         case errorCode = "PAPIErrorCode"
         case errorMessage = "ErrorMessage"
         case accessToken = "AccessToken"

@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct AuthenticateStaffUserRequest: Codable {
+internal struct AuthenticateStaffUserRequest: Codable {
     let domain: String
     let username: String
     let password: String
     
-    enum CodingKeys: String, CodingKey {
+    fileprivate enum CodingKeys: String, CodingKey {
         case domain = "Domain"
         case username = "Username"
         case password = "Password"
