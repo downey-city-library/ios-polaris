@@ -11,5 +11,6 @@ import Foundation
 public class Polaris {
 
     // MARK: - Public Properties
+    public static var authenticatedPatron: AuthenticatedPatron?
     public static var authenticatedStaffUser: AuthenticatedStaffUser?
 }

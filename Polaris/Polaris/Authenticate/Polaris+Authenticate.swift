@@ -12,6 +12,26 @@ extension Polaris {
     public struct Authenticate {
         
         /**
+         Authenticate a Patron with the Polaris API. If successful this method will return an AuthenticatedPatron object containing an access token and patron ID. An authenticated patron is required before calling any public method requiring the patron's password. The access token is used in place of the patron's password.
+         - parameter barcode: The patron's barcode number.
+         - parameter password: The patron's password or account PIN.
+         - parameter completion: A boolean indicating success and in cases where authentication fails, an error describing the failure.
+         */
+        public static func patron(barcode: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
+            let endpoint = Endpoints.authenticatePatron
+            let body = AuthenticatePatronRequest(barcode: barcode, password: password)
+            
+            HTTPClient.taskForPOSTRequest(url: endpoint.url, body: body, response: AuthenticatedPatron.self) { (response, error) in
+                if let response = response {
+                    authenticatedPatron = response
+                    DispatchQueue.main.async { completion(true, error) }
+                } else {
+                    DispatchQueue.main.async { completion(false, error) }
+                }
+            }
+        }
+        
+        /**
          Authenticate a Staff User with the Polaris API. If successful, this method will return an AuthenticatedStaffUser object containing an access token and access secret. An authenticated staff user is required before calling any protected methods.
          - parameter completion: A boolean indicating success and in cases where authentication fails, an error describing the failure.
          */

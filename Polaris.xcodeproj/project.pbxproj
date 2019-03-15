@@ -18,6 +18,8 @@
 		AAC7EAD22239AE7E00F999E2 /* DateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC7EAD12239AE7E00F999E2 /* DateTime.swift */; };
 		AAC7EAF32239EDAA00F999E2 /* PolarisConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC7EAF22239EDAA00F999E2 /* PolarisConfiguration.swift */; };
 		AAC7EB012239FA1900F999E2 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC7EB002239FA1900F999E2 /* HTTPClient.swift */; };
+		AAC7EB23223B17C900F999E2 /* AuthenticatePatronRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC7EB22223B17C900F999E2 /* AuthenticatePatronRequest.swift */; };
+		AAC7EB26223B196C00F999E2 /* AuthenticatedPatron.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC7EB25223B196C00F999E2 /* AuthenticatedPatron.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		AAC7EAD12239AE7E00F999E2 /* DateTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTime.swift; sourceTree = "<group>"; };
 		AAC7EAF22239EDAA00F999E2 /* PolarisConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolarisConfiguration.swift; sourceTree = "<group>"; };
 		AAC7EB002239FA1900F999E2 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		AAC7EB22223B17C900F999E2 /* AuthenticatePatronRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatePatronRequest.swift; sourceTree = "<group>"; };
+		AAC7EB25223B196C00F999E2 /* AuthenticatedPatron.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatedPatron.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				AA5CD191223844EB009E39CF /* Polaris+Authenticate.swift */,
+				AAC7EB24223B17CF00F999E2 /* AuthenticatePatron */,
 				AAC7EB15223AB26800F999E2 /* AuthenticateStaffUser */,
 			);
 			path = Authenticate;
@@ -144,6 +149,15 @@
 				AAC7EAA52239A18700F999E2 /* AuthenticatedStaffUser.swift */,
 			);
 			path = AuthenticateStaffUser;
+			sourceTree = "<group>";
+		};
+		AAC7EB24223B17CF00F999E2 /* AuthenticatePatron */ = {
+			isa = PBXGroup;
+			children = (
+				AAC7EB22223B17C900F999E2 /* AuthenticatePatronRequest.swift */,
+				AAC7EB25223B196C00F999E2 /* AuthenticatedPatron.swift */,
+			);
+			path = AuthenticatePatron;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,12 +239,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAC7EB23223B17C900F999E2 /* AuthenticatePatronRequest.swift in Sources */,
 				AAC7EAA62239A18700F999E2 /* AuthenticatedStaffUser.swift in Sources */,
 				AAC7EB012239FA1900F999E2 /* HTTPClient.swift in Sources */,
 				AAC7EAA42239A16700F999E2 /* AuthenticateStaffUserRequest.swift in Sources */,
 				AA5CD1CB22386EB9009E39CF /* Polaris+Bib.swift in Sources */,
 				AA5CD19022384099009E39CF /* Polaris.swift in Sources */,
 				AAC7EAA222399B9800F999E2 /* Polaris+Endpoints.swift in Sources */,
+				AAC7EB26223B196C00F999E2 /* AuthenticatedPatron.swift in Sources */,
 				AAC7EAF32239EDAA00F999E2 /* PolarisConfiguration.swift in Sources */,
 				AA5CD1E5223878E9009E39CF /* String+Extension.swift in Sources */,
 				AAC7EAD22239AE7E00F999E2 /* DateTime.swift in Sources */,
