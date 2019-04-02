@@ -20,6 +20,9 @@ extension Polaris {
         // Bib
         case bibGet(Int)
         
+        // Patron
+        case registrationCreate
+        
         internal var stringValue: String {
             switch self {
             // Authenticate
@@ -31,6 +34,10 @@ extension Polaris {
             // Bib
             case .bibGet (let bibID):
                 return Endpoints.basePublic + "/bib/\(bibID)"
+            
+            // Patron
+            case .registrationCreate:
+                return Endpoints.basePublic + "/patron"
             }
         }
         
