@@ -47,6 +47,11 @@ public struct RegistrationCreateRequest: Codable {
     public var expirationDate: String = ""
     public var addressCheckDate: String = ""
     public var patronCode: Int = 1
+    public var user1: String = ""
+    public var user2: String = ""
+    public var user3: String = ""
+    public var user4: String = ""
+    public var user5: String = ""
     
     fileprivate enum CodingKeys: String, CodingKey {
         case logonBranchID = "LogonBranchID"
@@ -87,6 +92,11 @@ public struct RegistrationCreateRequest: Codable {
         case expirationDate = "ExpirationDate"
         case addressCheckDate = "AddrCheckDate"
         case patronCode = "PatronCode"
+        case user1 = "User1"
+        case user2 = "User2"
+        case user3 = "User3"
+        case user4 = "User4"
+        case user5 = "User5"
     }
     
     public init(logonBranchID: Int, logonUserID: Int, logonWorkstationID: Int, patronBranchID: Int) {
