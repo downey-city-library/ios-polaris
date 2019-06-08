@@ -100,6 +100,8 @@ internal class HTTPClient {
                 return
             }
             
+            print(String(bytes: data, encoding: .utf8))
+            
             do {
                 let responseObject = try decoder.decode(ResponseType.self, from: data)
                 completion(responseObject, nil)
@@ -145,6 +147,8 @@ internal class HTTPClient {
                 completion(nil, error)
                 return
             }
+            
+            print(String(bytes: data, encoding: .utf8))
             
             do {
                 let responseObject = try decoder.decode(ResponseType.self, from: data)

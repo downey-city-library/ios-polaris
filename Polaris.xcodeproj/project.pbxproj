@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		492A923622AB2436001EADCD /* BasicDataGetResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A923522AB2436001EADCD /* BasicDataGetResponse.swift */; };
 		AA5CD18922383CCB009E39CF /* Polaris.h in Headers */ = {isa = PBXBuildFile; fileRef = AA5CD18722383CCB009E39CF /* Polaris.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA5CD19022384099009E39CF /* Polaris.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5CD18F22384099009E39CF /* Polaris.swift */; };
 		AA5CD192223844EB009E39CF /* Polaris+Authenticate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5CD191223844EB009E39CF /* Polaris+Authenticate.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		492A923522AB2436001EADCD /* BasicDataGetResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicDataGetResponse.swift; sourceTree = "<group>"; };
 		AA5CD18422383CCB009E39CF /* Polaris.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Polaris.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA5CD18722383CCB009E39CF /* Polaris.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Polaris.h; sourceTree = "<group>"; };
 		AA5CD18822383CCB009E39CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -61,6 +63,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		492A923722AB243E001EADCD /* BasicDataGet */ = {
+			isa = PBXGroup;
+			children = (
+				492A923522AB2436001EADCD /* BasicDataGetResponse.swift */,
+			);
+			path = BasicDataGet;
+			sourceTree = "<group>";
+		};
 		AA5CD17A22383CCB009E39CF = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +145,7 @@
 			children = (
 				AA8E6220224E7FA700C61D4E /* Polaris+Patron.swift */,
 				AA8E6225224E86AF00C61D4E /* RegistrationCreate */,
+				492A923722AB243E001EADCD /* BasicDataGet */,
 			);
 			path = Patron;
 			sourceTree = "<group>";
@@ -294,6 +305,7 @@
 				AAC7EAF32239EDAA00F999E2 /* PolarisConfiguration.swift in Sources */,
 				AA5CD1E5223878E9009E39CF /* String+Extension.swift in Sources */,
 				AAC7EAD22239AE7E00F999E2 /* DateTime.swift in Sources */,
+				492A923622AB2436001EADCD /* BasicDataGetResponse.swift in Sources */,
 				AA5CD192223844EB009E39CF /* Polaris+Authenticate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

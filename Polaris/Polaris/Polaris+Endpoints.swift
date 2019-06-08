@@ -21,6 +21,7 @@ extension Polaris {
         case bibGet(Int)
         
         // Patron
+        case basicDataGet(String)
         case registrationCreate
         
         internal var stringValue: String {
@@ -36,6 +37,8 @@ extension Polaris {
                 return Endpoints.basePublic + "/bib/\(bibID)"
             
             // Patron
+            case .basicDataGet (let barcode):
+                return Endpoints.basePublic + "/patron/\(barcode)/basicdata"
             case .registrationCreate:
                 return Endpoints.basePublic + "/patron"
             }
