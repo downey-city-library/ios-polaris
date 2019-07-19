@@ -37,8 +37,22 @@ extension Polaris {
          */
         public static func staffUser(completion: @escaping (Bool, Error?) -> Void) {
             let configuration = PolarisConfiguration.shared
+            
+            staffUser(username: configuration.staffUser.username, password: configuration.staffUser.password) { (success, error) in
+                completion(success, error)
+            }
+        }
+        
+        /**
+         Authenticate a Staff User with the Polaris API. If successful, this method will return an AuthenticatedStaffUser object containing an access token and access secret. An authenticated staff user is required before calling any protected methods.
+         - parameter username: Staff username
+         - parameter password: Staff password
+         - parameter completion: A boolean indicating success and in cases where authentication fails, an error describing the failure.
+         */
+        public static func staffUser(username: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
+            let configuration = PolarisConfiguration.shared
             let endpoint = Endpoints.authenticateStaffUser
-            let body = AuthenticateStaffUserRequest(domain: configuration.staffUser.domain, username: configuration.staffUser.username, password: configuration.staffUser.password)
+            let body = AuthenticateStaffUserRequest(domain: configuration.staffUser.domain, username: username, password: password)
             
             HTTPClient.taskForPOSTRequest(url: endpoint.url, body: body, response: AuthenticatedStaffUser.self) { (response, error) in
                 if let response = response {
