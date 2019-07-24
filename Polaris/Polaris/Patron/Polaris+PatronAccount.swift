@@ -1,5 +1,5 @@
 //
-//  Polaris+Patron.swift
+//  Polaris+PatronAccount.swift
 //  Polaris
 //
 //  Created by Andrew Despres on 3/29/19.
@@ -9,11 +9,11 @@
 import Foundation
 
 extension Polaris {
-    public struct Patron {
+    public struct PatronAccount {
         
-        public static func basicDataGet(barcode: String, completion: @escaping (BasicDataGetResponse?, Error?) -> Void) {
-            let endpoint = Endpoints.basicDataGet(barcode)
-            HTTPClient.taskForGETRequest(url: endpoint.url, response: BasicDataGetResponse.self, authorization: true) { (response, error) in
+        public static func getBasicData(barcode: String, completion: @escaping (Patron?, Error?) -> Void) {
+            let endpoint = Endpoints.getBasicData(barcode)
+            HTTPClient.taskForGETRequest(url: endpoint.url, response: Patron.self, authorization: true) { (response, error) in
                 DispatchQueue.main.async { completion(response, error) }
             }
         }

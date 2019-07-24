@@ -7,13 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		492A923622AB2436001EADCD /* BasicDataGetResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A923522AB2436001EADCD /* BasicDataGetResponse.swift */; };
+		490B5F0A22E8ECB400F6AE75 /* Patron+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B5F0922E8ECB400F6AE75 /* Patron+Codable.swift */; };
+		490B5F0C22E8EE1200F6AE75 /* PatronDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B5F0B22E8EE1200F6AE75 /* PatronDecoder.swift */; };
+		490B5F0E22E91C2600F6AE75 /* Patron+PhoneCarrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B5F0D22E91C2500F6AE75 /* Patron+PhoneCarrier.swift */; };
+		490B5F1022E91C6600F6AE75 /* Patron+NameTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B5F0F22E91C6600F6AE75 /* Patron+NameTitle.swift */; };
+		490B5F1222E91C9C00F6AE75 /* Patron+Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B5F1122E91C9C00F6AE75 /* Patron+Address.swift */; };
+		490B5F1422E91D3400F6AE75 /* Patron+Balances.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B5F1322E91D3400F6AE75 /* Patron+Balances.swift */; };
+		490B5F1622E91D8E00F6AE75 /* Patron+Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B5F1522E91D8E00F6AE75 /* Patron+Email.swift */; };
+		490B5F1822E91DB100F6AE75 /* Patron+HoldRequestCounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B5F1722E91DB100F6AE75 /* Patron+HoldRequestCounts.swift */; };
+		490B5F1A22E91DEF00F6AE75 /* Patron+ItemCounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B5F1922E91DEF00F6AE75 /* Patron+ItemCounts.swift */; };
+		490B5F1C22E91E1200F6AE75 /* Patron+MessageCounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B5F1B22E91E1200F6AE75 /* Patron+MessageCounts.swift */; };
+		490B5F1E22E91E2E00F6AE75 /* Patron+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B5F1D22E91E2E00F6AE75 /* Patron+Name.swift */; };
+		490B5F2022E91E5200F6AE75 /* Patron+Phone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B5F1F22E91E5200F6AE75 /* Patron+Phone.swift */; };
+		492A923622AB2436001EADCD /* Patron.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A923522AB2436001EADCD /* Patron.swift */; };
 		AA5CD18922383CCB009E39CF /* Polaris.h in Headers */ = {isa = PBXBuildFile; fileRef = AA5CD18722383CCB009E39CF /* Polaris.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA5CD19022384099009E39CF /* Polaris.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5CD18F22384099009E39CF /* Polaris.swift */; };
 		AA5CD192223844EB009E39CF /* Polaris+Authenticate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5CD191223844EB009E39CF /* Polaris+Authenticate.swift */; };
 		AA5CD1CB22386EB9009E39CF /* Polaris+Bib.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5CD1CA22386EB9009E39CF /* Polaris+Bib.swift */; };
 		AA5CD1E5223878E9009E39CF /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5CD1E4223878E9009E39CF /* String+Extension.swift */; };
-		AA8E6221224E7FA700C61D4E /* Polaris+Patron.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8E6220224E7FA700C61D4E /* Polaris+Patron.swift */; };
+		AA8E6221224E7FA700C61D4E /* Polaris+PatronAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8E6220224E7FA700C61D4E /* Polaris+PatronAccount.swift */; };
 		AA8E6224224E86A400C61D4E /* RegistrationCreateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8E6223224E86A400C61D4E /* RegistrationCreateRequest.swift */; };
 		AA8E6227224E86D500C61D4E /* RegistrationCreateResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8E6226224E86D500C61D4E /* RegistrationCreateResponse.swift */; };
 		AAC7EAA222399B9800F999E2 /* Polaris+Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC7EAA122399B9800F999E2 /* Polaris+Endpoints.swift */; };
@@ -29,7 +41,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		492A923522AB2436001EADCD /* BasicDataGetResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicDataGetResponse.swift; sourceTree = "<group>"; };
+		490B5F0922E8ECB400F6AE75 /* Patron+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+Codable.swift"; sourceTree = "<group>"; };
+		490B5F0B22E8EE1200F6AE75 /* PatronDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatronDecoder.swift; sourceTree = "<group>"; };
+		490B5F0D22E91C2500F6AE75 /* Patron+PhoneCarrier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+PhoneCarrier.swift"; sourceTree = "<group>"; };
+		490B5F0F22E91C6600F6AE75 /* Patron+NameTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+NameTitle.swift"; sourceTree = "<group>"; };
+		490B5F1122E91C9C00F6AE75 /* Patron+Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+Address.swift"; sourceTree = "<group>"; };
+		490B5F1322E91D3400F6AE75 /* Patron+Balances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+Balances.swift"; sourceTree = "<group>"; };
+		490B5F1522E91D8E00F6AE75 /* Patron+Email.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+Email.swift"; sourceTree = "<group>"; };
+		490B5F1722E91DB100F6AE75 /* Patron+HoldRequestCounts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+HoldRequestCounts.swift"; sourceTree = "<group>"; };
+		490B5F1922E91DEF00F6AE75 /* Patron+ItemCounts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+ItemCounts.swift"; sourceTree = "<group>"; };
+		490B5F1B22E91E1200F6AE75 /* Patron+MessageCounts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+MessageCounts.swift"; sourceTree = "<group>"; };
+		490B5F1D22E91E2E00F6AE75 /* Patron+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+Name.swift"; sourceTree = "<group>"; };
+		490B5F1F22E91E5200F6AE75 /* Patron+Phone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+Phone.swift"; sourceTree = "<group>"; };
+		492A923522AB2436001EADCD /* Patron.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patron.swift; sourceTree = "<group>"; };
 		AA5CD18422383CCB009E39CF /* Polaris.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Polaris.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA5CD18722383CCB009E39CF /* Polaris.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Polaris.h; sourceTree = "<group>"; };
 		AA5CD18822383CCB009E39CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -37,7 +61,7 @@
 		AA5CD191223844EB009E39CF /* Polaris+Authenticate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Polaris+Authenticate.swift"; sourceTree = "<group>"; };
 		AA5CD1CA22386EB9009E39CF /* Polaris+Bib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Polaris+Bib.swift"; sourceTree = "<group>"; };
 		AA5CD1E4223878E9009E39CF /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
-		AA8E6220224E7FA700C61D4E /* Polaris+Patron.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Polaris+Patron.swift"; sourceTree = "<group>"; };
+		AA8E6220224E7FA700C61D4E /* Polaris+PatronAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Polaris+PatronAccount.swift"; sourceTree = "<group>"; };
 		AA8E6223224E86A400C61D4E /* RegistrationCreateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationCreateRequest.swift; sourceTree = "<group>"; };
 		AA8E6226224E86D500C61D4E /* RegistrationCreateResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationCreateResponse.swift; sourceTree = "<group>"; };
 		AAC7EAA122399B9800F999E2 /* Polaris+Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Polaris+Endpoints.swift"; sourceTree = "<group>"; };
@@ -63,12 +87,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		492A923722AB243E001EADCD /* BasicDataGet */ = {
+		492A923722AB243E001EADCD /* getBasicData */ = {
 			isa = PBXGroup;
 			children = (
-				492A923522AB2436001EADCD /* BasicDataGetResponse.swift */,
+				492A923522AB2436001EADCD /* Patron.swift */,
+				490B5F1122E91C9C00F6AE75 /* Patron+Address.swift */,
+				490B5F1322E91D3400F6AE75 /* Patron+Balances.swift */,
+				490B5F1522E91D8E00F6AE75 /* Patron+Email.swift */,
+				490B5F1722E91DB100F6AE75 /* Patron+HoldRequestCounts.swift */,
+				490B5F1922E91DEF00F6AE75 /* Patron+ItemCounts.swift */,
+				490B5F1B22E91E1200F6AE75 /* Patron+MessageCounts.swift */,
+				490B5F1D22E91E2E00F6AE75 /* Patron+Name.swift */,
+				490B5F1F22E91E5200F6AE75 /* Patron+Phone.swift */,
+				490B5F0F22E91C6600F6AE75 /* Patron+NameTitle.swift */,
+				490B5F0D22E91C2500F6AE75 /* Patron+PhoneCarrier.swift */,
+				490B5F0922E8ECB400F6AE75 /* Patron+Codable.swift */,
+				490B5F0B22E8EE1200F6AE75 /* PatronDecoder.swift */,
 			);
-			path = BasicDataGet;
+			path = getBasicData;
 			sourceTree = "<group>";
 		};
 		AA5CD17A22383CCB009E39CF = {
@@ -143,9 +179,9 @@
 		AA8E6222224E7FAB00C61D4E /* Patron */ = {
 			isa = PBXGroup;
 			children = (
-				AA8E6220224E7FA700C61D4E /* Polaris+Patron.swift */,
+				AA8E6220224E7FA700C61D4E /* Polaris+PatronAccount.swift */,
 				AA8E6225224E86AF00C61D4E /* RegistrationCreate */,
-				492A923722AB243E001EADCD /* BasicDataGet */,
+				492A923722AB243E001EADCD /* getBasicData */,
 			);
 			path = Patron;
 			sourceTree = "<group>";
@@ -293,19 +329,31 @@
 				AAC7EAA62239A18700F999E2 /* AuthenticatedStaffUser.swift in Sources */,
 				AA8E6227224E86D500C61D4E /* RegistrationCreateResponse.swift in Sources */,
 				AAC7EB012239FA1900F999E2 /* HTTPClient.swift in Sources */,
+				490B5F0C22E8EE1200F6AE75 /* PatronDecoder.swift in Sources */,
 				AAC7EAA42239A16700F999E2 /* AuthenticateStaffUserRequest.swift in Sources */,
+				490B5F0A22E8ECB400F6AE75 /* Patron+Codable.swift in Sources */,
 				AAC7EB33223B3C8C00F999E2 /* BibRow.swift in Sources */,
 				AA5CD1CB22386EB9009E39CF /* Polaris+Bib.swift in Sources */,
 				AAC7EB30223B3C0200F999E2 /* BibInfo.swift in Sources */,
 				AA5CD19022384099009E39CF /* Polaris.swift in Sources */,
-				AA8E6221224E7FA700C61D4E /* Polaris+Patron.swift in Sources */,
+				490B5F1E22E91E2E00F6AE75 /* Patron+Name.swift in Sources */,
+				AA8E6221224E7FA700C61D4E /* Polaris+PatronAccount.swift in Sources */,
+				490B5F1822E91DB100F6AE75 /* Patron+HoldRequestCounts.swift in Sources */,
+				490B5F1A22E91DEF00F6AE75 /* Patron+ItemCounts.swift in Sources */,
 				AAC7EAA222399B9800F999E2 /* Polaris+Endpoints.swift in Sources */,
 				AAC7EB26223B196C00F999E2 /* AuthenticatedPatron.swift in Sources */,
+				490B5F0E22E91C2600F6AE75 /* Patron+PhoneCarrier.swift in Sources */,
+				490B5F2022E91E5200F6AE75 /* Patron+Phone.swift in Sources */,
 				AA8E6224224E86A400C61D4E /* RegistrationCreateRequest.swift in Sources */,
+				490B5F1422E91D3400F6AE75 /* Patron+Balances.swift in Sources */,
+				490B5F1622E91D8E00F6AE75 /* Patron+Email.swift in Sources */,
+				490B5F1222E91C9C00F6AE75 /* Patron+Address.swift in Sources */,
+				490B5F1C22E91E1200F6AE75 /* Patron+MessageCounts.swift in Sources */,
 				AAC7EAF32239EDAA00F999E2 /* PolarisConfiguration.swift in Sources */,
+				490B5F1022E91C6600F6AE75 /* Patron+NameTitle.swift in Sources */,
 				AA5CD1E5223878E9009E39CF /* String+Extension.swift in Sources */,
 				AAC7EAD22239AE7E00F999E2 /* DateTime.swift in Sources */,
-				492A923622AB2436001EADCD /* BasicDataGetResponse.swift in Sources */,
+				492A923622AB2436001EADCD /* Patron.swift in Sources */,
 				AA5CD192223844EB009E39CF /* Polaris+Authenticate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
