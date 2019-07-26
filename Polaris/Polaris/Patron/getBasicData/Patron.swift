@@ -23,6 +23,9 @@ public struct Patron {
     public let holdRequestCounts: HoldRequestCounts
     public let balances: Balances
     
+    // this next field is used to incorporate SIP data that is provided by an external framework
+    public var sip: Any? = nil
+    
     enum CodingKeys: String, CodingKey {
         case patronData = "PatronBasicData"
     }
