@@ -9,6 +9,9 @@
 import Foundation
 
 public struct Patron {
+    internal var _items: Items
+    internal var _itemCounts: ItemCounts
+    
     public let barcode: String
     public let name: Name
     public let phones: [Phone]
@@ -19,12 +22,19 @@ public struct Patron {
     public let addressCheckDate: Date?
     public let messageCounts: MessageCounts
     public let addresses: [Address]
-    public let itemCounts: ItemCounts
+    public var itemCounts: ItemCounts { get { return _itemCounts } }
     public let holdRequestCounts: HoldRequestCounts
     public let balances: Balances
     
     // this next field is used to incorporate SIP data that is provided by an external framework
     public var sip: Any? = nil
+    
+    // this next property is only not nil if the method getItemsOut is called and the results are then assigned to this property
+    public var items: Items { get { return _items } }
+    
+    public mutating func setItems(_ items: Items) {
+        self._items = items
+    }
     
     enum CodingKeys: String, CodingKey {
         case patronData = "PatronBasicData"

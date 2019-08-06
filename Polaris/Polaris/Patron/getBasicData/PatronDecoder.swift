@@ -20,7 +20,7 @@ internal struct PatronDecoder {
     internal static func parseDate(from data: KeyedDecodingContainer<Patron.PatronCodingKeys>, forKey key: KeyedDecodingContainer<Patron.PatronCodingKeys>.Key) throws -> Date? {
         let dateString = try? data.decode(String.self, forKey: key)
         if let dateString = dateString {
-            return getDate(from: dateString)
+            return PolarisUtility.getDate(from: dateString)
         }
         
         return nil
@@ -96,16 +96,6 @@ internal struct PatronDecoder {
 }
 
 fileprivate extension PatronDecoder {
-    static func getDate(from jsonDateString: String) -> Date {
-        
-        let start = jsonDateString.firstIndex(of: "(")!
-        let end = jsonDateString.lastIndex(of: "-")!
-        let trimmedString = jsonDateString[start...end].trimmingCharacters(in: ["(","-"])
-        let dateInterval = TimeInterval(trimmedString)! / 1000.0
-        
-        return Date(timeIntervalSince1970: dateInterval)
-    }
-    
     static func mergePhoneData(number: String?, carrier: Patron.PhoneCarrier?, cellNumber cell: String?) -> Patron.Phone? {
         if let number = number, let carrier = carrier, let cell = cell {
             return Patron.Phone(number: number, carrier: carrier, useForTXT: number == cell)

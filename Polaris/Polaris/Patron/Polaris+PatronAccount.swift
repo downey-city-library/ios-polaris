@@ -18,6 +18,13 @@ extension Polaris {
             }
         }
         
+        public static func getItemsOut(barcode: String, completion: @escaping (Items?, Error?) -> Void) {
+            let endpoint = Endpoints.getItemsOut(barcode)
+            HTTPClient.taskForGETRequest(url: endpoint.url, response: Items.self, authorization: true) { (response, error) in
+                DispatchQueue.main.async { completion(response, error) }
+            }
+        }
+        
         public static func registrationCreate(patronInfo: RegistrationCreateRequest, completion: @escaping (RegistrationCreateResponse?, Error?) -> Void) {
             let endpoint = Endpoints.registrationCreate
             let body = patronInfo

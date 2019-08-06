@@ -23,8 +23,10 @@ extension Patron: Decodable {
         self.addressCheckDate = try PatronDecoder.parseDate(from: data, forKey: .addressCheckDate)
         self.messageCounts = try PatronDecoder.parseMessageCounts(from: data)
         self.addresses = (try? data.decode([Address].self, forKey: .addresses)) ?? []
-        self.itemCounts = try PatronDecoder.parseItemCounts(from: data)
+        self._itemCounts = try PatronDecoder.parseItemCounts(from: data)
         self.holdRequestCounts = try PatronDecoder.parseHoldRequestCounts(from: data)
         self.balances = try PatronDecoder.parseBalances(from: data)
+        
+        self._items = Items()
     }
 }

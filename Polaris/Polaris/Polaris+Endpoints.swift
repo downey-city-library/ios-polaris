@@ -22,6 +22,7 @@ extension Polaris {
         
         // Patron
         case getBasicData(String)
+        case getItemsOut(String)
         case registrationCreate
         
         internal var stringValue: String {
@@ -39,6 +40,8 @@ extension Polaris {
             // Patron
             case .getBasicData (let barcode):
                 return Endpoints.basePublic + "/patron/\(barcode)/basicdata?addresses=1"
+            case .getItemsOut (let barcode):
+                return Endpoints.basePublic + "/patron/\(barcode)/itemsout/all"
             case .registrationCreate:
                 return Endpoints.basePublic + "/patron"
             }

@@ -22,4 +22,10 @@ extension String {
         let data = Data(bytes: digest)
         return Data(bytes: data).base64EncodedString()
     }
+    
+    /// Convert a string to an interger using dot notation.
+    /// - returns: The interger value of the string (optional).
+    internal func toInt() -> Int? {
+        return Int(self)
+    }
 }

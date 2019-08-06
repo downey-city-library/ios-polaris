@@ -19,6 +19,19 @@
 		490B5F1C22E91E1200F6AE75 /* Patron+MessageCounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B5F1B22E91E1200F6AE75 /* Patron+MessageCounts.swift */; };
 		490B5F1E22E91E2E00F6AE75 /* Patron+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B5F1D22E91E2E00F6AE75 /* Patron+Name.swift */; };
 		490B5F2022E91E5200F6AE75 /* Patron+Phone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B5F1F22E91E5200F6AE75 /* Patron+Phone.swift */; };
+		490F379C22F362C0005F3DD8 /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490F379B22F362C0005F3DD8 /* Items.swift */; };
+		4929396722F907E800D71FEB /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929396622F907E800D71FEB /* Item.swift */; };
+		4929396922F9083B00D71FEB /* Item+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929396822F9083B00D71FEB /* Item+Codable.swift */; };
+		4929396B22F908B800D71FEB /* ItemDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929396A22F908B800D71FEB /* ItemDecoder.swift */; };
+		4929396D22F9DF5400D71FEB /* Item+Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929396C22F9DF5400D71FEB /* Item+Format.swift */; };
+		4929396F22F9DF9100D71FEB /* Item+Renewal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929396E22F9DF9100D71FEB /* Item+Renewal.swift */; };
+		4929397122F9DFB300D71FEB /* Item+Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929397022F9DFB300D71FEB /* Item+Branch.swift */; };
+		4929397322F9DFCC00D71FEB /* Item+Vendor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929397222F9DFCC00D71FEB /* Item+Vendor.swift */; };
+		4929397522F9DFDF00D71FEB /* Item+Bib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929397422F9DFDF00D71FEB /* Item+Bib.swift */; };
+		4929397722F9DFF000D71FEB /* Item+Billing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929397622F9DFF000D71FEB /* Item+Billing.swift */; };
+		4929397922F9E04400D71FEB /* Item+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929397822F9E04400D71FEB /* Item+Equatable.swift */; };
+		4929397B22F9E3EE00D71FEB /* Items+ItemSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929397A22F9E3EE00D71FEB /* Items+ItemSet.swift */; };
+		4929397D22FA244900D71FEB /* PolarisUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929397C22FA244900D71FEB /* PolarisUtility.swift */; };
 		492A923622AB2436001EADCD /* Patron.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A923522AB2436001EADCD /* Patron.swift */; };
 		AA5CD18922383CCB009E39CF /* Polaris.h in Headers */ = {isa = PBXBuildFile; fileRef = AA5CD18722383CCB009E39CF /* Polaris.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA5CD19022384099009E39CF /* Polaris.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5CD18F22384099009E39CF /* Polaris.swift */; };
@@ -53,6 +66,19 @@
 		490B5F1B22E91E1200F6AE75 /* Patron+MessageCounts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+MessageCounts.swift"; sourceTree = "<group>"; };
 		490B5F1D22E91E2E00F6AE75 /* Patron+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+Name.swift"; sourceTree = "<group>"; };
 		490B5F1F22E91E5200F6AE75 /* Patron+Phone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+Phone.swift"; sourceTree = "<group>"; };
+		490F379B22F362C0005F3DD8 /* Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Items.swift; sourceTree = "<group>"; };
+		4929396622F907E800D71FEB /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		4929396822F9083B00D71FEB /* Item+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+Codable.swift"; sourceTree = "<group>"; };
+		4929396A22F908B800D71FEB /* ItemDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDecoder.swift; sourceTree = "<group>"; };
+		4929396C22F9DF5400D71FEB /* Item+Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+Format.swift"; sourceTree = "<group>"; };
+		4929396E22F9DF9100D71FEB /* Item+Renewal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+Renewal.swift"; sourceTree = "<group>"; };
+		4929397022F9DFB300D71FEB /* Item+Branch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+Branch.swift"; sourceTree = "<group>"; };
+		4929397222F9DFCC00D71FEB /* Item+Vendor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+Vendor.swift"; sourceTree = "<group>"; };
+		4929397422F9DFDF00D71FEB /* Item+Bib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+Bib.swift"; sourceTree = "<group>"; };
+		4929397622F9DFF000D71FEB /* Item+Billing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+Billing.swift"; sourceTree = "<group>"; };
+		4929397822F9E04400D71FEB /* Item+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+Equatable.swift"; sourceTree = "<group>"; };
+		4929397A22F9E3EE00D71FEB /* Items+ItemSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Items+ItemSet.swift"; sourceTree = "<group>"; };
+		4929397C22FA244900D71FEB /* PolarisUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolarisUtility.swift; sourceTree = "<group>"; };
 		492A923522AB2436001EADCD /* Patron.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patron.swift; sourceTree = "<group>"; };
 		AA5CD18422383CCB009E39CF /* Polaris.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Polaris.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA5CD18722383CCB009E39CF /* Polaris.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Polaris.h; sourceTree = "<group>"; };
@@ -87,6 +113,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4929396522F907D300D71FEB /* getItemsOut */ = {
+			isa = PBXGroup;
+			children = (
+				490F379B22F362C0005F3DD8 /* Items.swift */,
+				4929397A22F9E3EE00D71FEB /* Items+ItemSet.swift */,
+				4929396622F907E800D71FEB /* Item.swift */,
+				4929397422F9DFDF00D71FEB /* Item+Bib.swift */,
+				4929397622F9DFF000D71FEB /* Item+Billing.swift */,
+				4929397022F9DFB300D71FEB /* Item+Branch.swift */,
+				4929396C22F9DF5400D71FEB /* Item+Format.swift */,
+				4929396E22F9DF9100D71FEB /* Item+Renewal.swift */,
+				4929397222F9DFCC00D71FEB /* Item+Vendor.swift */,
+				4929396822F9083B00D71FEB /* Item+Codable.swift */,
+				4929397822F9E04400D71FEB /* Item+Equatable.swift */,
+				4929396A22F908B800D71FEB /* ItemDecoder.swift */,
+			);
+			path = getItemsOut;
+			sourceTree = "<group>";
+		};
+		4929397E22FA253300D71FEB /* PolarisUtility */ = {
+			isa = PBXGroup;
+			children = (
+				4929397C22FA244900D71FEB /* PolarisUtility.swift */,
+			);
+			path = PolarisUtility;
+			sourceTree = "<group>";
+		};
 		492A923722AB243E001EADCD /* getBasicData */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +186,7 @@
 				AAC7EB0B223A941A00F999E2 /* HTTPClient */,
 				AA5CD1D722387111009E39CF /* Polaris */,
 				AAC7EB0C223A943A00F999E2 /* PolarisConfiguration */,
+				4929397E22FA253300D71FEB /* PolarisUtility */,
 			);
 			path = Polaris;
 			sourceTree = "<group>";
@@ -182,6 +236,7 @@
 				AA8E6220224E7FA700C61D4E /* Polaris+PatronAccount.swift */,
 				AA8E6225224E86AF00C61D4E /* RegistrationCreate */,
 				492A923722AB243E001EADCD /* getBasicData */,
+				4929396522F907D300D71FEB /* getItemsOut */,
 			);
 			path = Patron;
 			sourceTree = "<group>";
@@ -325,26 +380,38 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4929397722F9DFF000D71FEB /* Item+Billing.swift in Sources */,
 				AAC7EB23223B17C900F999E2 /* AuthenticatePatronRequest.swift in Sources */,
+				4929397B22F9E3EE00D71FEB /* Items+ItemSet.swift in Sources */,
 				AAC7EAA62239A18700F999E2 /* AuthenticatedStaffUser.swift in Sources */,
 				AA8E6227224E86D500C61D4E /* RegistrationCreateResponse.swift in Sources */,
 				AAC7EB012239FA1900F999E2 /* HTTPClient.swift in Sources */,
 				490B5F0C22E8EE1200F6AE75 /* PatronDecoder.swift in Sources */,
 				AAC7EAA42239A16700F999E2 /* AuthenticateStaffUserRequest.swift in Sources */,
+				490F379C22F362C0005F3DD8 /* Items.swift in Sources */,
+				4929396B22F908B800D71FEB /* ItemDecoder.swift in Sources */,
 				490B5F0A22E8ECB400F6AE75 /* Patron+Codable.swift in Sources */,
 				AAC7EB33223B3C8C00F999E2 /* BibRow.swift in Sources */,
+				4929397322F9DFCC00D71FEB /* Item+Vendor.swift in Sources */,
 				AA5CD1CB22386EB9009E39CF /* Polaris+Bib.swift in Sources */,
+				4929397122F9DFB300D71FEB /* Item+Branch.swift in Sources */,
+				4929397922F9E04400D71FEB /* Item+Equatable.swift in Sources */,
+				4929396D22F9DF5400D71FEB /* Item+Format.swift in Sources */,
 				AAC7EB30223B3C0200F999E2 /* BibInfo.swift in Sources */,
 				AA5CD19022384099009E39CF /* Polaris.swift in Sources */,
 				490B5F1E22E91E2E00F6AE75 /* Patron+Name.swift in Sources */,
 				AA8E6221224E7FA700C61D4E /* Polaris+PatronAccount.swift in Sources */,
+				4929397522F9DFDF00D71FEB /* Item+Bib.swift in Sources */,
 				490B5F1822E91DB100F6AE75 /* Patron+HoldRequestCounts.swift in Sources */,
+				4929396F22F9DF9100D71FEB /* Item+Renewal.swift in Sources */,
 				490B5F1A22E91DEF00F6AE75 /* Patron+ItemCounts.swift in Sources */,
 				AAC7EAA222399B9800F999E2 /* Polaris+Endpoints.swift in Sources */,
 				AAC7EB26223B196C00F999E2 /* AuthenticatedPatron.swift in Sources */,
 				490B5F0E22E91C2600F6AE75 /* Patron+PhoneCarrier.swift in Sources */,
 				490B5F2022E91E5200F6AE75 /* Patron+Phone.swift in Sources */,
+				4929396722F907E800D71FEB /* Item.swift in Sources */,
 				AA8E6224224E86A400C61D4E /* RegistrationCreateRequest.swift in Sources */,
+				4929397D22FA244900D71FEB /* PolarisUtility.swift in Sources */,
 				490B5F1422E91D3400F6AE75 /* Patron+Balances.swift in Sources */,
 				490B5F1622E91D8E00F6AE75 /* Patron+Email.swift in Sources */,
 				490B5F1222E91C9C00F6AE75 /* Patron+Address.swift in Sources */,
@@ -352,6 +419,7 @@
 				AAC7EAF32239EDAA00F999E2 /* PolarisConfiguration.swift in Sources */,
 				490B5F1022E91C6600F6AE75 /* Patron+NameTitle.swift in Sources */,
 				AA5CD1E5223878E9009E39CF /* String+Extension.swift in Sources */,
+				4929396922F9083B00D71FEB /* Item+Codable.swift in Sources */,
 				AAC7EAD22239AE7E00F999E2 /* DateTime.swift in Sources */,
 				492A923622AB2436001EADCD /* Patron.swift in Sources */,
 				AA5CD192223844EB009E39CF /* Polaris+Authenticate.swift in Sources */,
