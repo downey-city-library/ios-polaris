@@ -24,6 +24,7 @@ extension Polaris {
         case getBasicData(String)
         case getItemsOut(String)
         case registrationCreate
+        case updatePatron(String)
         
         internal var stringValue: String {
             switch self {
@@ -44,6 +45,8 @@ extension Polaris {
                 return Endpoints.basePublic + "/patron/\(barcode)/itemsout/all"
             case .registrationCreate:
                 return Endpoints.basePublic + "/patron"
+            case .updatePatron(let barcode):
+                return Endpoints.basePublic + "/patron/\(barcode)"
             }
         }
         

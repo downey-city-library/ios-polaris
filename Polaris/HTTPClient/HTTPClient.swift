@@ -18,6 +18,7 @@ internal class HTTPClient {
     fileprivate struct HTTPMethod {
         internal static let get = "GET"
         internal static let post = "POST"
+        internal static let put = "PUT"
     }
     
     // MARK: - Base HTTP Request
@@ -100,7 +101,7 @@ internal class HTTPClient {
                 return
             }
             
-            print(String(bytes: data, encoding: .utf8))
+            print("Data from GET Request", String(bytes: data, encoding: .utf8)!)
             
             do {
                 let responseObject = try decoder.decode(ResponseType.self, from: data)
@@ -148,7 +149,57 @@ internal class HTTPClient {
                 return
             }
             
-            print(String(bytes: data, encoding: .utf8))
+            print("Data from POST Request", String(bytes: data, encoding: .utf8)!)
+            
+            do {
+                let responseObject = try decoder.decode(ResponseType.self, from: data)
+                completion(responseObject, nil)
+                return
+            } catch {
+                completion(nil, error)
+                return
+            }
+        }
+        
+        task.resume()
+    }
+    
+    internal class func taskForPUTRequest<RequestType: Encodable, ResponseType: Decodable>(url: URL, body: RequestType, response: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) {
+        guard let authenticatedStaffUser = Polaris.authenticatedStaffUser else {
+            completion(nil, nil)
+            return
+        }
+        
+        // get date string in rfc1123 format
+        let date = DateTime.rfc1123()
+        
+        // access secret
+        let accessSecret = authenticatedStaffUser.accessSecret
+        
+        // generate request signature
+        let signature = getSignature(httpMethod: HTTPMethod.put, date: date, endpoint: url.absoluteString, secret: accessSecret)
+        
+        // build url request
+        var request = generateBaseHTTPRequest(url: url, date: date, signature: signature)
+        request.httpMethod = HTTPMethod.put
+        request.addValue(authenticatedStaffUser.accessToken, forHTTPHeaderField: "X-PAPI-AccessToken")
+        
+        // add http request body
+        do {
+            request.httpBody = try encoder.encode(body)
+        } catch {
+            completion(nil, error)
+            return
+        }
+        
+        // perform url request
+        task = URLSession.shared.dataTask(with: request as URLRequest) { (data, response, error) in
+            guard let data = data else {
+                completion(nil, error)
+                return
+            }
+            
+            print("Data from PUT Request", String(bytes: data, encoding: .utf8)!)
             
             do {
                 let responseObject = try decoder.decode(ResponseType.self, from: data)

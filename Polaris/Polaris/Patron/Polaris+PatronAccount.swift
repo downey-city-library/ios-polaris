@@ -32,5 +32,13 @@ extension Polaris {
                 DispatchQueue.main.async { completion(response, error) }
             }
         }
+        
+        public static func update(barcode: String, patron: UpdatePatronRequest, completion: @escaping (Patron?, Error?) -> Void) {
+            let endpoint = Endpoints.updatePatron(barcode)
+            let body = patron
+            HTTPClient.taskForPUTRequest(url: endpoint.url, body: body, response: Patron.self) { (response, error) in
+                DispatchQueue.main.async { completion(response, error) }
+            }
+        }
     }
 }

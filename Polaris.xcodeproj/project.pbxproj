@@ -32,6 +32,7 @@
 		4929397922F9E04400D71FEB /* Item+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929397822F9E04400D71FEB /* Item+Equatable.swift */; };
 		4929397B22F9E3EE00D71FEB /* Items+ItemSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929397A22F9E3EE00D71FEB /* Items+ItemSet.swift */; };
 		4929397D22FA244900D71FEB /* PolarisUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929397C22FA244900D71FEB /* PolarisUtility.swift */; };
+		492939812302085A00D71FEB /* UpdatePatronRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929397F22FA366B00D71FEB /* UpdatePatronRequest.swift */; };
 		492A923622AB2436001EADCD /* Patron.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A923522AB2436001EADCD /* Patron.swift */; };
 		AA5CD18922383CCB009E39CF /* Polaris.h in Headers */ = {isa = PBXBuildFile; fileRef = AA5CD18722383CCB009E39CF /* Polaris.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA5CD19022384099009E39CF /* Polaris.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5CD18F22384099009E39CF /* Polaris.swift */; };
@@ -79,6 +80,7 @@
 		4929397822F9E04400D71FEB /* Item+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+Equatable.swift"; sourceTree = "<group>"; };
 		4929397A22F9E3EE00D71FEB /* Items+ItemSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Items+ItemSet.swift"; sourceTree = "<group>"; };
 		4929397C22FA244900D71FEB /* PolarisUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolarisUtility.swift; sourceTree = "<group>"; };
+		4929397F22FA366B00D71FEB /* UpdatePatronRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePatronRequest.swift; sourceTree = "<group>"; };
 		492A923522AB2436001EADCD /* Patron.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patron.swift; sourceTree = "<group>"; };
 		AA5CD18422383CCB009E39CF /* Polaris.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Polaris.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA5CD18722383CCB009E39CF /* Polaris.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Polaris.h; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 				AA8E6225224E86AF00C61D4E /* RegistrationCreate */,
 				492A923722AB243E001EADCD /* getBasicData */,
 				4929396522F907D300D71FEB /* getItemsOut */,
+				4929397F22FA366B00D71FEB /* UpdatePatronRequest.swift */,
 			);
 			path = Patron;
 			sourceTree = "<group>";
@@ -400,6 +403,7 @@
 				AAC7EB30223B3C0200F999E2 /* BibInfo.swift in Sources */,
 				AA5CD19022384099009E39CF /* Polaris.swift in Sources */,
 				490B5F1E22E91E2E00F6AE75 /* Patron+Name.swift in Sources */,
+				492939812302085A00D71FEB /* UpdatePatronRequest.swift in Sources */,
 				AA8E6221224E7FA700C61D4E /* Polaris+PatronAccount.swift in Sources */,
 				4929397522F9DFDF00D71FEB /* Item+Bib.swift in Sources */,
 				490B5F1822E91DB100F6AE75 /* Patron+HoldRequestCounts.swift in Sources */,
