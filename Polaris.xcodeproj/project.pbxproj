@@ -20,6 +20,7 @@
 		490B5F1E22E91E2E00F6AE75 /* Patron+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B5F1D22E91E2E00F6AE75 /* Patron+Name.swift */; };
 		490B5F2022E91E5200F6AE75 /* Patron+Phone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B5F1F22E91E5200F6AE75 /* Patron+Phone.swift */; };
 		490F379C22F362C0005F3DD8 /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490F379B22F362C0005F3DD8 /* Items.swift */; };
+		491865A72307732400A503E3 /* PolarisError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491865A62307732400A503E3 /* PolarisError.swift */; };
 		4929396722F907E800D71FEB /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929396622F907E800D71FEB /* Item.swift */; };
 		4929396922F9083B00D71FEB /* Item+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929396822F9083B00D71FEB /* Item+Codable.swift */; };
 		4929396B22F908B800D71FEB /* ItemDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929396A22F908B800D71FEB /* ItemDecoder.swift */; };
@@ -68,6 +69,7 @@
 		490B5F1D22E91E2E00F6AE75 /* Patron+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+Name.swift"; sourceTree = "<group>"; };
 		490B5F1F22E91E5200F6AE75 /* Patron+Phone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+Phone.swift"; sourceTree = "<group>"; };
 		490F379B22F362C0005F3DD8 /* Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Items.swift; sourceTree = "<group>"; };
+		491865A62307732400A503E3 /* PolarisError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolarisError.swift; sourceTree = "<group>"; };
 		4929396622F907E800D71FEB /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		4929396822F9083B00D71FEB /* Item+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+Codable.swift"; sourceTree = "<group>"; };
 		4929396A22F908B800D71FEB /* ItemDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDecoder.swift; sourceTree = "<group>"; };
@@ -115,6 +117,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4904FD7C230B149A00435E22 /* PolarisError */ = {
+			isa = PBXGroup;
+			children = (
+				491865A62307732400A503E3 /* PolarisError.swift */,
+			);
+			path = PolarisError;
+			sourceTree = "<group>";
+		};
 		4929396522F907D300D71FEB /* getItemsOut */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +198,7 @@
 				AAC7EB0B223A941A00F999E2 /* HTTPClient */,
 				AA5CD1D722387111009E39CF /* Polaris */,
 				AAC7EB0C223A943A00F999E2 /* PolarisConfiguration */,
+				4904FD7C230B149A00435E22 /* PolarisError */,
 				4929397E22FA253300D71FEB /* PolarisUtility */,
 			);
 			path = Polaris;
@@ -420,6 +431,7 @@
 				490B5F1622E91D8E00F6AE75 /* Patron+Email.swift in Sources */,
 				490B5F1222E91C9C00F6AE75 /* Patron+Address.swift in Sources */,
 				490B5F1C22E91E1200F6AE75 /* Patron+MessageCounts.swift in Sources */,
+				491865A72307732400A503E3 /* PolarisError.swift in Sources */,
 				AAC7EAF32239EDAA00F999E2 /* PolarisConfiguration.swift in Sources */,
 				490B5F1022E91C6600F6AE75 /* Patron+NameTitle.swift in Sources */,
 				AA5CD1E5223878E9009E39CF /* String+Extension.swift in Sources */,
