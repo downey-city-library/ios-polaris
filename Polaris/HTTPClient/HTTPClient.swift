@@ -80,10 +80,10 @@ internal class HTTPClient {
         let date = DateTime.rfc1123()
         
         // access secret
-        let accessSecret = isAuthorizationRequired ? authenticatedStaffUser.accessSecret : ""
+        let accessSecret = isAuthorizationRequired ? authenticatedStaffUser.access?.secret : ""
         
         // generate request signature
-        let signature = getSignature(httpMethod: HTTPMethod.get, date: date, endpoint: url.absoluteString, secret: accessSecret)
+        let signature = getSignature(httpMethod: HTTPMethod.get, date: date, endpoint: url.absoluteString, secret: accessSecret!)
         
         // build url request
         var request = generateBaseHTTPRequest(url: url, date: date, signature: signature)
@@ -91,7 +91,7 @@ internal class HTTPClient {
         
         // if authorization is required, add access token header
         if isAuthorizationRequired {
-            request.addValue(authenticatedStaffUser.accessToken, forHTTPHeaderField: "X-PAPI-AccessToken")
+            request.addValue(authenticatedStaffUser.access!.token, forHTTPHeaderField: "X-PAPI-AccessToken")
         }
         
         // perform url request
@@ -174,7 +174,7 @@ internal class HTTPClient {
         let date = DateTime.rfc1123()
         
         // access secret
-        let accessSecret = authenticatedStaffUser.accessSecret
+        let accessSecret = authenticatedStaffUser.access!.secret
         
         // generate request signature
         let signature = getSignature(httpMethod: HTTPMethod.put, date: date, endpoint: url.absoluteString, secret: accessSecret)
@@ -182,7 +182,7 @@ internal class HTTPClient {
         // build url request
         var request = generateBaseHTTPRequest(url: url, date: date, signature: signature)
         request.httpMethod = HTTPMethod.put
-        request.addValue(authenticatedStaffUser.accessToken, forHTTPHeaderField: "X-PAPI-AccessToken")
+        request.addValue(authenticatedStaffUser.access!.token, forHTTPHeaderField: "X-PAPI-AccessToken")
         
         // add http request body
         do {

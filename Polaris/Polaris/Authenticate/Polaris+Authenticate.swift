@@ -55,9 +55,11 @@ extension Polaris {
             let body = AuthenticateStaffUserRequest(domain: configuration.staffUser.domain, username: username, password: password)
             
             HTTPClient.taskForPOSTRequest(url: endpoint.url, body: body, response: AuthenticatedStaffUser.self) { (response, error) in
-                if let response = response {
+                if let response = response, response.error == nil {
                     authenticatedStaffUser = response
-                    DispatchQueue.main.async { completion(true, error) }
+                    DispatchQueue.main.async { completion(true, nil) }
+                } else if let response = response, let polarisError = response.error {
+                    DispatchQueue.main.async { completion(false, polarisError) }
                 } else {
                     DispatchQueue.main.async { completion(false, error) }
                 }

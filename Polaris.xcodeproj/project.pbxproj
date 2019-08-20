@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4904FD7E230B52CA00435E22 /* AuthenticatedStaffUser+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4904FD7D230B52CA00435E22 /* AuthenticatedStaffUser+Decodable.swift */; };
+		4904FD80230B531100435E22 /* AuthenticatedStaffUser+Access.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4904FD7F230B531100435E22 /* AuthenticatedStaffUser+Access.swift */; };
+		4904FD82230B531B00435E22 /* AuthenticatedStaffUser+Access+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4904FD81230B531B00435E22 /* AuthenticatedStaffUser+Access+Decodable.swift */; };
 		490B5F0A22E8ECB400F6AE75 /* Patron+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B5F0922E8ECB400F6AE75 /* Patron+Codable.swift */; };
 		490B5F0C22E8EE1200F6AE75 /* PatronDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B5F0B22E8EE1200F6AE75 /* PatronDecoder.swift */; };
 		490B5F0E22E91C2600F6AE75 /* Patron+PhoneCarrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B5F0D22E91C2500F6AE75 /* Patron+PhoneCarrier.swift */; };
@@ -56,6 +59,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4904FD7D230B52CA00435E22 /* AuthenticatedStaffUser+Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AuthenticatedStaffUser+Decodable.swift"; sourceTree = "<group>"; };
+		4904FD7F230B531100435E22 /* AuthenticatedStaffUser+Access.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AuthenticatedStaffUser+Access.swift"; sourceTree = "<group>"; };
+		4904FD81230B531B00435E22 /* AuthenticatedStaffUser+Access+Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AuthenticatedStaffUser+Access+Decodable.swift"; sourceTree = "<group>"; };
 		490B5F0922E8ECB400F6AE75 /* Patron+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+Codable.swift"; sourceTree = "<group>"; };
 		490B5F0B22E8EE1200F6AE75 /* PatronDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatronDecoder.swift; sourceTree = "<group>"; };
 		490B5F0D22E91C2500F6AE75 /* Patron+PhoneCarrier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+PhoneCarrier.swift"; sourceTree = "<group>"; };
@@ -293,6 +299,9 @@
 			children = (
 				AAC7EAA32239A16700F999E2 /* AuthenticateStaffUserRequest.swift */,
 				AAC7EAA52239A18700F999E2 /* AuthenticatedStaffUser.swift */,
+				4904FD7D230B52CA00435E22 /* AuthenticatedStaffUser+Decodable.swift */,
+				4904FD7F230B531100435E22 /* AuthenticatedStaffUser+Access.swift */,
+				4904FD81230B531B00435E22 /* AuthenticatedStaffUser+Access+Decodable.swift */,
 			);
 			path = AuthenticateStaffUser;
 			sourceTree = "<group>";
@@ -411,6 +420,7 @@
 				4929397122F9DFB300D71FEB /* Item+Branch.swift in Sources */,
 				4929397922F9E04400D71FEB /* Item+Equatable.swift in Sources */,
 				4929396D22F9DF5400D71FEB /* Item+Format.swift in Sources */,
+				4904FD7E230B52CA00435E22 /* AuthenticatedStaffUser+Decodable.swift in Sources */,
 				AAC7EB30223B3C0200F999E2 /* BibInfo.swift in Sources */,
 				AA5CD19022384099009E39CF /* Polaris.swift in Sources */,
 				490B5F1E22E91E2E00F6AE75 /* Patron+Name.swift in Sources */,
@@ -418,6 +428,7 @@
 				AA8E6221224E7FA700C61D4E /* Polaris+PatronAccount.swift in Sources */,
 				4929397522F9DFDF00D71FEB /* Item+Bib.swift in Sources */,
 				490B5F1822E91DB100F6AE75 /* Patron+HoldRequestCounts.swift in Sources */,
+				4904FD82230B531B00435E22 /* AuthenticatedStaffUser+Access+Decodable.swift in Sources */,
 				4929396F22F9DF9100D71FEB /* Item+Renewal.swift in Sources */,
 				490B5F1A22E91DEF00F6AE75 /* Patron+ItemCounts.swift in Sources */,
 				AAC7EAA222399B9800F999E2 /* Polaris+Endpoints.swift in Sources */,
@@ -434,6 +445,7 @@
 				491865A72307732400A503E3 /* PolarisError.swift in Sources */,
 				AAC7EAF32239EDAA00F999E2 /* PolarisConfiguration.swift in Sources */,
 				490B5F1022E91C6600F6AE75 /* Patron+NameTitle.swift in Sources */,
+				4904FD80230B531100435E22 /* AuthenticatedStaffUser+Access.swift in Sources */,
 				AA5CD1E5223878E9009E39CF /* String+Extension.swift in Sources */,
 				4929396922F9083B00D71FEB /* Item+Codable.swift in Sources */,
 				AAC7EAD22239AE7E00F999E2 /* DateTime.swift in Sources */,

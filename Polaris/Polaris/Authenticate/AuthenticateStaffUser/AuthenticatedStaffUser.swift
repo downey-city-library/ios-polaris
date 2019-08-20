@@ -8,22 +8,32 @@
 
 import Foundation
 
-public struct AuthenticatedStaffUser: Codable {
-    let errorCode: Int
-    let errorMessage: String?
-    let accessToken: String
-    let accessSecret: String
-    let polarisUserId: Int
-    let branchId: Int
-    let authExpDate: String
+public struct AuthenticatedStaffUser {
+    // MARK: - Private Properties (Get/Set)
+    internal var _access: Access?
+    internal var _branchID: Int
+    internal var _error: PolarisError?
+    internal var _polarisUserID: Int
     
-    fileprivate enum CodingKeys: String, CodingKey {
-        case errorCode = "PAPIErrorCode"
-        case errorMessage = "ErrorMessage"
+    // MARK: - Public Properties (Get Only)
+    var access: Access? { get { return _access } }
+    var branchID: Int { get { return _branchID } }
+    var error: PolarisError? { get { return _error } }
+    var polarisUserID: Int { get { return _polarisUserID } }
+    
+    // MARK: - Coding Keys
+    internal enum CodingKeys: String, CodingKey {
+        // access
         case accessToken = "AccessToken"
         case accessSecret = "AccessSecret"
-        case polarisUserId = "PolarisUserID"
-        case branchId = "BranchID"
         case authExpDate = "AuthExpDate"
+        
+        // error
+        case errorCode = "PAPIErrorCode"
+        case errorMessage = "ErrorMessage"
+        
+        // misc
+        case polarisUserID = "PolarisUserID"
+        case branchID = "BranchID"
     }
 }
