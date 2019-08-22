@@ -1,5 +1,5 @@
 //
-//  Patron+NameTitle.swift
+//  Patron++Name+Title.swift
 //  Polaris
 //
 //  Created by Andrew Despres on 7/24/19.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-extension Patron {
-    public enum NameTitle: String, Codable {
+extension Patron.Name {
+    public enum Title: String, Codable {
         case dr = "Dr."
         case miss = "Miss"
         case mr = "Mr."

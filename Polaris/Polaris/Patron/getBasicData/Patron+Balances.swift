@@ -10,8 +10,14 @@ import Foundation
 
 extension Patron {
     public struct Balances {
-        public let charges: Double
-        public let credits: Double
-        public let deposits: Double
+        // MARK: - Private Properties (Get/Set)
+        internal var _charges: Double
+        internal var _credits: Double
+        internal var _deposits: Double
+        
+        // MARK: - Public Properties (Get Only)
+        public var charges: Double { get { return _charges } }
+        public var credits: Double { get { return _credits } }
+        public var deposits: Double { get { return _deposits } }
     }
 }

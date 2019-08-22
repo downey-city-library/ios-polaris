@@ -10,10 +10,18 @@ import Foundation
 
 extension Patron {
     public struct Name {
-        public let first: String
-        public let middle: String
-        public let last: String
-        public let title: NameTitle
-        public let suffix: String
+        // MARK: - Private Properties (Get/Set)
+        internal var _first: String
+        internal var _last: String
+        internal var _middle: String
+        internal var _suffix: String
+        internal var _title: Title
+        
+        // MARK: - Public Properties (Get Only)
+        public var first: String { get { return _first } }
+        public var last: String { get { return _last } }
+        public var middle: String { get { return _middle } }
+        public var suffix: String { get { return _suffix } }
+        public var title: Title { get { return _title } }
     }
 }

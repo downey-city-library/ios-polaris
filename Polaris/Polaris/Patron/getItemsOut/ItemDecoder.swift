@@ -77,7 +77,7 @@ internal struct ItemDecoder {
     internal static func parseDate(from data: KeyedDecodingContainer<Item.CodingKeys>, forKey key: KeyedDecodingContainer<Item.CodingKeys>.Key) throws -> Date? {
         let dateString = try? data.decode(String.self, forKey: key)
         if let dateString = dateString {
-            return PolarisUtility.getDate(from: dateString)
+            return dateString.toDate()
         }
         
         return nil

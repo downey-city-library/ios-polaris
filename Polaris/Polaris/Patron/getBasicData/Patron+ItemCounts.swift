@@ -9,21 +9,15 @@
 import Foundation
 
 extension Patron {
-    public class ItemCounts {
+    public struct ItemCounts {
+        // MARK: - Private Properties (Get/Set)
+        internal var _lost: Int
         internal var _out: Int
+        internal var _overdue: Int
         
-        public var out: Int { get { return _out }}
-        public let overdue: Int
-        public let lost: Int
-        
-        internal init(out: Int, overdue: Int, lost: Int) {
-            self._out = out
-            self.overdue = overdue
-            self.lost = lost
-        }
+        // MARK: - Public Properties (Get Only)
+        public var lost: Int { get { return _lost } }
+        public var out: Int { get { return _out } }
+        public var overdue: Int { get { return _overdue } }
     }
-}
-
-extension Patron.ItemCounts {
-    public func setOut(to newValue: Int) { self._out = newValue }
 }

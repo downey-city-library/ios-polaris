@@ -8,25 +8,46 @@
 
 import Foundation
 
+extension Patron {
+    // MARK: - Coding Keys
+    enum CodingKeys: String, CodingKey {
+        case patronData = "PatronBasicData"
+        case errorCode = "PAPIErrorCode"
+        
+        case addressCheckDate = "AddrCheckDate"
+        case addresses = "PatronAddresses"
+        case barcode = "Barcode"
+        case birthdate = "BirthDate"
+        case lastActivityDate = "LastActivityDate"
+        case registrationDate = "RegistrationDate"
+    }
+}
+
 extension Patron: Decodable {
+    // MARK: - Initialization
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        let data = try container.nestedContainer(keyedBy: PatronCodingKeys.self, forKey: .patronData)
         
-        self.barcode = try data.decode(String.self, forKey: .barcode)
-        self.name = try PatronDecoder.parseName(from: data)
-        self.phones = try PatronDecoder.parsePhones(from: data)
-        self.emails = try PatronDecoder.parseEmails(from: data)
-        self.birthdate = try PatronDecoder.parseDate(from: data, forKey: .birthdate)
-        self.registrationDate = try PatronDecoder.parseDate(from: data, forKey: .registrationDate)
-        self.lastActivityDate = try PatronDecoder.parseDate(from: data, forKey: .lastActivityDate)
-        self.addressCheckDate = try PatronDecoder.parseDate(from: data, forKey: .addressCheckDate)
-        self.messageCounts = try PatronDecoder.parseMessageCounts(from: data)
-        self.addresses = (try? data.decode([Address].self, forKey: .addresses)) ?? []
-        self._itemCounts = try PatronDecoder.parseItemCounts(from: data)
-        self.holdRequestCounts = try PatronDecoder.parseHoldRequestCounts(from: data)
-        self.balances = try PatronDecoder.parseBalances(from: data)
+        let errorCode = try container.decode(Int.self, forKey: .errorCode)
+        self._error = errorCode == 0 ? nil : PolarisError(rawValue: errorCode)
         
-        self._items = Items()
+        guard let data = try? container.nestedContainer(keyedBy: CodingKeys.self, forKey: .patronData) else { throw self._error! }
+        
+        // decoded using coding keys
+        self._addressCheckDate = (try data.decode(String.self, forKey: .addressCheckDate)).toDate()
+        self._addresses = (try? data.decode([Address].self, forKey: .addresses)) ?? []
+        self._barcode = try data.decode(String.self, forKey: .barcode)
+        self._birthdate = (try data.decode(String.self, forKey: .birthdate)).toDate()
+        self._lastActivityDate = (try data.decode(String.self, forKey: .lastActivityDate)).toDate()
+        self._registrationDate = (try data.decode(String.self, forKey: .registrationDate)).toDate()
+        
+        // decoded using child structs
+        self._balances = try Balances(from: decoder)
+        self._emails = try Emails(from: decoder)
+        self._holdRequestCounts = try HoldRequestCounts(from: decoder)
+        self._itemCounts = try ItemCounts(from: decoder)
+        self._messageCounts = try MessageCounts(from: decoder)
+        self._name = try Name(from: decoder)
+        self._phones = try Phones(from: decoder)
     }
 }

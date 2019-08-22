@@ -1,5 +1,5 @@
 //
-//  Patron+PhoneCarrier.swift
+//  Patron+Phones+Phone+Carrier.swift
 //  Polaris
 //
 //  Created by Andrew Despres on 7/24/19.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-extension Patron {
-    public enum PhoneCarrier: Int, Codable {
+extension Patron.Phones.Phone {
+    public enum Carrier: Int, Codable {
         case none = 0
         case att = 1
         case sprint = 8

@@ -23,6 +23,17 @@ extension String {
         return Data(bytes: data).base64EncodedString()
     }
     
+    /// Convert a string to a date.
+    /// - returns: The date value of the string.
+    func toDate() -> Date {
+        let start = self.firstIndex(of: "(")!
+        let end = self.lastIndex(of: "-")!
+        let trimmedString = self[start...end].trimmingCharacters(in: ["(","-"])
+        let dateInterval = TimeInterval(trimmedString)! / 1000.0
+        
+        return Date(timeIntervalSince1970: dateInterval)
+    }
+    
     /// Convert a string to an interger using dot notation.
     /// - returns: The interger value of the string (optional).
     internal func toInt() -> Int? {

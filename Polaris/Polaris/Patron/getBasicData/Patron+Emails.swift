@@ -1,5 +1,5 @@
 //
-//  Patron+MessageCounts.swift
+//  Patron+Emails.swift
 //  Polaris
 //
 //  Created by Andrew Despres on 7/24/19.
@@ -9,13 +9,13 @@
 import Foundation
 
 extension Patron {
-    public struct MessageCounts {
+    public struct Emails {
         // MARK: - Private Properties (Get/Set)
-        internal var _new: Int
-        internal var _read: Int
+        internal var _alternate: Email?
+        internal var _primary: Email?
         
         // MARK: - Public Properties (Get Only)
-        public var new: Int { get { return _new } }
-        public var read: Int { get { return _read } }
+        public var alternate: Email? { get { return _alternate } }
+        public var primary: Email? { get { return _primary } }
     }
 }

@@ -9,70 +9,56 @@
 import Foundation
 
 public struct Patron {
-    internal var _items: Items
+    // MARK: - Private Properties (Get/Set)
+    internal var _addressCheckDate: Date?
+    internal var _addresses: [Address]
+    internal var _balances: Balances
+    internal var _barcode: String
+    internal var _birthdate: Date?
+    internal var _emails: Emails
+    internal var _error: PolarisError? = nil
+    internal var _holdRequestCounts: HoldRequestCounts
+    internal var _lastActivityDate: Date?
+    internal var _items: Items? = nil
     internal var _itemCounts: ItemCounts
+    internal var _messageCounts: MessageCounts
+    internal var _name: Name
+    internal var _phones: Phones
+    internal var _registrationDate: Date?
+    internal var _sip: Any? = nil
     
-    public let barcode: String
-    public let name: Name
-    public let phones: [Phone]
-    public let emails: [Email]
-    public let birthdate: Date?
-    public let registrationDate: Date?
-    public let lastActivityDate: Date?
-    public let addressCheckDate: Date?
-    public let messageCounts: MessageCounts
-    public let addresses: [Address]
+    // MARK: - Public Properties (Get Only)
+    public var addressCheckDate: Date? { get { return _addressCheckDate } }
+    public var addresses: [Address] { get { return _addresses } }
+    public var balances: Balances { get { return _balances } }
+    public var barcode: String { get { return _barcode } }
+    public var birthdate: Date? { get { return _birthdate } }
+    public var emails: Emails { get { return _emails } }
+    public var error: PolarisError? { get { return _error } }
+    public var holdRequestCounts: HoldRequestCounts { get { return _holdRequestCounts } }
+    public var lastActivityDate: Date? { get { return _lastActivityDate } }
+    public var items: Items? { get { return _items } } // this is nil unless the method getItemsOut is called and the results are then assigned to this property
     public var itemCounts: ItemCounts { get { return _itemCounts } }
-    public let holdRequestCounts: HoldRequestCounts
-    public let balances: Balances
-    
-    // this next field is used to incorporate SIP data that is provided by an external framework
-    public var sip: Any? = nil
-    
-    // this next property is only not nil if the method getItemsOut is called and the results are then assigned to this property
-    public var items: Items { get { return _items } }
-    
+    public var messageCounts: MessageCounts { get { return _messageCounts } }
+    public var name: Name { get { return _name } }
+    public var phones: Phones { get { return _phones } }
+    public var registrationDate: Date? { get { return _registrationDate } }
+    public var sip: Any? { get { return _sip } } // this is used to incorporate SIP data that is provided by an external framework
+}
+
+extension Patron {
+    // MARK: - Public Mutating Methods (Setters)
     public mutating func setItems(_ items: Items) {
         self._items = items
     }
     
-    enum CodingKeys: String, CodingKey {
-        case patronData = "PatronBasicData"
+    public mutating func setItemCounts(lost: Int? = nil, out: Int? = nil, overdue: Int? = nil) {
+        if let lost = lost { self._itemCounts._lost = lost }
+        if let out = out { self._itemCounts._out = out }
+        if let overdue = overdue { self._itemCounts._overdue = overdue }
     }
     
-    enum PatronCodingKeys: String, CodingKey {
-        case barcode = "Barcode"
-        case title = "NameTitle"
-        case firstName = "NameFirst"
-        case middleName = "NameMiddle"
-        case lastName = "NameLast"
-        case suffix = "NameSuffix"
-        case phoneNumber1 = "PhoneNumber"
-        case phoneNumber2 = "PhoneNumber2"
-        case phoneNumber3 = "PhoneNumber3"
-        case phone1CarrierID = "Phone1CarrierID"
-        case phone2CarrierID = "Phone2CarrierID"
-        case phone3CarrierID = "Phone3CarrierID"
-        case cellPhone = "CellPhone"
-        case emailAddress1 = "EmailAddress"
-        case emailAddress2 = "AltEmailAddress"
-        case birthdate = "BirthDate"
-        case registrationDate = "RegistrationDate"
-        case lastActivityDate = "LastActivityDate"
-        case addressCheckDate = "AddrCheckDate"
-        case messageNewCount = "MessageNewCount"
-        case messageReadCount = "MessageReadCount"
-        case addresses = "PatronAddresses"
-        case itemsOutCount = "ItemsOutCount"
-        case itemsOverdueCount = "ItemsOverdueCount"
-        case itemsOutLostCount = "ItemsOutLostCount"
-        case holdRequestsTotalCount = "HoldRequestsTotalCount"
-        case holdRequestsCurrentCount = "HoldRequestsCurrentCount"
-        case holdRequestsShippedCount = "HoldRequestsShippedCount"
-        case holdRequestsHeldCount = "HoldRequestsHeldCount"
-        case holdRequestsUnclaimedCount = "HoldRequestsUnclaimedCount"
-        case chargeBalance = "ChargeBalance"
-        case creditBalance = "CreditBalance"
-        case depositBalance = "DepositBalance"
+    public mutating func setSip(_ sip: Any) {
+        self._sip = sip
     }
 }

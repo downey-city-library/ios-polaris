@@ -10,18 +10,23 @@
 		4904FD7E230B52CA00435E22 /* AuthenticatedStaffUser+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4904FD7D230B52CA00435E22 /* AuthenticatedStaffUser+Decodable.swift */; };
 		4904FD80230B531100435E22 /* AuthenticatedStaffUser+Access.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4904FD7F230B531100435E22 /* AuthenticatedStaffUser+Access.swift */; };
 		4904FD82230B531B00435E22 /* AuthenticatedStaffUser+Access+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4904FD81230B531B00435E22 /* AuthenticatedStaffUser+Access+Decodable.swift */; };
+		4907AC7B230DF7B400A1B0B5 /* Patron+Emails+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4907AC7A230DF7B400A1B0B5 /* Patron+Emails+Codable.swift */; };
+		4907AC7D230DF7DA00A1B0B5 /* Patron+Emails+Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4907AC7C230DF7DA00A1B0B5 /* Patron+Emails+Email.swift */; };
+		4907AC7F230DF81C00A1B0B5 /* Patron+Emails+Email+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4907AC7E230DF81C00A1B0B5 /* Patron+Emails+Email+Codable.swift */; };
+		4907AC81230DF92F00A1B0B5 /* Patron+Phones+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4907AC80230DF92F00A1B0B5 /* Patron+Phones+Codable.swift */; };
+		4907AC83230DF96600A1B0B5 /* Patron+Phones+Phone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4907AC82230DF96600A1B0B5 /* Patron+Phones+Phone.swift */; };
+		4907AC85230DF99500A1B0B5 /* Patron+Phones+Phone+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4907AC84230DF99500A1B0B5 /* Patron+Phones+Phone+Codable.swift */; };
 		490B5F0A22E8ECB400F6AE75 /* Patron+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B5F0922E8ECB400F6AE75 /* Patron+Codable.swift */; };
-		490B5F0C22E8EE1200F6AE75 /* PatronDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B5F0B22E8EE1200F6AE75 /* PatronDecoder.swift */; };
-		490B5F0E22E91C2600F6AE75 /* Patron+PhoneCarrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B5F0D22E91C2500F6AE75 /* Patron+PhoneCarrier.swift */; };
-		490B5F1022E91C6600F6AE75 /* Patron+NameTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B5F0F22E91C6600F6AE75 /* Patron+NameTitle.swift */; };
+		490B5F0E22E91C2600F6AE75 /* Patron+Phones+Phone+Carrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B5F0D22E91C2500F6AE75 /* Patron+Phones+Phone+Carrier.swift */; };
+		490B5F1022E91C6600F6AE75 /* Patron+Name+Title.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B5F0F22E91C6600F6AE75 /* Patron+Name+Title.swift */; };
 		490B5F1222E91C9C00F6AE75 /* Patron+Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B5F1122E91C9C00F6AE75 /* Patron+Address.swift */; };
 		490B5F1422E91D3400F6AE75 /* Patron+Balances.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B5F1322E91D3400F6AE75 /* Patron+Balances.swift */; };
-		490B5F1622E91D8E00F6AE75 /* Patron+Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B5F1522E91D8E00F6AE75 /* Patron+Email.swift */; };
+		490B5F1622E91D8E00F6AE75 /* Patron+Emails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B5F1522E91D8E00F6AE75 /* Patron+Emails.swift */; };
 		490B5F1822E91DB100F6AE75 /* Patron+HoldRequestCounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B5F1722E91DB100F6AE75 /* Patron+HoldRequestCounts.swift */; };
 		490B5F1A22E91DEF00F6AE75 /* Patron+ItemCounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B5F1922E91DEF00F6AE75 /* Patron+ItemCounts.swift */; };
 		490B5F1C22E91E1200F6AE75 /* Patron+MessageCounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B5F1B22E91E1200F6AE75 /* Patron+MessageCounts.swift */; };
 		490B5F1E22E91E2E00F6AE75 /* Patron+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B5F1D22E91E2E00F6AE75 /* Patron+Name.swift */; };
-		490B5F2022E91E5200F6AE75 /* Patron+Phone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B5F1F22E91E5200F6AE75 /* Patron+Phone.swift */; };
+		490B5F2022E91E5200F6AE75 /* Patron+Phones.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B5F1F22E91E5200F6AE75 /* Patron+Phones.swift */; };
 		490F379C22F362C0005F3DD8 /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490F379B22F362C0005F3DD8 /* Items.swift */; };
 		491865A72307732400A503E3 /* PolarisError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491865A62307732400A503E3 /* PolarisError.swift */; };
 		4929396722F907E800D71FEB /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929396622F907E800D71FEB /* Item.swift */; };
@@ -35,9 +40,14 @@
 		4929397722F9DFF000D71FEB /* Item+Billing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929397622F9DFF000D71FEB /* Item+Billing.swift */; };
 		4929397922F9E04400D71FEB /* Item+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929397822F9E04400D71FEB /* Item+Equatable.swift */; };
 		4929397B22F9E3EE00D71FEB /* Items+ItemSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929397A22F9E3EE00D71FEB /* Items+ItemSet.swift */; };
-		4929397D22FA244900D71FEB /* PolarisUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929397C22FA244900D71FEB /* PolarisUtility.swift */; };
 		492939812302085A00D71FEB /* UpdatePatronRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929397F22FA366B00D71FEB /* UpdatePatronRequest.swift */; };
 		492A923622AB2436001EADCD /* Patron.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A923522AB2436001EADCD /* Patron.swift */; };
+		494A8B3C230CCF4E003219EB /* Patron+Address+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494A8B3B230CCF4E003219EB /* Patron+Address+Codable.swift */; };
+		494A8B3E230CD72D003219EB /* Patron+Name+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494A8B3D230CD72D003219EB /* Patron+Name+Codable.swift */; };
+		494A8B40230CD753003219EB /* Patron+MessageCounts+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494A8B3F230CD753003219EB /* Patron+MessageCounts+Codable.swift */; };
+		494A8B42230CD775003219EB /* Patron+ItemCounts+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494A8B41230CD775003219EB /* Patron+ItemCounts+Codable.swift */; };
+		494A8B44230CD79A003219EB /* Patron+HoldRequestCounts+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494A8B43230CD79A003219EB /* Patron+HoldRequestCounts+Codable.swift */; };
+		494A8B46230CD7BB003219EB /* Patron+Balances+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494A8B45230CD7BB003219EB /* Patron+Balances+Codable.swift */; };
 		AA5CD18922383CCB009E39CF /* Polaris.h in Headers */ = {isa = PBXBuildFile; fileRef = AA5CD18722383CCB009E39CF /* Polaris.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA5CD19022384099009E39CF /* Polaris.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5CD18F22384099009E39CF /* Polaris.swift */; };
 		AA5CD192223844EB009E39CF /* Polaris+Authenticate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5CD191223844EB009E39CF /* Polaris+Authenticate.swift */; };
@@ -62,18 +72,23 @@
 		4904FD7D230B52CA00435E22 /* AuthenticatedStaffUser+Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AuthenticatedStaffUser+Decodable.swift"; sourceTree = "<group>"; };
 		4904FD7F230B531100435E22 /* AuthenticatedStaffUser+Access.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AuthenticatedStaffUser+Access.swift"; sourceTree = "<group>"; };
 		4904FD81230B531B00435E22 /* AuthenticatedStaffUser+Access+Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AuthenticatedStaffUser+Access+Decodable.swift"; sourceTree = "<group>"; };
+		4907AC7A230DF7B400A1B0B5 /* Patron+Emails+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+Emails+Codable.swift"; sourceTree = "<group>"; };
+		4907AC7C230DF7DA00A1B0B5 /* Patron+Emails+Email.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+Emails+Email.swift"; sourceTree = "<group>"; };
+		4907AC7E230DF81C00A1B0B5 /* Patron+Emails+Email+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+Emails+Email+Codable.swift"; sourceTree = "<group>"; };
+		4907AC80230DF92F00A1B0B5 /* Patron+Phones+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+Phones+Codable.swift"; sourceTree = "<group>"; };
+		4907AC82230DF96600A1B0B5 /* Patron+Phones+Phone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+Phones+Phone.swift"; sourceTree = "<group>"; };
+		4907AC84230DF99500A1B0B5 /* Patron+Phones+Phone+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+Phones+Phone+Codable.swift"; sourceTree = "<group>"; };
 		490B5F0922E8ECB400F6AE75 /* Patron+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+Codable.swift"; sourceTree = "<group>"; };
-		490B5F0B22E8EE1200F6AE75 /* PatronDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatronDecoder.swift; sourceTree = "<group>"; };
-		490B5F0D22E91C2500F6AE75 /* Patron+PhoneCarrier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+PhoneCarrier.swift"; sourceTree = "<group>"; };
-		490B5F0F22E91C6600F6AE75 /* Patron+NameTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+NameTitle.swift"; sourceTree = "<group>"; };
+		490B5F0D22E91C2500F6AE75 /* Patron+Phones+Phone+Carrier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+Phones+Phone+Carrier.swift"; sourceTree = "<group>"; };
+		490B5F0F22E91C6600F6AE75 /* Patron+Name+Title.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+Name+Title.swift"; sourceTree = "<group>"; };
 		490B5F1122E91C9C00F6AE75 /* Patron+Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+Address.swift"; sourceTree = "<group>"; };
 		490B5F1322E91D3400F6AE75 /* Patron+Balances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+Balances.swift"; sourceTree = "<group>"; };
-		490B5F1522E91D8E00F6AE75 /* Patron+Email.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+Email.swift"; sourceTree = "<group>"; };
+		490B5F1522E91D8E00F6AE75 /* Patron+Emails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+Emails.swift"; sourceTree = "<group>"; };
 		490B5F1722E91DB100F6AE75 /* Patron+HoldRequestCounts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+HoldRequestCounts.swift"; sourceTree = "<group>"; };
 		490B5F1922E91DEF00F6AE75 /* Patron+ItemCounts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+ItemCounts.swift"; sourceTree = "<group>"; };
 		490B5F1B22E91E1200F6AE75 /* Patron+MessageCounts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+MessageCounts.swift"; sourceTree = "<group>"; };
 		490B5F1D22E91E2E00F6AE75 /* Patron+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+Name.swift"; sourceTree = "<group>"; };
-		490B5F1F22E91E5200F6AE75 /* Patron+Phone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+Phone.swift"; sourceTree = "<group>"; };
+		490B5F1F22E91E5200F6AE75 /* Patron+Phones.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+Phones.swift"; sourceTree = "<group>"; };
 		490F379B22F362C0005F3DD8 /* Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Items.swift; sourceTree = "<group>"; };
 		491865A62307732400A503E3 /* PolarisError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolarisError.swift; sourceTree = "<group>"; };
 		4929396622F907E800D71FEB /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -87,9 +102,14 @@
 		4929397622F9DFF000D71FEB /* Item+Billing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+Billing.swift"; sourceTree = "<group>"; };
 		4929397822F9E04400D71FEB /* Item+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+Equatable.swift"; sourceTree = "<group>"; };
 		4929397A22F9E3EE00D71FEB /* Items+ItemSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Items+ItemSet.swift"; sourceTree = "<group>"; };
-		4929397C22FA244900D71FEB /* PolarisUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolarisUtility.swift; sourceTree = "<group>"; };
 		4929397F22FA366B00D71FEB /* UpdatePatronRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePatronRequest.swift; sourceTree = "<group>"; };
 		492A923522AB2436001EADCD /* Patron.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patron.swift; sourceTree = "<group>"; };
+		494A8B3B230CCF4E003219EB /* Patron+Address+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+Address+Codable.swift"; sourceTree = "<group>"; };
+		494A8B3D230CD72D003219EB /* Patron+Name+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+Name+Codable.swift"; sourceTree = "<group>"; };
+		494A8B3F230CD753003219EB /* Patron+MessageCounts+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+MessageCounts+Codable.swift"; sourceTree = "<group>"; };
+		494A8B41230CD775003219EB /* Patron+ItemCounts+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+ItemCounts+Codable.swift"; sourceTree = "<group>"; };
+		494A8B43230CD79A003219EB /* Patron+HoldRequestCounts+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+HoldRequestCounts+Codable.swift"; sourceTree = "<group>"; };
+		494A8B45230CD7BB003219EB /* Patron+Balances+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+Balances+Codable.swift"; sourceTree = "<group>"; };
 		AA5CD18422383CCB009E39CF /* Polaris.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Polaris.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA5CD18722383CCB009E39CF /* Polaris.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Polaris.h; sourceTree = "<group>"; };
 		AA5CD18822383CCB009E39CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -150,30 +170,33 @@
 			path = getItemsOut;
 			sourceTree = "<group>";
 		};
-		4929397E22FA253300D71FEB /* PolarisUtility */ = {
-			isa = PBXGroup;
-			children = (
-				4929397C22FA244900D71FEB /* PolarisUtility.swift */,
-			);
-			path = PolarisUtility;
-			sourceTree = "<group>";
-		};
 		492A923722AB243E001EADCD /* getBasicData */ = {
 			isa = PBXGroup;
 			children = (
 				492A923522AB2436001EADCD /* Patron.swift */,
-				490B5F1122E91C9C00F6AE75 /* Patron+Address.swift */,
-				490B5F1322E91D3400F6AE75 /* Patron+Balances.swift */,
-				490B5F1522E91D8E00F6AE75 /* Patron+Email.swift */,
-				490B5F1722E91DB100F6AE75 /* Patron+HoldRequestCounts.swift */,
-				490B5F1922E91DEF00F6AE75 /* Patron+ItemCounts.swift */,
-				490B5F1B22E91E1200F6AE75 /* Patron+MessageCounts.swift */,
-				490B5F1D22E91E2E00F6AE75 /* Patron+Name.swift */,
-				490B5F1F22E91E5200F6AE75 /* Patron+Phone.swift */,
-				490B5F0F22E91C6600F6AE75 /* Patron+NameTitle.swift */,
-				490B5F0D22E91C2500F6AE75 /* Patron+PhoneCarrier.swift */,
 				490B5F0922E8ECB400F6AE75 /* Patron+Codable.swift */,
-				490B5F0B22E8EE1200F6AE75 /* PatronDecoder.swift */,
+				490B5F1122E91C9C00F6AE75 /* Patron+Address.swift */,
+				494A8B3B230CCF4E003219EB /* Patron+Address+Codable.swift */,
+				490B5F1322E91D3400F6AE75 /* Patron+Balances.swift */,
+				494A8B45230CD7BB003219EB /* Patron+Balances+Codable.swift */,
+				490B5F1522E91D8E00F6AE75 /* Patron+Emails.swift */,
+				4907AC7A230DF7B400A1B0B5 /* Patron+Emails+Codable.swift */,
+				4907AC7C230DF7DA00A1B0B5 /* Patron+Emails+Email.swift */,
+				4907AC7E230DF81C00A1B0B5 /* Patron+Emails+Email+Codable.swift */,
+				490B5F1722E91DB100F6AE75 /* Patron+HoldRequestCounts.swift */,
+				494A8B43230CD79A003219EB /* Patron+HoldRequestCounts+Codable.swift */,
+				490B5F1922E91DEF00F6AE75 /* Patron+ItemCounts.swift */,
+				494A8B41230CD775003219EB /* Patron+ItemCounts+Codable.swift */,
+				490B5F1B22E91E1200F6AE75 /* Patron+MessageCounts.swift */,
+				494A8B3F230CD753003219EB /* Patron+MessageCounts+Codable.swift */,
+				490B5F1D22E91E2E00F6AE75 /* Patron+Name.swift */,
+				494A8B3D230CD72D003219EB /* Patron+Name+Codable.swift */,
+				490B5F0F22E91C6600F6AE75 /* Patron+Name+Title.swift */,
+				490B5F1F22E91E5200F6AE75 /* Patron+Phones.swift */,
+				4907AC80230DF92F00A1B0B5 /* Patron+Phones+Codable.swift */,
+				4907AC82230DF96600A1B0B5 /* Patron+Phones+Phone.swift */,
+				4907AC84230DF99500A1B0B5 /* Patron+Phones+Phone+Codable.swift */,
+				490B5F0D22E91C2500F6AE75 /* Patron+Phones+Phone+Carrier.swift */,
 			);
 			path = getBasicData;
 			sourceTree = "<group>";
@@ -205,7 +228,6 @@
 				AA5CD1D722387111009E39CF /* Polaris */,
 				AAC7EB0C223A943A00F999E2 /* PolarisConfiguration */,
 				4904FD7C230B149A00435E22 /* PolarisError */,
-				4929397E22FA253300D71FEB /* PolarisUtility */,
 			);
 			path = Polaris;
 			sourceTree = "<group>";
@@ -409,18 +431,22 @@
 				AAC7EAA62239A18700F999E2 /* AuthenticatedStaffUser.swift in Sources */,
 				AA8E6227224E86D500C61D4E /* RegistrationCreateResponse.swift in Sources */,
 				AAC7EB012239FA1900F999E2 /* HTTPClient.swift in Sources */,
-				490B5F0C22E8EE1200F6AE75 /* PatronDecoder.swift in Sources */,
+				494A8B3E230CD72D003219EB /* Patron+Name+Codable.swift in Sources */,
 				AAC7EAA42239A16700F999E2 /* AuthenticateStaffUserRequest.swift in Sources */,
 				490F379C22F362C0005F3DD8 /* Items.swift in Sources */,
 				4929396B22F908B800D71FEB /* ItemDecoder.swift in Sources */,
+				4907AC81230DF92F00A1B0B5 /* Patron+Phones+Codable.swift in Sources */,
 				490B5F0A22E8ECB400F6AE75 /* Patron+Codable.swift in Sources */,
 				AAC7EB33223B3C8C00F999E2 /* BibRow.swift in Sources */,
 				4929397322F9DFCC00D71FEB /* Item+Vendor.swift in Sources */,
 				AA5CD1CB22386EB9009E39CF /* Polaris+Bib.swift in Sources */,
+				4907AC83230DF96600A1B0B5 /* Patron+Phones+Phone.swift in Sources */,
+				4907AC7F230DF81C00A1B0B5 /* Patron+Emails+Email+Codable.swift in Sources */,
 				4929397122F9DFB300D71FEB /* Item+Branch.swift in Sources */,
 				4929397922F9E04400D71FEB /* Item+Equatable.swift in Sources */,
 				4929396D22F9DF5400D71FEB /* Item+Format.swift in Sources */,
 				4904FD7E230B52CA00435E22 /* AuthenticatedStaffUser+Decodable.swift in Sources */,
+				494A8B44230CD79A003219EB /* Patron+HoldRequestCounts+Codable.swift in Sources */,
 				AAC7EB30223B3C0200F999E2 /* BibInfo.swift in Sources */,
 				AA5CD19022384099009E39CF /* Polaris.swift in Sources */,
 				490B5F1E22E91E2E00F6AE75 /* Patron+Name.swift in Sources */,
@@ -430,27 +456,33 @@
 				490B5F1822E91DB100F6AE75 /* Patron+HoldRequestCounts.swift in Sources */,
 				4904FD82230B531B00435E22 /* AuthenticatedStaffUser+Access+Decodable.swift in Sources */,
 				4929396F22F9DF9100D71FEB /* Item+Renewal.swift in Sources */,
+				494A8B3C230CCF4E003219EB /* Patron+Address+Codable.swift in Sources */,
 				490B5F1A22E91DEF00F6AE75 /* Patron+ItemCounts.swift in Sources */,
 				AAC7EAA222399B9800F999E2 /* Polaris+Endpoints.swift in Sources */,
 				AAC7EB26223B196C00F999E2 /* AuthenticatedPatron.swift in Sources */,
-				490B5F0E22E91C2600F6AE75 /* Patron+PhoneCarrier.swift in Sources */,
-				490B5F2022E91E5200F6AE75 /* Patron+Phone.swift in Sources */,
+				490B5F0E22E91C2600F6AE75 /* Patron+Phones+Phone+Carrier.swift in Sources */,
+				494A8B42230CD775003219EB /* Patron+ItemCounts+Codable.swift in Sources */,
+				490B5F2022E91E5200F6AE75 /* Patron+Phones.swift in Sources */,
 				4929396722F907E800D71FEB /* Item.swift in Sources */,
 				AA8E6224224E86A400C61D4E /* RegistrationCreateRequest.swift in Sources */,
-				4929397D22FA244900D71FEB /* PolarisUtility.swift in Sources */,
+				494A8B40230CD753003219EB /* Patron+MessageCounts+Codable.swift in Sources */,
 				490B5F1422E91D3400F6AE75 /* Patron+Balances.swift in Sources */,
-				490B5F1622E91D8E00F6AE75 /* Patron+Email.swift in Sources */,
+				4907AC7D230DF7DA00A1B0B5 /* Patron+Emails+Email.swift in Sources */,
+				490B5F1622E91D8E00F6AE75 /* Patron+Emails.swift in Sources */,
 				490B5F1222E91C9C00F6AE75 /* Patron+Address.swift in Sources */,
 				490B5F1C22E91E1200F6AE75 /* Patron+MessageCounts.swift in Sources */,
 				491865A72307732400A503E3 /* PolarisError.swift in Sources */,
 				AAC7EAF32239EDAA00F999E2 /* PolarisConfiguration.swift in Sources */,
-				490B5F1022E91C6600F6AE75 /* Patron+NameTitle.swift in Sources */,
+				490B5F1022E91C6600F6AE75 /* Patron+Name+Title.swift in Sources */,
 				4904FD80230B531100435E22 /* AuthenticatedStaffUser+Access.swift in Sources */,
+				4907AC7B230DF7B400A1B0B5 /* Patron+Emails+Codable.swift in Sources */,
 				AA5CD1E5223878E9009E39CF /* String+Extension.swift in Sources */,
+				4907AC85230DF99500A1B0B5 /* Patron+Phones+Phone+Codable.swift in Sources */,
 				4929396922F9083B00D71FEB /* Item+Codable.swift in Sources */,
 				AAC7EAD22239AE7E00F999E2 /* DateTime.swift in Sources */,
 				492A923622AB2436001EADCD /* Patron.swift in Sources */,
 				AA5CD192223844EB009E39CF /* Polaris+Authenticate.swift in Sources */,
+				494A8B46230CD7BB003219EB /* Patron+Balances+Codable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

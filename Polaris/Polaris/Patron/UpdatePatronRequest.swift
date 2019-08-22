@@ -83,7 +83,7 @@ public struct UpdatePatronRequest: Encodable {
 //        case addressTypeID = "AddressTypeID"
     }
     
-    public init(logonBranchID: Int, logonUserID: Int, logonWorkstationID: Int, patronBranchID: Int, patron: Patron, password: String, newPhone1: Patron.Phone?, newPhone2: Patron.Phone?, newPhone3: Patron.Phone?, newEmail1: Patron.Email?, newEmail2: Patron.Email?, emailFormat: EmailFormat?, enableSMS: Bool?) {
+    public init(logonBranchID: Int, logonUserID: Int, logonWorkstationID: Int, patronBranchID: Int, patron: Patron, password: String, newPhone1: Patron.Phones.Phone?, newPhone2: Patron.Phones.Phone?, newPhone3: Patron.Phones.Phone?, newEmail1: Patron.Emails.Email?, newEmail2: Patron.Emails.Email?, emailFormat: EmailFormat?, enableSMS: Bool?) {
         // System
         self.logonBranchID = logonBranchID
         self.logonUserID = logonUserID
@@ -108,36 +108,36 @@ public struct UpdatePatronRequest: Encodable {
         
         // E-Mails
         if let newEmail1 = newEmail1 { self.emailAddress = newEmail1.address }
-        else { self.emailAddress = patron.emails[0].address }
+//        else { self.emailAddress = patron.emails[0].address }
         
         if let newEmail2 = newEmail2 { self.altEmailAddress = newEmail2.address }
-        else { self.altEmailAddress = patron.emails[1].address }
+//        else { self.altEmailAddress = patron.emails[1].address }
         
         if let emailFormat = emailFormat { self.emailFormat = emailFormat.value }
         
         // Phones
         if let newPhone1 = newPhone1 {
             self.phoneVoice1 = newPhone1.number
-            self.phone1CarrierID = newPhone1.carrier.id
+//            self.phone1CarrierID = newPhone1.carrier.id
         } else {
             self.phoneVoice1 = "(562) 904-7367"
-            self.phone1CarrierID = patron.phones[0].carrier.id
+//            self.phone1CarrierID = patron.phones[0].carrier.id
         }
         
         if let newPhone2 = newPhone2 {
             self.phoneVoice2 = newPhone2.number
-            self.phone2CarrierID = newPhone2.carrier.id
+//            self.phone2CarrierID = newPhone2.carrier.id
         } else {
-            self.phoneVoice2 = patron.phones[1].number
-            self.phone2CarrierID = patron.phones[1].carrier.id
+//            self.phoneVoice2 = patron.phones[1].number
+//            self.phone2CarrierID = patron.phones[1].carrier.id
         }
         
         if let newPhone3 = newPhone3 {
             self.phoneVoice3 = newPhone3.number
-            self.phone3CarrierID = newPhone3.carrier.id
+//            self.phone3CarrierID = newPhone3.carrier.id
         } else {
-            self.phoneVoice3 = patron.phones[2].number
-            self.phone3CarrierID = patron.phones[2].carrier.id
+//            self.phoneVoice3 = patron.phones[2].number
+//            self.phone3CarrierID = patron.phones[2].carrier.id
         }
         
         if let enableSMS = enableSMS { self.enableSMS = enableSMS }
