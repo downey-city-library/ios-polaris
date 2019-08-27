@@ -1,5 +1,5 @@
 //
-//  Item+Equatable.swift
+//  Items+Item+Equatable.swift
 //  Polaris
 //
 //  Created by Andrew Despres on 8/6/19.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-extension Item: Equatable {
-    public static func == (lhs: Item, rhs: Item) -> Bool {
+extension Items.Item: Equatable {
+    public static func == (lhs: Items.Item, rhs: Items.Item) -> Bool {
         return lhs.barcode == rhs.barcode
     }
 }

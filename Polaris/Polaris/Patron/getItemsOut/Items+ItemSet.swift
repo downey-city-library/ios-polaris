@@ -8,8 +8,10 @@
 
 import Foundation
 
-public enum ItemSet {
-    case lost
-    case out
-    case overdue
+extension Items {
+    public enum ItemSet {
+        case lost
+        case out
+        case overdue
+    }
 }

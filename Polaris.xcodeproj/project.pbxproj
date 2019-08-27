@@ -29,16 +29,15 @@
 		490B5F2022E91E5200F6AE75 /* Patron+Phones.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B5F1F22E91E5200F6AE75 /* Patron+Phones.swift */; };
 		490F379C22F362C0005F3DD8 /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490F379B22F362C0005F3DD8 /* Items.swift */; };
 		491865A72307732400A503E3 /* PolarisError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491865A62307732400A503E3 /* PolarisError.swift */; };
-		4929396722F907E800D71FEB /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929396622F907E800D71FEB /* Item.swift */; };
-		4929396922F9083B00D71FEB /* Item+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929396822F9083B00D71FEB /* Item+Codable.swift */; };
-		4929396B22F908B800D71FEB /* ItemDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929396A22F908B800D71FEB /* ItemDecoder.swift */; };
-		4929396D22F9DF5400D71FEB /* Item+Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929396C22F9DF5400D71FEB /* Item+Format.swift */; };
-		4929396F22F9DF9100D71FEB /* Item+Renewal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929396E22F9DF9100D71FEB /* Item+Renewal.swift */; };
-		4929397122F9DFB300D71FEB /* Item+Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929397022F9DFB300D71FEB /* Item+Branch.swift */; };
-		4929397322F9DFCC00D71FEB /* Item+Vendor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929397222F9DFCC00D71FEB /* Item+Vendor.swift */; };
-		4929397522F9DFDF00D71FEB /* Item+Bib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929397422F9DFDF00D71FEB /* Item+Bib.swift */; };
-		4929397722F9DFF000D71FEB /* Item+Billing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929397622F9DFF000D71FEB /* Item+Billing.swift */; };
-		4929397922F9E04400D71FEB /* Item+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929397822F9E04400D71FEB /* Item+Equatable.swift */; };
+		4929396722F907E800D71FEB /* Items+Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929396622F907E800D71FEB /* Items+Item.swift */; };
+		4929396922F9083B00D71FEB /* Items+Item+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929396822F9083B00D71FEB /* Items+Item+Codable.swift */; };
+		4929396D22F9DF5400D71FEB /* Items+Item+Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929396C22F9DF5400D71FEB /* Items+Item+Format.swift */; };
+		4929396F22F9DF9100D71FEB /* Items+Item+Renewal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929396E22F9DF9100D71FEB /* Items+Item+Renewal.swift */; };
+		4929397122F9DFB300D71FEB /* Items+Item+Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929397022F9DFB300D71FEB /* Items+Item+Branch.swift */; };
+		4929397322F9DFCC00D71FEB /* Items+Item+Vendor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929397222F9DFCC00D71FEB /* Items+Item+Vendor.swift */; };
+		4929397522F9DFDF00D71FEB /* Items+Item+Bib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929397422F9DFDF00D71FEB /* Items+Item+Bib.swift */; };
+		4929397722F9DFF000D71FEB /* Items+Item+Billing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929397622F9DFF000D71FEB /* Items+Item+Billing.swift */; };
+		4929397922F9E04400D71FEB /* Items+Item+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929397822F9E04400D71FEB /* Items+Item+Equatable.swift */; };
 		4929397B22F9E3EE00D71FEB /* Items+ItemSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929397A22F9E3EE00D71FEB /* Items+ItemSet.swift */; };
 		492939812302085A00D71FEB /* UpdatePatronRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929397F22FA366B00D71FEB /* UpdatePatronRequest.swift */; };
 		492A923622AB2436001EADCD /* Patron.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A923522AB2436001EADCD /* Patron.swift */; };
@@ -48,6 +47,15 @@
 		494A8B42230CD775003219EB /* Patron+ItemCounts+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494A8B41230CD775003219EB /* Patron+ItemCounts+Codable.swift */; };
 		494A8B44230CD79A003219EB /* Patron+HoldRequestCounts+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494A8B43230CD79A003219EB /* Patron+HoldRequestCounts+Codable.swift */; };
 		494A8B46230CD7BB003219EB /* Patron+Balances+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494A8B45230CD7BB003219EB /* Patron+Balances+Codable.swift */; };
+		4979E2502315EE5F008EF546 /* Items+Item+Bib+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4979E24F2315EE5F008EF546 /* Items+Item+Bib+Codable.swift */; };
+		4979E2522315F0A8008EF546 /* Items+Item+Billing+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4979E2512315F0A8008EF546 /* Items+Item+Billing+Codable.swift */; };
+		4979E2542315F0FA008EF546 /* Items+Item+Billing+ChargeTransactionID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4979E2532315F0FA008EF546 /* Items+Item+Billing+ChargeTransactionID.swift */; };
+		4979E2562315F113008EF546 /* Items+Item+Billing+ChargeTransactionID+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4979E2552315F113008EF546 /* Items+Item+Billing+ChargeTransactionID+Codable.swift */; };
+		4979E2582315F184008EF546 /* Items+Item+Branch+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4979E2572315F184008EF546 /* Items+Item+Branch+Codable.swift */; };
+		4979E25A2315F1AF008EF546 /* Items+Item+Branch+BranchType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4979E2592315F1AF008EF546 /* Items+Item+Branch+BranchType.swift */; };
+		4979E25C2315F213008EF546 /* Items+Item+Format+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4979E25B2315F213008EF546 /* Items+Item+Format+Codable.swift */; };
+		4979E25E2315F264008EF546 /* Items+Item+Renewal+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4979E25D2315F264008EF546 /* Items+Item+Renewal+Codable.swift */; };
+		4979E2602315F274008EF546 /* Items+Item+Vendor+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4979E25F2315F274008EF546 /* Items+Item+Vendor+Codable.swift */; };
 		AA5CD18922383CCB009E39CF /* Polaris.h in Headers */ = {isa = PBXBuildFile; fileRef = AA5CD18722383CCB009E39CF /* Polaris.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA5CD19022384099009E39CF /* Polaris.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5CD18F22384099009E39CF /* Polaris.swift */; };
 		AA5CD192223844EB009E39CF /* Polaris+Authenticate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5CD191223844EB009E39CF /* Polaris+Authenticate.swift */; };
@@ -91,16 +99,15 @@
 		490B5F1F22E91E5200F6AE75 /* Patron+Phones.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+Phones.swift"; sourceTree = "<group>"; };
 		490F379B22F362C0005F3DD8 /* Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Items.swift; sourceTree = "<group>"; };
 		491865A62307732400A503E3 /* PolarisError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolarisError.swift; sourceTree = "<group>"; };
-		4929396622F907E800D71FEB /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
-		4929396822F9083B00D71FEB /* Item+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+Codable.swift"; sourceTree = "<group>"; };
-		4929396A22F908B800D71FEB /* ItemDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDecoder.swift; sourceTree = "<group>"; };
-		4929396C22F9DF5400D71FEB /* Item+Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+Format.swift"; sourceTree = "<group>"; };
-		4929396E22F9DF9100D71FEB /* Item+Renewal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+Renewal.swift"; sourceTree = "<group>"; };
-		4929397022F9DFB300D71FEB /* Item+Branch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+Branch.swift"; sourceTree = "<group>"; };
-		4929397222F9DFCC00D71FEB /* Item+Vendor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+Vendor.swift"; sourceTree = "<group>"; };
-		4929397422F9DFDF00D71FEB /* Item+Bib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+Bib.swift"; sourceTree = "<group>"; };
-		4929397622F9DFF000D71FEB /* Item+Billing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+Billing.swift"; sourceTree = "<group>"; };
-		4929397822F9E04400D71FEB /* Item+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+Equatable.swift"; sourceTree = "<group>"; };
+		4929396622F907E800D71FEB /* Items+Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Items+Item.swift"; sourceTree = "<group>"; };
+		4929396822F9083B00D71FEB /* Items+Item+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Items+Item+Codable.swift"; sourceTree = "<group>"; };
+		4929396C22F9DF5400D71FEB /* Items+Item+Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Items+Item+Format.swift"; sourceTree = "<group>"; };
+		4929396E22F9DF9100D71FEB /* Items+Item+Renewal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Items+Item+Renewal.swift"; sourceTree = "<group>"; };
+		4929397022F9DFB300D71FEB /* Items+Item+Branch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Items+Item+Branch.swift"; sourceTree = "<group>"; };
+		4929397222F9DFCC00D71FEB /* Items+Item+Vendor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Items+Item+Vendor.swift"; sourceTree = "<group>"; };
+		4929397422F9DFDF00D71FEB /* Items+Item+Bib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Items+Item+Bib.swift"; sourceTree = "<group>"; };
+		4929397622F9DFF000D71FEB /* Items+Item+Billing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Items+Item+Billing.swift"; sourceTree = "<group>"; };
+		4929397822F9E04400D71FEB /* Items+Item+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Items+Item+Equatable.swift"; sourceTree = "<group>"; };
 		4929397A22F9E3EE00D71FEB /* Items+ItemSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Items+ItemSet.swift"; sourceTree = "<group>"; };
 		4929397F22FA366B00D71FEB /* UpdatePatronRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePatronRequest.swift; sourceTree = "<group>"; };
 		492A923522AB2436001EADCD /* Patron.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patron.swift; sourceTree = "<group>"; };
@@ -110,6 +117,15 @@
 		494A8B41230CD775003219EB /* Patron+ItemCounts+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+ItemCounts+Codable.swift"; sourceTree = "<group>"; };
 		494A8B43230CD79A003219EB /* Patron+HoldRequestCounts+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+HoldRequestCounts+Codable.swift"; sourceTree = "<group>"; };
 		494A8B45230CD7BB003219EB /* Patron+Balances+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patron+Balances+Codable.swift"; sourceTree = "<group>"; };
+		4979E24F2315EE5F008EF546 /* Items+Item+Bib+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Items+Item+Bib+Codable.swift"; sourceTree = "<group>"; };
+		4979E2512315F0A8008EF546 /* Items+Item+Billing+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Items+Item+Billing+Codable.swift"; sourceTree = "<group>"; };
+		4979E2532315F0FA008EF546 /* Items+Item+Billing+ChargeTransactionID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Items+Item+Billing+ChargeTransactionID.swift"; sourceTree = "<group>"; };
+		4979E2552315F113008EF546 /* Items+Item+Billing+ChargeTransactionID+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Items+Item+Billing+ChargeTransactionID+Codable.swift"; sourceTree = "<group>"; };
+		4979E2572315F184008EF546 /* Items+Item+Branch+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Items+Item+Branch+Codable.swift"; sourceTree = "<group>"; };
+		4979E2592315F1AF008EF546 /* Items+Item+Branch+BranchType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Items+Item+Branch+BranchType.swift"; sourceTree = "<group>"; };
+		4979E25B2315F213008EF546 /* Items+Item+Format+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Items+Item+Format+Codable.swift"; sourceTree = "<group>"; };
+		4979E25D2315F264008EF546 /* Items+Item+Renewal+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Items+Item+Renewal+Codable.swift"; sourceTree = "<group>"; };
+		4979E25F2315F274008EF546 /* Items+Item+Vendor+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Items+Item+Vendor+Codable.swift"; sourceTree = "<group>"; };
 		AA5CD18422383CCB009E39CF /* Polaris.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Polaris.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA5CD18722383CCB009E39CF /* Polaris.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Polaris.h; sourceTree = "<group>"; };
 		AA5CD18822383CCB009E39CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -156,16 +172,24 @@
 			children = (
 				490F379B22F362C0005F3DD8 /* Items.swift */,
 				4929397A22F9E3EE00D71FEB /* Items+ItemSet.swift */,
-				4929396622F907E800D71FEB /* Item.swift */,
-				4929397422F9DFDF00D71FEB /* Item+Bib.swift */,
-				4929397622F9DFF000D71FEB /* Item+Billing.swift */,
-				4929397022F9DFB300D71FEB /* Item+Branch.swift */,
-				4929396C22F9DF5400D71FEB /* Item+Format.swift */,
-				4929396E22F9DF9100D71FEB /* Item+Renewal.swift */,
-				4929397222F9DFCC00D71FEB /* Item+Vendor.swift */,
-				4929396822F9083B00D71FEB /* Item+Codable.swift */,
-				4929397822F9E04400D71FEB /* Item+Equatable.swift */,
-				4929396A22F908B800D71FEB /* ItemDecoder.swift */,
+				4929396622F907E800D71FEB /* Items+Item.swift */,
+				4929396822F9083B00D71FEB /* Items+Item+Codable.swift */,
+				4929397822F9E04400D71FEB /* Items+Item+Equatable.swift */,
+				4929397422F9DFDF00D71FEB /* Items+Item+Bib.swift */,
+				4979E24F2315EE5F008EF546 /* Items+Item+Bib+Codable.swift */,
+				4929397622F9DFF000D71FEB /* Items+Item+Billing.swift */,
+				4979E2512315F0A8008EF546 /* Items+Item+Billing+Codable.swift */,
+				4979E2532315F0FA008EF546 /* Items+Item+Billing+ChargeTransactionID.swift */,
+				4979E2552315F113008EF546 /* Items+Item+Billing+ChargeTransactionID+Codable.swift */,
+				4929397022F9DFB300D71FEB /* Items+Item+Branch.swift */,
+				4979E2592315F1AF008EF546 /* Items+Item+Branch+BranchType.swift */,
+				4979E2572315F184008EF546 /* Items+Item+Branch+Codable.swift */,
+				4929396C22F9DF5400D71FEB /* Items+Item+Format.swift */,
+				4979E25B2315F213008EF546 /* Items+Item+Format+Codable.swift */,
+				4929396E22F9DF9100D71FEB /* Items+Item+Renewal.swift */,
+				4979E25D2315F264008EF546 /* Items+Item+Renewal+Codable.swift */,
+				4929397222F9DFCC00D71FEB /* Items+Item+Vendor.swift */,
+				4979E25F2315F274008EF546 /* Items+Item+Vendor+Codable.swift */,
 			);
 			path = getItemsOut;
 			sourceTree = "<group>";
@@ -425,7 +449,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4929397722F9DFF000D71FEB /* Item+Billing.swift in Sources */,
+				4979E2522315F0A8008EF546 /* Items+Item+Billing+Codable.swift in Sources */,
+				4929397722F9DFF000D71FEB /* Items+Item+Billing.swift in Sources */,
 				AAC7EB23223B17C900F999E2 /* AuthenticatePatronRequest.swift in Sources */,
 				4929397B22F9E3EE00D71FEB /* Items+ItemSet.swift in Sources */,
 				AAC7EAA62239A18700F999E2 /* AuthenticatedStaffUser.swift in Sources */,
@@ -434,36 +459,41 @@
 				494A8B3E230CD72D003219EB /* Patron+Name+Codable.swift in Sources */,
 				AAC7EAA42239A16700F999E2 /* AuthenticateStaffUserRequest.swift in Sources */,
 				490F379C22F362C0005F3DD8 /* Items.swift in Sources */,
-				4929396B22F908B800D71FEB /* ItemDecoder.swift in Sources */,
 				4907AC81230DF92F00A1B0B5 /* Patron+Phones+Codable.swift in Sources */,
 				490B5F0A22E8ECB400F6AE75 /* Patron+Codable.swift in Sources */,
 				AAC7EB33223B3C8C00F999E2 /* BibRow.swift in Sources */,
-				4929397322F9DFCC00D71FEB /* Item+Vendor.swift in Sources */,
+				4929397322F9DFCC00D71FEB /* Items+Item+Vendor.swift in Sources */,
 				AA5CD1CB22386EB9009E39CF /* Polaris+Bib.swift in Sources */,
 				4907AC83230DF96600A1B0B5 /* Patron+Phones+Phone.swift in Sources */,
 				4907AC7F230DF81C00A1B0B5 /* Patron+Emails+Email+Codable.swift in Sources */,
-				4929397122F9DFB300D71FEB /* Item+Branch.swift in Sources */,
-				4929397922F9E04400D71FEB /* Item+Equatable.swift in Sources */,
-				4929396D22F9DF5400D71FEB /* Item+Format.swift in Sources */,
+				4929397122F9DFB300D71FEB /* Items+Item+Branch.swift in Sources */,
+				4929397922F9E04400D71FEB /* Items+Item+Equatable.swift in Sources */,
+				4929396D22F9DF5400D71FEB /* Items+Item+Format.swift in Sources */,
 				4904FD7E230B52CA00435E22 /* AuthenticatedStaffUser+Decodable.swift in Sources */,
+				4979E25E2315F264008EF546 /* Items+Item+Renewal+Codable.swift in Sources */,
 				494A8B44230CD79A003219EB /* Patron+HoldRequestCounts+Codable.swift in Sources */,
 				AAC7EB30223B3C0200F999E2 /* BibInfo.swift in Sources */,
 				AA5CD19022384099009E39CF /* Polaris.swift in Sources */,
 				490B5F1E22E91E2E00F6AE75 /* Patron+Name.swift in Sources */,
 				492939812302085A00D71FEB /* UpdatePatronRequest.swift in Sources */,
 				AA8E6221224E7FA700C61D4E /* Polaris+PatronAccount.swift in Sources */,
-				4929397522F9DFDF00D71FEB /* Item+Bib.swift in Sources */,
+				4979E2542315F0FA008EF546 /* Items+Item+Billing+ChargeTransactionID.swift in Sources */,
+				4929397522F9DFDF00D71FEB /* Items+Item+Bib.swift in Sources */,
 				490B5F1822E91DB100F6AE75 /* Patron+HoldRequestCounts.swift in Sources */,
 				4904FD82230B531B00435E22 /* AuthenticatedStaffUser+Access+Decodable.swift in Sources */,
-				4929396F22F9DF9100D71FEB /* Item+Renewal.swift in Sources */,
+				4979E25C2315F213008EF546 /* Items+Item+Format+Codable.swift in Sources */,
+				4929396F22F9DF9100D71FEB /* Items+Item+Renewal.swift in Sources */,
 				494A8B3C230CCF4E003219EB /* Patron+Address+Codable.swift in Sources */,
 				490B5F1A22E91DEF00F6AE75 /* Patron+ItemCounts.swift in Sources */,
+				4979E2582315F184008EF546 /* Items+Item+Branch+Codable.swift in Sources */,
+				4979E25A2315F1AF008EF546 /* Items+Item+Branch+BranchType.swift in Sources */,
 				AAC7EAA222399B9800F999E2 /* Polaris+Endpoints.swift in Sources */,
 				AAC7EB26223B196C00F999E2 /* AuthenticatedPatron.swift in Sources */,
 				490B5F0E22E91C2600F6AE75 /* Patron+Phones+Phone+Carrier.swift in Sources */,
+				4979E2502315EE5F008EF546 /* Items+Item+Bib+Codable.swift in Sources */,
 				494A8B42230CD775003219EB /* Patron+ItemCounts+Codable.swift in Sources */,
 				490B5F2022E91E5200F6AE75 /* Patron+Phones.swift in Sources */,
-				4929396722F907E800D71FEB /* Item.swift in Sources */,
+				4929396722F907E800D71FEB /* Items+Item.swift in Sources */,
 				AA8E6224224E86A400C61D4E /* RegistrationCreateRequest.swift in Sources */,
 				494A8B40230CD753003219EB /* Patron+MessageCounts+Codable.swift in Sources */,
 				490B5F1422E91D3400F6AE75 /* Patron+Balances.swift in Sources */,
@@ -475,11 +505,13 @@
 				AAC7EAF32239EDAA00F999E2 /* PolarisConfiguration.swift in Sources */,
 				490B5F1022E91C6600F6AE75 /* Patron+Name+Title.swift in Sources */,
 				4904FD80230B531100435E22 /* AuthenticatedStaffUser+Access.swift in Sources */,
+				4979E2602315F274008EF546 /* Items+Item+Vendor+Codable.swift in Sources */,
 				4907AC7B230DF7B400A1B0B5 /* Patron+Emails+Codable.swift in Sources */,
 				AA5CD1E5223878E9009E39CF /* String+Extension.swift in Sources */,
 				4907AC85230DF99500A1B0B5 /* Patron+Phones+Phone+Codable.swift in Sources */,
-				4929396922F9083B00D71FEB /* Item+Codable.swift in Sources */,
+				4929396922F9083B00D71FEB /* Items+Item+Codable.swift in Sources */,
 				AAC7EAD22239AE7E00F999E2 /* DateTime.swift in Sources */,
+				4979E2562315F113008EF546 /* Items+Item+Billing+ChargeTransactionID+Codable.swift in Sources */,
 				492A923622AB2436001EADCD /* Patron.swift in Sources */,
 				AA5CD192223844EB009E39CF /* Polaris+Authenticate.swift in Sources */,
 				494A8B46230CD7BB003219EB /* Patron+Balances+Codable.swift in Sources */,

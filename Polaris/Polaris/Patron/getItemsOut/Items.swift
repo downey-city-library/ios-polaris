@@ -9,7 +9,6 @@
 import Foundation
 
 public class Items: Decodable {
-    
     // MARK: - Private Properties (Get/Set)
     private var _lost: [Item]
     private var _out: [Item]
@@ -20,11 +19,29 @@ public class Items: Decodable {
     public var out: [Item] { get { return _out } }
     public var overdue: [Item] { get { return _overdue } }
     
+    // MARK: - Initialization
+    required public init(from decoder: Decoder) throws {
+        let data = try decoder.container(keyedBy: CodingKeys.self)
+        self._lost = []
+        self._out = (try? data.decode([Item].self, forKey: .rows)) ?? []
+        self._overdue = []
+    }
+    
+    public init() {
+        self._lost = []
+        self._out = []
+        self._overdue = []
+    }
+}
+
+extension Items {
     // MARK: - Coding Keys
     enum CodingKeys: String, CodingKey {
         case rows = "PatronItemsOutGetRows"
     }
-    
+}
+
+extension Items {
     // MARK: - Public Methods
     public func append(_ item: Item, to set: ItemSet) {
         switch set {
@@ -48,19 +65,5 @@ public class Items: Decodable {
         case .out: if let index = _out.firstIndex(of: item) { _out.remove(at: index) }
         case .overdue: if let index = _overdue.firstIndex(of: item) { _overdue.remove(at: index) }
         }
-    }
-    
-    // MARK: - Initialization
-    required public init(from decoder: Decoder) throws {
-        let data = try decoder.container(keyedBy: CodingKeys.self)
-        self._lost = []
-        self._out = (try? data.decode([Item].self, forKey: .rows)) ?? []
-        self._overdue = []
-    }
-    
-    public init() {
-        self._lost = []
-        self._out = []
-        self._overdue = []
     }
 }
