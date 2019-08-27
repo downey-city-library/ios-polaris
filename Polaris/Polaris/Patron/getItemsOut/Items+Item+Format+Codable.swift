@@ -24,4 +24,9 @@ extension Items.Item.Format: Decodable {
         self._ID = try data.decode(Int.self, forKey: .ID)
         self._description = try data.decode(String.self, forKey: .description)
     }
+    
+    public init(description: String, ID: Int) {
+        self._description = description
+        self._ID = ID
+    }
 }
