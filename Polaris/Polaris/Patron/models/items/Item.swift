@@ -90,6 +90,14 @@ extension Patron.Item: Equatable {
     }
 }
 
+// MARK: - Patron + Item + Hashable
+extension Patron.Item: Hashable {
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+}
+
 // MARK: - Patron + Item + Bib
 extension Patron.Item {
     
