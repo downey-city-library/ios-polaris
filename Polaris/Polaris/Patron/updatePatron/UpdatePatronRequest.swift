@@ -94,7 +94,21 @@ public struct UpdatePatronRequest: Encodable {
     }
     
     // MARK: - Initialization
-    public init(logonBranchID: Int, logonUserID: Int, logonWorkstationID: Int, patronBranchID: Int, patron: Patron, password: String? = nil, newBorrowerType: Int? = nil, newPhone1: Phone? = nil, newPhone2: Phone? = nil, newPhone3: Phone? = nil, newEmail1: String? = nil, newEmail2: String? = nil, emailFormat: EmailFormat? = nil, enableSMS: Bool? = nil, deliveryOptionID: Int? = nil) {
+    public init(
+        logonBranchID: Int,
+        logonUserID: Int,
+        logonWorkstationID: Int,
+        patronBranchID: Int,
+        password: String? = nil,
+        newBorrowerType: Int? = nil,
+        newPhone1: Phone? = nil,
+        newPhone2: Phone? = nil,
+        newPhone3: Phone? = nil,
+        newEmail1: String? = nil,
+        newEmail2: String? = nil,
+        emailFormat: EmailFormat? = nil,
+        enableSMS: Bool? = nil,
+        deliveryOptionID: Int? = nil) {
         
         // System
         self.logonBranchID = logonBranchID
