@@ -209,6 +209,19 @@ extension Patron.BasicData {
             _alternate = try? data.decode(String.self, forKey: .alternate)
             _primary = try? data.decode(String.self, forKey: .primary)
         }
+        
+        // MARK: - Public Setters
+        public func alternate(string: String?) {
+            guard let string = string else { return }
+            
+            _alternate = string
+        }
+        
+        public func primary(string: String?) {
+            guard let string = string else { return }
+            
+            _primary = string
+        }
     }
 }
 
@@ -374,10 +387,23 @@ extension Patron.BasicData {
         public var number: String? { get { return _number } }
         
         // MARK: - Initialization
-        public init(number: String?, carrier: Int?) {
+        internal init(number: String?, carrier: Int?) {
             if let carrier = carrier { _carrier = PhoneCarrier(rawValue: carrier) ?? .noCarrier }
             else { _carrier = .noCarrier }
             _number = number
+        }
+        
+        // MARK: - Public Setters
+        public func carrier(id: Int?) {
+            guard let id = id else { return }
+            
+            _carrier = PhoneCarrier(rawValue: id) ?? .noCarrier
+        }
+        
+        public func number(string: String?) {
+            guard let string = string else { return }
+            
+            _number = string
         }
     }
 }
@@ -395,9 +421,9 @@ extension Patron.BasicData {
         
         // MARK: - Public Properties (Get Only)
         public var cell: String? { get { return _cell } }
-        public var phone1: Phone? { get { return _phone1 } }
-        public var phone2: Phone? { get { return _phone2 } }
-        public var phone3: Phone? { get { return _phone3 } }
+        public var phone1: Phone { get { return _phone1 } }
+        public var phone2: Phone { get { return _phone2 } }
+        public var phone3: Phone { get { return _phone3 } }
         
         // MARK: - Coding Keys
         private enum CodingKeys: String, CodingKey {
