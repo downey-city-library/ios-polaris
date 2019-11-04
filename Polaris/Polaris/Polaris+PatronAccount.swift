@@ -53,12 +53,12 @@ extension Polaris {
             }
         }
         
-//        public static func update(barcode: String, patron: UpdatePatronRequest, completion: @escaping (UpdatePatronResponse?, Error?) -> Void) {
-//            let endpoint = Endpoints.updatePatron(barcode)
-//            let body = patron
-//            HTTPClient.taskForPUTRequest(url: endpoint.url, body: body, response: UpdatePatronResponse.self) { (response, error) in
-//                DispatchQueue.main.async { completion(response, error) }
-//            }
-//        }
+        public static func update(barcode: String, request: UpdatePatronRequest, completion: @escaping (UpdatePatronResponse?) -> Void) {
+            let endpoint = Endpoints.updatePatron(barcode)
+            let body = request
+            HTTPClient.taskForPUTRequest(url: endpoint.url, body: body, response: UpdatePatronResponse.self) { (response, error) in
+                DispatchQueue.main.async { completion(response) }
+            }
+        }
     }
 }
