@@ -8,14 +8,14 @@
 
 import Foundation
 
-extension Items.Item {
-    public struct Billing {
-        // MARK: - Private Properties (Get/Set)
-        internal var _chargeTransactionID: ChargeTransactionID
-        internal var _wasNoticeSent: Bool
-        
-        // MARK: - Public Properties (Get Only)
-        public var chargeTransactionID: ChargeTransactionID { get { return _chargeTransactionID } }
-        public var wasNoticeSent: Bool { get { return _wasNoticeSent } }
-    }
-}
+//extension Items.Item {
+//    public struct Billing {
+//        // MARK: - Private Properties (Get/Set)
+//        internal var _chargeTransactionID: ChargeTransactionID
+//        internal var _wasNoticeSent: Bool
+//        
+//        // MARK: - Public Properties (Get Only)
+//        public var chargeTransactionID: ChargeTransactionID { get { return _chargeTransactionID } }
+//        public var wasNoticeSent: Bool { get { return _wasNoticeSent } }
+//    }
+//}

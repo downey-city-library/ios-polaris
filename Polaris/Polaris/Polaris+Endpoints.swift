@@ -22,7 +22,12 @@ extension Polaris {
         
         // Patron
         case getBasicData(String)
-        case getItemsOut(String)
+        case getHoldRequests(String, Patron.HoldRequestSet)
+        case getItemsOut(String, Patron.ItemSet)
+        case getItemsOutAll(String)
+        case getItemsOutOverdue(String)
+        case getItemsOutLost(String)
+        case getPreferences(String)
         case registrationCreate
         case updatePatron(String)
         
@@ -41,8 +46,18 @@ extension Polaris {
             // Patron
             case .getBasicData (let barcode):
                 return Endpoints.basePublic + "/patron/\(barcode)/basicdata?addresses=1"
-            case .getItemsOut (let barcode):
+            case .getHoldRequests(let barcode, let holdRequestsSet):
+                return Endpoints.basePublic + "/patron/\(barcode)/holdrequests/\(holdRequestsSet.string)"
+            case .getItemsOut(let barcode, let itemSet):
+                return Endpoints.basePublic + "/patron/\(barcode)/itemsout/\(itemSet.string)"
+            case .getItemsOutAll (let barcode):
                 return Endpoints.basePublic + "/patron/\(barcode)/itemsout/all"
+            case .getItemsOutOverdue (let barcode):
+                return Endpoints.basePublic + "/patron/\(barcode)/itemsout/overdue"
+            case .getItemsOutLost (let barcode):
+                return Endpoints.basePublic + "/patron/\(barcode)/itemsout/lost"
+            case .getPreferences (let barcode):
+                return Endpoints.basePublic + "/patron/\(barcode)/preferences"
             case .registrationCreate:
                 return Endpoints.basePublic + "/patron"
             case .updatePatron(let barcode):

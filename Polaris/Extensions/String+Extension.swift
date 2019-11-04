@@ -19,8 +19,8 @@ extension String {
     internal func hmac(key: String) -> String {
         var digest = [UInt8](repeating: 0, count: Int(CC_SHA1_DIGEST_LENGTH))
         CCHmac(CCHmacAlgorithm(kCCHmacAlgSHA1), key, key.count, self, self.count, &digest)
-        let data = Data(bytes: digest)
-        return Data(bytes: data).base64EncodedString()
+        let data = Data(digest)
+        return Data(data).base64EncodedString()
     }
     
     /// Convert a string to a date.

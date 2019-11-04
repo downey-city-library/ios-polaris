@@ -16,10 +16,10 @@ public struct AuthenticatedStaffUser {
     internal var _polarisUserID: Int
     
     // MARK: - Public Properties (Get Only)
-    var access: Access? { get { return _access } }
-    var branchID: Int { get { return _branchID } }
-    var error: PolarisError? { get { return _error } }
-    var polarisUserID: Int { get { return _polarisUserID } }
+    public var access: Access? { get { return _access } }
+    public var branchID: Int { get { return _branchID } }
+    public var error: PolarisError? { get { return _error } }
+    public var polarisUserID: Int { get { return _polarisUserID } }
     
     // MARK: - Coding Keys
     internal enum CodingKeys: String, CodingKey {
