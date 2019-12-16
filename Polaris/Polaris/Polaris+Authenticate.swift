@@ -18,7 +18,7 @@ extension Polaris {
          - parameter completion: A boolean indicating success and in cases where authentication fails, an error describing the failure.
          */
         public static func patron(barcode: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
-            let endpoint = Endpoints.authenticatePatron
+            let endpoint = Endpoints.Authenticate.patron
             let body = AuthenticatePatronRequest(barcode: barcode, password: password)
             
             HTTPClient.taskForPOSTRequest(url: endpoint.url, body: body, response: AuthenticatedPatron.self) { (response, error) in
@@ -51,7 +51,7 @@ extension Polaris {
          */
         public static func staffUser(username: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
             let configuration = PolarisConfiguration.shared
-            let endpoint = Endpoints.authenticateStaffUser
+            let endpoint = Endpoints.Authenticate.staffUser
             let body = AuthenticateStaffUserRequest(domain: configuration.staffUser.domain, username: username, password: password)
             
             HTTPClient.taskForPOSTRequest(url: endpoint.url, body: body, response: AuthenticatedStaffUser.self) { (response, error) in

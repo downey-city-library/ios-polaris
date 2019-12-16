@@ -12,7 +12,7 @@ extension AuthenticatedStaffUser.Access: Decodable {
     public init(from decoder: Decoder) throws {
         let data = try decoder.container(keyedBy: AuthenticatedStaffUser.CodingKeys.self)
         
-        _expirationDate = (try data.decode(String.self, forKey: .authExpDate)).toDate()
+        _expirationDate = (try data.decode(String.self, forKey: .authExpDate)).toDate()!
         _secret = try data.decode(String.self, forKey: .accessSecret)
         _token = try data.decode(String.self, forKey: .accessToken)
     }

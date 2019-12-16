@@ -73,51 +73,39 @@ extension Patron {
             _queue = try Queue(from: decoder)
             _status = try Status(from: decoder)
         }
-    }
-}
-
-// MARK: - Patron + HoldRequest + Bib
-extension Patron.HoldRequest {
-    
-    public class Bib {
         
-        // MARK: - Private Properties (Get/Set)
-        private var _author: String?
-        private var _callNumber: String?
-        private var _designation: String?
-        private var _id: Int?
-        private var _title: String?
-        private var _volume: String?
-        
-        // MARK: - Public Properties (Get Only)
-        public var author: String? { get { return _author } }
-        public var callNumber: String? { get { return _callNumber } }
-        public var designation: String? { get { return _designation } }
-        public var id: Int? { get { return _id } }
-        public var title: String? { get { return _title } }
-        public var volume: String? { get { return _volume } }
-        
-        // MARK: - Coding Keys
-        private enum CodingKeys: String, CodingKey {
+        // MARK: - Private Methods
+        private func cancellingHoldComplete(response: CancelHoldResponse?, completion: @escaping (CancelHoldResponse?, PolarisError?) -> Void) {
+                        
+            guard let response = response else {
+                DispatchQueue.main.async { completion(nil, PolarisError.generalError) }
+                return
+            }
             
-            case author = "Author"
-            case callNumber = "CallNumber"
-            case designation = "Designation"
-            case id = "BibID"
-            case title = "Title"
-            case volume = "VolumeNumber"
+            DispatchQueue.main.async {
+                if response.error != nil { completion(response, response.error) }
+                else {
+                    Polaris.activePatron?.holdRequests?.removeRequest(self)
+                    completion(response, nil)
+                }
+            }
         }
         
-        // MARK: - Initialization
-        required public init(from decoder: Decoder) throws {
-            let data = try decoder.container(keyedBy: CodingKeys.self)
+        private func startCancellingHold(completion: @escaping (CancelHoldResponse?, PolarisError?) -> Void) {
+            guard let barcode = Polaris.activePatron?.barcode else { return }
+            guard let id = id else { return }
+            guard let user = Polaris.authenticatedStaffUser?.polarisUserID else { return }
             
-            _author = try? data.decode(String.self, forKey: .author)
-            _callNumber = try? data.decode(String.self, forKey: .callNumber)
-            _designation = try? data.decode(String.self, forKey: .designation)
-            _id = try? data.decode(Int.self, forKey: .id)
-            _title = try? data.decode(String.self, forKey: .title)
-            _volume = try? data.decode(String.self, forKey: .volume)
+            let request = CancelHoldRequest(userId: user, workstationId: 1)
+                        
+            Polaris.PatronAccount.cancelHoldRequest(barcode: barcode, request: request, requestId: id, userId: user, workstationId: 1) { [weak self] (response) in
+                self?.cancellingHoldComplete(response: response, completion: completion)
+            }
+        }
+        
+        // MARK: - Public Methods
+        public func cancel(completion: @escaping (CancelHoldResponse?, PolarisError?) -> Void) {
+            startCancellingHold(completion: completion)
         }
     }
 }

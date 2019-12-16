@@ -264,6 +264,20 @@ extension Patron.BasicData {
             _total = try? data.decode(Int.self, forKey: .total)
             _unclaimed = try? data.decode(Int.self, forKey: .unclaimed)
         }
+        
+        // MARK: - Internal Setters
+        internal func refresh() {
+            _held = Polaris.activePatron?.holdRequests?.held.count
+            _shipped = Polaris.activePatron?.holdRequests?.shipped.count
+            _total = Polaris.activePatron?.holdRequests?.all.count
+            _unclaimed = Polaris.activePatron?.holdRequests?.unclaimed.count
+            
+            if let active = Polaris.activePatron?.holdRequests?.active, let held = Polaris.activePatron?.holdRequests?.held, let pending = Polaris.activePatron?.holdRequests?.pending {
+                _current = active.count + held.count + pending.count
+            } else {
+                _current = 0
+            }
+        }
     }
 }
 
@@ -297,6 +311,13 @@ extension Patron.BasicData {
             _lost = try? data.decode(Int.self, forKey: .lost)
             _out = try? data.decode(Int.self, forKey: .out)
             _overdue = try? data.decode(Int.self, forKey: .overdue)
+        }
+        
+        // MARK: - Internal Setters
+        internal func refresh() {
+            _lost = Polaris.activePatron?.items?.lost.count
+            _out = Polaris.activePatron?.items?.out.count
+            _overdue = Polaris.activePatron?.items?.overdue.count
         }
     }
 }

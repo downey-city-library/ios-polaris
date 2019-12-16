@@ -79,6 +79,47 @@ extension Patron {
             _renewal = try Renewal(from: decoder)
             _vendor = try Vendor(from: decoder)
         }
+        
+        // MARK: - Internal Setters
+        internal func setDueDate(_ dueDate: Date?) {
+            _dueDate = dueDate
+        }
+        
+        // MARK: - Private Methods
+        private func renewalComplete(response: RenewItemResponse?, completion: @escaping (RenewItemResponse?, PolarisError?) -> Void) {
+            guard let response = response else {
+                DispatchQueue.main.async { completion(nil, PolarisError.generalError) }
+                return
+            }
+            
+            DispatchQueue.main.async { [weak self] in
+                if response.results.items.count > 0 {
+                    self?._dueDate = response.results.items[0].dueDate
+                    self?.renewal.incrementCount()
+                    completion(response, nil) }
+                else if response.error != nil { completion(response, response.error) }
+                else { completion(response, PolarisError.generalError) }
+            }
+        }
+        
+        private func startRenewal(overrideErrors override: Bool, completion: @escaping (RenewItemResponse?, PolarisError?) -> Void) {
+            guard let barcode = Polaris.activePatron?.barcode else { return }
+            guard let branch = Polaris.authenticatedStaffUser?.branchID else { return }
+            guard let id = id else { return }
+            guard let user = Polaris.authenticatedStaffUser?.polarisUserID else { return }
+            
+            let logonData = LogonData(branch: branch, user: user, workstation: 1)
+            let request = RenewItemRequest(logonData: logonData, ignoreErrors: override)
+            
+            Polaris.PatronAccount.renewItem(barcode: barcode, itemId: id, request: request) { [weak self] (response) in
+                self?.renewalComplete(response: response, completion: completion)
+            }
+        }
+        
+        // MARK: - Public Methods
+        public func renew(overrideErrors override: Bool = false, completion: @escaping (RenewItemResponse?, PolarisError?) -> Void) {
+            startRenewal(overrideErrors: override) { (response, error) in completion(response, error) }
+        }
     }
 }
 
@@ -95,60 +136,6 @@ extension Patron.Item: Hashable {
     
     public func hash(into hasher: inout Hasher) {
         hasher.combine(id)
-    }
-}
-
-// MARK: - Patron + Item + Bib
-extension Patron.Item {
-    
-    public class Bib {
-        
-        // MARK: - Private Properties (Get/Set)
-        private var _author: String?
-        private var _id: Int?
-        private var _isbn: String?
-        private var _issn: String?
-        private var _oclc: String?
-        private var _title: String
-        private var _upc: String?
-        private var _volumeNumber: String?
-        
-        // MARK: - Public Properties (Get Only)
-        public var author: String? { get { return _author } }
-        public var id: Int? { get { return _id } }
-        public var isbn: String? { get { return _isbn } }
-        public var issn: String? { get { return _issn } }
-        public var oclc: String? { get { return _oclc } }
-        public var title: String { get { return _title } }
-        public var upc: String? { get { return _upc } }
-        public var volumeNumber: String? { get { return _volumeNumber } }
-        
-        // MARK: - Coding Keys
-        private enum CodingKeys: String, CodingKey {
-            
-            case author = "Author"
-            case id = "BibID"
-            case isbn = "ISBN"
-            case issn = "ISSN"
-            case oclc = "OCLCNumber"
-            case title = "Title"
-            case upc = "UPCNumber"
-            case volumeNumber = "VolumeNumber"
-        }
-        
-        // MARK: - Initialization
-        public required init(from decoder: Decoder) throws {
-            let data = try decoder.container(keyedBy: CodingKeys.self)
-
-            _author = try? data.decode(String.self, forKey: .author)
-            _id = try? data.decode(Int.self, forKey: .id)
-            _isbn = try? data.decode(String.self, forKey: .isbn)
-            _issn = try? data.decode(String.self, forKey: .issn)
-            _oclc = try? data.decode(String.self, forKey: .oclc)
-            _title = try data.decode(String.self, forKey: .title)
-            _upc = try? data.decode(String.self, forKey: .upc)
-            _volumeNumber = try? data.decode(String.self, forKey: .volumeNumber)
-        }
     }
 }
 
@@ -324,6 +311,14 @@ extension Patron.Item {
             _count = try? Int(data.decode(String.self, forKey: .count))
             _limit = try? Int(data.decode(String.self, forKey: .limit))
             _isAvailable = try? data.decode(Bool.self, forKey: .isAvailable)
+        }
+        
+        // MARK: - Internal Methods
+        internal func incrementCount() {
+            guard let count = count, let limit = limit else { return }
+            
+            if count < limit { _count! += 1 }
+            if count == limit { _isAvailable = false }
         }
     }
 }
