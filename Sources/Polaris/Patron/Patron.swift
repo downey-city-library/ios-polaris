@@ -30,6 +30,7 @@ public class Patron {
     private var _holdRequestCounts: HoldRequestCounts?
     private var _holdRequests: HoldRequests?
     private var _lastActivityDate: Date?
+    private var _id: Int?
     private var _items: Items?
     private var _itemCounts: ItemCounts?
     private var _messageCounts: MessageCounts?
@@ -49,6 +50,7 @@ public class Patron {
     public var holdRequestCounts: HoldRequestCounts? { get { return _holdRequestCounts } }
     public var holdRequests: HoldRequests? { get { return _holdRequests } }
     public var lastActivityDate: Date? { get { return _lastActivityDate } }
+    public var id: Int? { get { return _id } }
     public var items: Items? { get { return _items } }
     public var itemCounts: ItemCounts? { get { return _itemCounts } }
     public var messageCounts: MessageCounts? { get { return _messageCounts } }
@@ -81,6 +83,7 @@ extension Patron {
         _birthdate = basicData.birthdate
         _emails = basicData.emails
         _holdRequestCounts = basicData.holdRequestCounts
+        _id = basicData.id
         _itemCounts = basicData.itemCounts
         _lastActivityDate = basicData.lastActivityDate
         _messageCounts = basicData.messageCounts

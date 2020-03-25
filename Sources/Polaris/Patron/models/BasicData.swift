@@ -24,8 +24,9 @@ extension Patron {
         private var _birthdate: Date?
         private var _emails: Emails
         private var _holdRequestCounts: HoldRequestCounts
-        private var _lastActivityDate: Date?
+        private var _id: Int?
         private var _itemCounts: ItemCounts
+        private var _lastActivityDate: Date?
         private var _messageCounts: MessageCounts
         private var _name: Name
         private var _phones: Phones
@@ -39,8 +40,9 @@ extension Patron {
         public var birthdate: Date? { get { return _birthdate } }
         public var emails: Emails { get { return _emails } }
         public var holdRequestCounts: HoldRequestCounts { get { return _holdRequestCounts } }
-        public var lastActivityDate: Date? { get { return _lastActivityDate } }
+        public var id: Int? { get { return _id } }
         public var itemCounts: ItemCounts { get { return _itemCounts } }
+        public var lastActivityDate: Date? { get { return _lastActivityDate } }
         public var messageCounts: MessageCounts { get { return _messageCounts } }
         public var name: Name { get { return _name } }
         public var phones: Phones { get { return _phones } }
@@ -53,6 +55,7 @@ extension Patron {
             case addresses = "PatronAddresses"
             case barcode = "Barcode"
             case birthdate = "BirthDate"
+            case id = "PatronID"
             case lastActivityDate = "LastActivityDate"
             case registrationDate = "RegistrationDate"
         }
@@ -68,6 +71,7 @@ extension Patron {
             _birthdate = (try? data.decode(String.self, forKey: .birthdate))?.toDate()
             _emails = try Emails(from: decoder)
             _holdRequestCounts = try HoldRequestCounts(from: decoder)
+            _id = try? data.decode(Int.self, forKey: .id)
             _itemCounts = try ItemCounts(from: decoder)
             _lastActivityDate = (try? data.decode(String.self, forKey: .lastActivityDate))?.toDate()
             _messageCounts = try MessageCounts(from: decoder)
