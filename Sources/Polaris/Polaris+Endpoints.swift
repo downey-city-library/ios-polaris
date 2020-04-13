@@ -77,6 +77,7 @@ extension Polaris.Endpoints {
         case getItemsOut(String, Polaris.PolarisPatron.ItemSet)
         case getPreferences(String)
         case renewItem(String, Int)
+        case search(String, Int, Int)
         case update(String)
         
         internal var stringValue: String {
@@ -95,6 +96,8 @@ extension Polaris.Endpoints {
                 return basePublic + "/patron/\(barcode)/preferences"
             case .renewItem(let barcode, let itemId):
                 return basePublic + "/patron/\(barcode)/itemsout/\(itemId)"
+            case .search(let query, let results, let page):
+                return baseProtected + "/\(Polaris.authenticatedStaffUser?.access?.token ?? "")/search/patrons/boolean?q=\(query)&patronsperpage=\(results)&page=\(page)"
             case .update(let barcode):
                 return basePublic + "/patron/\(barcode)"
             }

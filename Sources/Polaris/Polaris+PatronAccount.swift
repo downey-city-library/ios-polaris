@@ -69,6 +69,13 @@ extension Polaris {
             }
         }
         
+        public static func search(query: String, resultsPerPage results: Int = 5, page: Int = 1, completion: @escaping (PatronSearchResponse?) -> Void) {
+            let endpoint = Endpoints.Patron.search(query, results, page)
+            HTTPClient.taskForGETRequest(url: endpoint.url, response: PatronSearchResponse.self, authorization: true) { (response, error) in
+                DispatchQueue.main.async { completion(response) }
+            }
+        }
+        
         public static func update(barcode: String, request: UpdatePatronRequest, completion: @escaping (UpdatePatronResponse?) -> Void) {
             let endpoint = Endpoints.Patron.update(barcode)
             let body = request
