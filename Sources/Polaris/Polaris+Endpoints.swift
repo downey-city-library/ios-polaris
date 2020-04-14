@@ -73,6 +73,7 @@ extension Polaris.Endpoints {
         case cancelHoldRequest(String, Int, Int, Int)
         case createRegistration
         case getBasicData(String)
+        case getCirculationBlocks(String)
         case getHoldRequests(String, Polaris.PolarisPatron.HoldRequestSet)
         case getItemsOut(String, Polaris.PolarisPatron.ItemSet)
         case getPreferences(String)
@@ -88,6 +89,8 @@ extension Polaris.Endpoints {
                 return basePublic + "/patron"
             case .getBasicData (let barcode):
                 return basePublic + "/patron/\(barcode)/basicdata?addresses=1"
+            case .getCirculationBlocks (let barcode):
+                return basePublic + "/patron/\(barcode)/circulationblocks"
             case .getHoldRequests(let barcode, let holdRequestsSet):
                 return basePublic + "/patron/\(barcode)/holdrequests/\(holdRequestsSet.string)"
             case .getItemsOut(let barcode, let itemSet):

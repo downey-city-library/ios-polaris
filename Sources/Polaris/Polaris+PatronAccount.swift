@@ -40,6 +40,13 @@ extension Polaris {
             }
         }
         
+        public static func getCirculationBlocks(barcode: String, completion: @escaping (GetCirculationBlocksResponse?) -> Void) {
+            let endpoint = Endpoints.Patron.getCirculationBlocks(barcode)
+            HTTPClient.taskForGETRequest(url: endpoint.url, response: GetCirculationBlocksResponse.self, authorization: true) { (response, error) in
+                DispatchQueue.main.async { completion(response) }
+            }
+        }
+        
         public static func getHoldRequests(barcode: String, holdRequestSet: HoldRequestSet, completion: @escaping (GetHoldRequestsResponse?) -> Void) {
             let endpoint = Endpoints.Patron.getHoldRequests(barcode, holdRequestSet)
             HTTPClient.taskForGETRequest(url: endpoint.url, response: GetHoldRequestsResponse.self, authorization: true) { (response, error) in
