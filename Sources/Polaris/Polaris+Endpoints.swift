@@ -49,6 +49,7 @@ extension Polaris.Endpoints {
         
         case get(Int)
         case getHoldings(Int)
+        case keywordSearch(KeywordQualifier, String)
             
         internal var stringValue: String {
             switch self {
@@ -56,6 +57,8 @@ extension Polaris.Endpoints {
                 return basePublic + "/bib/\(bibId)"
             case .getHoldings(let bibId):
                 return basePublic + "/bib/\(bibId)/holdings"
+            case .keywordSearch(let qualifier, let query):
+                return basePublic + "/search/bibs/keyword/\(qualifier.string)?q=\(query)"
             }
         }
         

@@ -36,6 +36,13 @@ extension Polaris {
             }
         }
         
+        public static func keywordSearch(qualifier: KeywordQualifier, query: String, completion: @escaping (KeywordSearchResponse?) -> Void) {
+            let endpoint = Endpoints.Bib.keywordSearch(qualifier, query)
+            HTTPClient.taskForGETRequest(url: endpoint.url, response: KeywordSearchResponse.self) { (response, error) in
+                DispatchQueue.main.async { completion(response) }
+            }
+        }
+        
         public static func search() {
             print("bibSearch")
         }
