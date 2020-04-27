@@ -3,7 +3,7 @@
 //  Polaris
 //
 //  Created by Andrew Despres on 3/12/19.
-//  Copyright © 2019 Downey City Library. All rights reserved.
+//  Copyright © 2020 Downey City Library. All rights reserved.
 //
 
 import Foundation
@@ -22,6 +22,6 @@ public class Polaris {
         set { _activePatron = newValue }
     }
     
-    public static var authenticatedPatron: AuthenticatedPatron?
-    public static var authenticatedStaffUser: AuthenticatedStaffUser?
+    static public internal(set) var authenticatedPatron: Authenticate.AuthenticatedPatron?
+    static public internal(set) var authenticatedStaffUser: Authenticate.AuthenticatedStaffUser?
 }

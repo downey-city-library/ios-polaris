@@ -10,5 +10,9 @@ import Foundation
 
 extension Polaris {
     
-    public struct Authenticate {}
+    public struct Authenticate {
+        
+        public typealias AuthenticatedPatron = PatronResponse
+        public typealias AuthenticatedStaffUser = StaffResponse
+    }
 }

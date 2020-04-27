@@ -32,9 +32,9 @@ extension PolarisAPI.Authenticate {
     
     public static func patron(barcode: String, password: String, completion: @escaping AuthenticationResponse) {
         let endpoint = HTTPClient.Endpoint.Authenticate.patron
-        let body = AuthenticatePatronRequest(barcode: barcode, password: password)
+        let body = Polaris.Authenticate.PatronRequest(barcode: barcode, password: password)
         
-        HTTPClient.taskForPOSTRequest(url: endpoint.url, body: body, response: AuthenticatedPatron.self) { (response, error) in
+        HTTPClient.taskForPOSTRequest(url: endpoint.url, body: body, response: Polaris.Authenticate.PatronResponse.self) { (response, error) in
             if let response = response {
                 Polaris.authenticatedPatron = response
                 DispatchQueue.main.async { completion(true, error) }
@@ -75,9 +75,9 @@ extension PolarisAPI.Authenticate {
     public static func staffUser(username: String, password: String, completion: @escaping AuthenticationResponse) {
         let configuration = PolarisConfiguration.shared
         let endpoint = HTTPClient.Endpoint.Authenticate.staffUser
-        let body = AuthenticateStaffUserRequest(domain: configuration.staffUser.domain, username: username, password: password)
-        
-        HTTPClient.taskForPOSTRequest(url: endpoint.url, body: body, response: AuthenticatedStaffUser.self) { (response, error) in
+        let body = Polaris.Authenticate.StaffRequest(domain: configuration.staffUser.domain, username: username, password: password)
+
+        HTTPClient.taskForPOSTRequest(url: endpoint.url, body: body, response: Polaris.Authenticate.StaffResponse.self) { (response, error) in
             if let response = response, response.error == nil {
                 Polaris.authenticatedStaffUser = response
                 DispatchQueue.main.async { completion(true, nil) }
