@@ -19,29 +19,6 @@ extension Polaris {
     }
 }
 
-// MARK: - Endpoints + Authenticate
-extension Polaris.Endpoints {
-    
-    internal enum Authenticate {
-        
-        case patron
-        case staffUser
-        
-        internal var stringValue: String {
-            switch self {
-                case .patron:
-                    return basePublic + "/authenticator/patron"
-                case .staffUser:
-                    return baseProtected + "/authenticator/staff"
-            }
-        }
-        
-        internal var url: URL {
-            return URL(string: stringValue)!
-        }
-    }
-}
-
 // MARK: - Endpoints + Bib
 extension Polaris.Endpoints {
     
