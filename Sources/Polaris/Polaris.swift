@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Polaris {
+public struct Polaris {
 
     // MARK: - Private Properties
     private static var _activePatron: Patron?

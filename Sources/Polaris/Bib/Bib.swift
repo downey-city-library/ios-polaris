@@ -216,12 +216,12 @@ public class Bib {
     }
     
     // MARK: - Private Methods
-    private func downloadFullRecordComplete(response: GetBibResponse?, completion: @escaping () -> Void) {
-        guard let bib = response?.bib else { return }
-        
-        supplement(using: bib)
-        completion()
-    }
+//    private func downloadFullRecordComplete(response: GetBibResponse?, completion: @escaping () -> Void) {
+//        guard let bib = response?.bib else { return }
+//        
+//        supplement(using: bib)
+//        completion()
+//    }
     
     private func downloadHoldingsComplete(response: GetBibHoldingsResponse?, completion: @escaping () -> Void) {
         guard let holdings = response?.holdings else { return }
@@ -231,9 +231,9 @@ public class Bib {
     }
     
     private func startDownloadFullRecord(for id: Int, completion: @escaping () -> Void) {
-        Polaris.Bib.get(byID: id) { [weak self] (response) in
-            self?.downloadFullRecordComplete(response: response, completion: completion)
-        }
+//        Polaris.Bib.get(byID: id) { [weak self] (response) in
+//            self?.downloadFullRecordComplete(response: response, completion: completion)
+//        }
     }
     
     private func startDownloadHoldings(for id: Int, completion: @escaping () -> Void) {
