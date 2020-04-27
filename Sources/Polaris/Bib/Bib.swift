@@ -23,7 +23,7 @@ public class Bib {
     private var _frequency: String?
     private var _genres: [String?] = []
     private var _gpoItemNumber: String?
-    private var _holdings: [BibHolding] = []
+//    private var _holdings: [BibHolding] = []
     private var _id: Int?
     private var _isbns: [String?] = []
     private var _issn: String?
@@ -57,7 +57,7 @@ public class Bib {
     public var frequency: String? { get { return _frequency } }
     public var genres: [String?] { get { return _genres } }
     public var gpoItemNumber: String? { get { return _gpoItemNumber } }
-    public var holdings: [BibHolding] { get { return _holdings } }
+//    public var holdings: [BibHolding] { get { return _holdings } }
     public var id: Int? { get { return _id } }
     public var isbns: [String?] { get { return _isbns } }
     public var issn: String? { get { return _issn } }
@@ -161,9 +161,9 @@ public class Bib {
     }
     
     // MARK: - Internal Methods
-    internal func setHoldings(_ holdings: [BibHolding]) {
-        _holdings = holdings
-    }
+//    internal func setHoldings(_ holdings: [BibHolding]) {
+//        _holdings = holdings
+//    }
     
     internal func supplement(using bib: Bib) {
         _authors.setAdded(to: bib.authors.added)
@@ -218,17 +218,17 @@ public class Bib {
     // MARK: - Private Methods
 //    private func downloadFullRecordComplete(response: GetBibResponse?, completion: @escaping () -> Void) {
 //        guard let bib = response?.bib else { return }
-//        
+//
 //        supplement(using: bib)
 //        completion()
 //    }
     
-    private func downloadHoldingsComplete(response: GetBibHoldingsResponse?, completion: @escaping () -> Void) {
-        guard let holdings = response?.holdings else { return }
-        
-        setHoldings(holdings)
-        completion()
-    }
+//    private func downloadHoldingsComplete(response: GetBibHoldingsResponse?, completion: @escaping () -> Void) {
+//        guard let holdings = response?.holdings else { return }
+//        
+//        setHoldings(holdings)
+//        completion()
+//    }
     
     private func startDownloadFullRecord(for id: Int, completion: @escaping () -> Void) {
 //        Polaris.Bib.get(byID: id) { [weak self] (response) in
@@ -237,9 +237,9 @@ public class Bib {
     }
     
     private func startDownloadHoldings(for id: Int, completion: @escaping () -> Void) {
-        Polaris.Bib.getHoldings(forBib: id) { [weak self] (response) in
-            self?.downloadHoldingsComplete(response: response, completion: completion)
-        }
+//        Polaris.Bib.getHoldings(forBib: id) { [weak self] (response) in
+//            self?.downloadHoldingsComplete(response: response, completion: completion)
+//        }
     }
 }
 
