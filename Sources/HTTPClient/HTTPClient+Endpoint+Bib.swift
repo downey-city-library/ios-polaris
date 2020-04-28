@@ -12,7 +12,7 @@ extension HTTPClient.Endpoint {
     
     enum Bib: PolarisEndpoint {
         
-        case booleanSearch(String, String)
+        case booleanSearch(String, Polaris.Bib.BooleanSearchResponse.SortBy)
         case get(Int)
         case getHoldings(Int)
         case keywordSearch(Polaris.Bib.KeywordSearchResponse.Qualifier, String)
@@ -20,7 +20,7 @@ extension HTTPClient.Endpoint {
         var string: String {
             switch self {
             case .booleanSearch(let query, let sortby):
-                return basePublic + "/search/bib/Boolean?q=\(query)&sortby=\(sortby)"
+                return basePublic + "/search/bibs/Boolean?q=\(query)&sortby=\(sortby.string)"
             case .get(let bibID):
                 return basePublic + "/bib/\(bibID)"
             case .getHoldings(let bibID):
