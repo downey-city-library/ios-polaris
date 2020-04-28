@@ -21,10 +21,13 @@ extension HTTPClient.Endpoint {
             switch self {
             case .booleanSearch(let query, let sortby):
                 return basePublic + "/search/bibs/Boolean?q=\(query)&sortby=\(sortby.string)"
+                
             case .get(let bibID):
                 return basePublic + "/bib/\(bibID)"
+                
             case .getHoldings(let bibID):
                 return basePublic + "/bib/\(bibID)/holdings"
+                
             case .keywordSearch(let qualifier, let query):
                 return basePublic + "/search/bibs/keyword/\(qualifier.string)?q=\(query)"
             }

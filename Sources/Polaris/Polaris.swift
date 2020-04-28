@@ -26,4 +26,6 @@ public struct Polaris {
     static public internal(set) var authenticatedStaffUser: Authenticate.AuthenticatedStaffUser?
     
     public struct Bib {}
+    
+    public struct HoldRequest {}
 }

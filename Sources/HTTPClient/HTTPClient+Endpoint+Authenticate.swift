@@ -17,8 +17,11 @@ extension HTTPClient.Endpoint {
         
         var string: String {
             switch self {
-            case .patron: return basePublic + "/authenticator/patron"
-            case .staffUser: return baseProtected + "/authenticator/staff"
+            case .patron:
+                return basePublic + "/authenticator/patron"
+                
+            case .staffUser:
+                return baseProtected + "/authenticator/staff"
             }
         }
     }

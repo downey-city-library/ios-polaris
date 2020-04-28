@@ -19,26 +19,6 @@ extension Polaris {
     }
 }
 
-// MARK: - Endpoints + Hold
-extension Polaris.Endpoints {
-    
-    internal enum Hold {
-        
-        case create
-        
-        internal var stringValue: String {
-            switch self {
-            case .create:
-                return basePublic + "/holdrequest"
-            }
-        }
-        
-        internal var url: URL {
-            return URL(string: stringValue)!
-        }
-    }
-}
-
 // MARK: - Endpoints + Patron
 extension Polaris.Endpoints {
     
