@@ -16,15 +16,7 @@ extension Polaris {
         public typealias HoldRequestSet = Patron.HoldRequestSet
         public typealias ItemSet = Patron.ItemSet
         
-        // MARK: - Public Methods
-        public static func cancelHoldRequest(barcode: String, request: CancelHoldRequest, requestId: Int, userId: Int, workstationId: Int, completion: @escaping (CancelHoldResponse?) -> Void) {
-            let endpoint = Endpoints.Patron.cancelHoldRequest(barcode, requestId, workstationId, userId)
-            let body = request
-            HTTPClient.taskForPUTRequest(url: endpoint.url, body: body, response: CancelHoldResponse.self) { (response, error) in
-                DispatchQueue.main.async { completion(response) }
-            }
-        }
-        
+        // MARK: - Public Methods        
         public static func createRegistration(patronInfo: CreateRegistrationRequest, completion: @escaping (CreateRegistrationResponse?) -> Void) {
             let endpoint = Endpoints.Patron.createRegistration
             let body = patronInfo

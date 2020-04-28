@@ -75,38 +75,38 @@ extension Patron {
         }
         
         // MARK: - Private Methods
-        private func cancellingHoldComplete(response: CancelHoldResponse?, completion: @escaping (CancelHoldResponse?, PolarisError?) -> Void) {
-                        
-            guard let response = response else {
-                DispatchQueue.main.async { completion(nil, PolarisError.generalError) }
-                return
-            }
-            
-            DispatchQueue.main.async {
-                if response.error != nil { completion(response, response.error) }
-                else {
-                    Polaris.activePatron?.holdRequests?.removeRequest(self)
-                    completion(response, nil)
-                }
-            }
-        }
+//        private func cancellingHoldComplete(response: CancelHoldResponse?, completion: @escaping (CancelHoldResponse?, PolarisError?) -> Void) {
+//
+//            guard let response = response else {
+//                DispatchQueue.main.async { completion(nil, PolarisError.generalError) }
+//                return
+//            }
+//
+//            DispatchQueue.main.async {
+//                if response.error != nil { completion(response, response.error) }
+//                else {
+//                    Polaris.activePatron?.holdRequests?.removeRequest(self)
+//                    completion(response, nil)
+//                }
+//            }
+//        }
         
-        private func startCancellingHold(completion: @escaping (CancelHoldResponse?, PolarisError?) -> Void) {
-            guard let barcode = Polaris.activePatron?.barcode else { return }
-            guard let id = id else { return }
-            guard let user = Polaris.authenticatedStaffUser?.polarisUserID else { return }
-            
-            let request = CancelHoldRequest(userId: user, workstationId: 1)
-                        
-            Polaris.PatronAccount.cancelHoldRequest(barcode: barcode, request: request, requestId: id, userId: user, workstationId: 1) { [weak self] (response) in
-                self?.cancellingHoldComplete(response: response, completion: completion)
-            }
-        }
+//        private func startCancellingHold(completion: @escaping (CancelHoldResponse?, PolarisError?) -> Void) {
+//            guard let barcode = Polaris.activePatron?.barcode else { return }
+//            guard let id = id else { return }
+//            guard let user = Polaris.authenticatedStaffUser?.polarisUserID else { return }
+//            
+//            let request = CancelHoldRequest(userId: user, workstationId: 1)
+//                        
+//            Polaris.PatronAccount.cancelHoldRequest(barcode: barcode, request: request, requestId: id, userId: user, workstationId: 1) { [weak self] (response) in
+//                self?.cancellingHoldComplete(response: response, completion: completion)
+//            }
+//        }
         
         // MARK: - Public Methods
-        public func cancel(completion: @escaping (CancelHoldResponse?, PolarisError?) -> Void) {
-            startCancellingHold(completion: completion)
-        }
+//        public func cancel(completion: @escaping (CancelHoldResponse?, PolarisError?) -> Void) {
+//            startCancellingHold(completion: completion)
+//        }
     }
 }
 

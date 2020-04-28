@@ -12,6 +12,11 @@ extension PolarisAPI.HoldRequest {
     
     // MARK: - Typealiases
     
+    /// A completion handler indicating that the API call to `HoldRequestCancel` is completed.
+    /// - parameter response: An object containing a response message for the cancel request. If there was an issue with the request, the response will include an error describing the failure.
+    
+    public typealias HoldRequestCancelCompletionHandler = (_ response: Polaris.HoldRequest.CancelResponse?) -> Void
+    
     /// A completion handler indicating that the API call to `HoldRequestCreate` is completed.
     /// - parameter response: An object containing a response message for the hold request. If there was an issue with the request, the response will include an error describing the failure.
     
@@ -19,7 +24,29 @@ extension PolarisAPI.HoldRequest {
     
     // TODO: HoldRequestActivate
     // TODO: HoldRequestActivateAllForPatron
-    // TODO: HoldRequestCancel
+    
+    // MARK: - HoldRequestCancel
+    
+    /// Cancel a single hold request for a specific patron.
+    /// - note: The following hold statuses can be cancelled:
+    ///   - 1 - inactive
+    ///   - 2 - active
+    ///   - 4 - pending
+    ///   - 5 - shipped (if enabled by the library)
+    /// - note: PAPI method name: `HoldRequestCreate`
+    /// - parameter barcode: The barcode of the patron with the hold request.
+    /// - parameter requestID: The hold request ID number.
+    /// - parameter userID: The ID of the staff member making the cancel request.
+    /// - parameter workstationID: The ID of the workstation being used to generate the request.
+    /// - parameter completion: The completion handler containing the response from the ILS or an error if the request is not successful.
+    
+    public static func cancel(barcode: String, requestID: Int, userID: Int, workstationID: Int, completion: @escaping HoldRequestCancelCompletionHandler) {
+        let endpoint = HTTPClient.Endpoint.HoldRequest.cancel(barcode, requestID, workstationID, userID)
+        HTTPClient.taskForPUTRequest(url: endpoint.url, response: Polaris.HoldRequest.CancelResponse.self) { (response, error) in
+            DispatchQueue.main.async { completion(response) }
+        }
+    }
+    
     // TODO: HoldRequestCancelAllForPatron
     
     // MARK: - HoldRequestCreate

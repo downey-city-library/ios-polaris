@@ -14,7 +14,7 @@ extension HTTPClient.Endpoint {
         
         case activate(String, String)
         case activateAll(String)
-        case cancel(String, String)
+        case cancel(String, Int, Int, Int)
         case cancelAll(String)
         case create
         case getList(Int, Int, Int)
@@ -30,8 +30,8 @@ extension HTTPClient.Endpoint {
             case .activateAll(let barcode):
                 return basePublic + "/patron/\(barcode)/holdrequests/0/inactive"
                 
-            case .cancel(let barcode, let requestID):
-                return basePublic + "/patron/\(barcode)/holdrequests/\(requestID)/cancelled"
+            case .cancel(let barcode, let requestID, let workstationID, let userID):
+                return basePublic + "/patron/\(barcode)/holdrequests/\(requestID)/cancelled?wsid=\(workstationID)&userid\(userID)"
                 
             case .cancelAll(let barcode):
                 return basePublic + "/patron/\(barcode)/holdrequests/0/cancelled"
