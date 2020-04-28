@@ -33,7 +33,7 @@ extension PolarisAPI.HoldRequest {
     ///   - 2 - active
     ///   - 4 - pending
     ///   - 5 - shipped (if enabled by the library)
-    /// - note: PAPI method name: `HoldRequestCreate`
+    /// - note: PAPI method name: `HoldRequestCancel`
     /// - parameter barcode: The barcode of the patron with the hold request.
     /// - parameter requestID: The hold request ID number.
     /// - parameter userID: The ID of the staff member making the cancel request.
