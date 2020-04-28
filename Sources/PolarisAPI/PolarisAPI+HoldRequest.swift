@@ -47,7 +47,26 @@ extension PolarisAPI.HoldRequest {
         }
     }
     
-    // TODO: HoldRequestCancelAllForPatron
+    // MARK: - HoldRequestCancelAllForPatron
+    
+    /// Cancel all hold requests for a specific patron.
+    /// - note: The following hold statuses can be cancelled:
+    ///   - 1 - inactive
+    ///   - 2 - active
+    ///   - 4 - pending
+    ///   - 5 - shipped (if enabled by the library)
+    /// - note: PAPI method name: `HoldRequestCancelAllForPatron`
+    /// - parameter barcode: The barcode of the patron with the hold request.
+    /// - parameter userID: The ID of the staff member making the cancel request.
+    /// - parameter workstationID: The ID of the workstation being used to generate the request.
+    /// - parameter completion: The completion handler containing the response from the ILS or an error if the request is not successful.
+    
+    public static func cancelAll(barcode: String, userID: Int, workstationID: Int, completion: @escaping HoldRequestCancelCompletionHandler) {
+        let endpoint = HTTPClient.Endpoint.HoldRequest.cancelAll(barcode, workstationID, userID)
+        HTTPClient.taskForPUTRequest(url: endpoint.url, response: Polaris.HoldRequest.CancelResponse.self) { (response, error) in
+            DispatchQueue.main.async { completion(response) }
+        }
+    }
     
     // MARK: - HoldRequestCreate
     
