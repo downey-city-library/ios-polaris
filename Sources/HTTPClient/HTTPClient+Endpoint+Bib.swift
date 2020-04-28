@@ -15,7 +15,7 @@ extension HTTPClient.Endpoint {
         case booleanSearch(String, String)
         case get(Int)
         case getHoldings(Int)
-        case keywordSearch(KeywordQualifier, String)
+        case keywordSearch(Polaris.Bib.KeywordSearchResponse.Qualifier, String)
         
         var string: String {
             switch self {

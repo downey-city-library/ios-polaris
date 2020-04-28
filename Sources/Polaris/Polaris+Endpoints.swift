@@ -19,32 +19,6 @@ extension Polaris {
     }
 }
 
-// MARK: - Endpoints + Bib
-extension Polaris.Endpoints {
-    
-    internal enum Bib {
-        
-        case get(Int)
-        case getHoldings(Int)
-        case keywordSearch(KeywordQualifier, String)
-            
-        internal var stringValue: String {
-            switch self {
-            case .get(let bibId):
-                return basePublic + "/bib/\(bibId)"
-            case .getHoldings(let bibId):
-                return basePublic + "/bib/\(bibId)/holdings"
-            case .keywordSearch(let qualifier, let query):
-                return basePublic + "/search/bibs/keyword/\(qualifier.string)?q=\(query)"
-            }
-        }
-        
-        internal var url: URL {
-            return URL(string: stringValue)!
-        }
-    }
-}
-
 // MARK: - Endpoints + Hold
 extension Polaris.Endpoints {
     

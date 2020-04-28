@@ -19,6 +19,10 @@ extension PolarisAPI.Bib {
     /// - parameter response: A response object containing holdings data for the specified bibliographic record ID. If there was an issue with the request, the response will include an error describing the failure.
     public typealias BibHoldingsGetCompletionHandler = (_ response: Polaris.Bib.GetHoldingsResponse?) -> Void
     
+    /// A completion handler indicating that the API call to`BibKeywordSearch` is completed.
+    /// - parameter response: A response object containing a list of bibliographic records matching the search criteria. If there was an issue with the request, the response will include an error describing the failure.
+    public typealias BibKeywordSearchCompletionHandler = (_ response: Polaris.Bib.KeywordSearchResponse?) -> Void
+    
     // TODO: BibBooleanSearch
     
     // MARK: - BibGet
@@ -49,6 +53,18 @@ extension PolarisAPI.Bib {
         }
     }
     
-    // TODO: BibKeywordSearch
+    // MARK: - BibKeywordSearch
+    
+    /// Returns list of bibliographic records that match the search criteria.
+    /// - note: PAPI method name: `BibKeywordSearch`
+    /// - parameter qualifier: The index referenced in the search.
+    /// - parameter query: The terms used to conduct the keyword search.
+    /// - parameter completion: The completion handler containting a list of bibliographic records matching the search criteria or an error if the request is not successful.
+    public static func keywordSearch(qualifier: Polaris.Bib.KeywordSearchResponse.Qualifier, query: String, completion: @escaping BibKeywordSearchCompletionHandler) {
+        let endpoint = HTTPClient.Endpoint.Bib.keywordSearch(qualifier, query)
+        HTTPClient.taskForGETRequest(url: endpoint.url, response: Polaris.Bib.KeywordSearchResponse.self) { (response, error) in
+            DispatchQueue.main.async { completion(response) }
+        }
+    }
 
 }
