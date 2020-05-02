@@ -22,6 +22,11 @@ extension PolarisAPI.HoldRequest {
     
     public typealias HoldRequestCreateCompletionHandler = (_ response: Polaris.HoldRequest.CreateResponse?) -> Void
     
+    /// A completion handler indicating that the API call to `HoldRequestGetList` is completed.
+    /// - parameter response: An object containing a list of hold requests. If there was an issue with the request, the response will include an error describing the failure.
+    
+    public typealias HoldRequestGetListCompletionHander = (_ response: Polaris.HoldRequest.GetListResponse?) -> Void
+    
     // TODO: HoldRequestActivate
     // TODO: HoldRequestActivateAllForPatron
     
@@ -89,7 +94,23 @@ extension PolarisAPI.HoldRequest {
         }
     }
     
-    // TODO: HoldRequestGetList
+    // MARK: - HoldRequestGetList
+    
+    /// Returns a list of hold requests that match the criteria specified by the user. The data returned includes the detailed request, patron, item, and title information.
+    /// - note: PAPI method name: `HoldRequestGetList`
+    /// - parameter branchID: The branch ID for the request list.
+    /// - parameter branchType: The type of branch specified. Valid values include: 1 - Patron's Branch; 2 - Pickup Branch; 3 - Item Branch.
+    /// - parameter requestStatus: The desired status of requests returned.
+    /// - parameter completion: The completion handler containing the response from the ILS or an error if the request is not successful.
+    
+    public static func getList(branchID: Int, branchType: Int, requestStatus: Int, completion: @escaping HoldRequestGetListCompletionHander) {
+        let endpoint = HTTPClient.Endpoint.HoldRequest.getList(branchID, branchType, requestStatus)
+        
+        HTTPClient.taskForGETRequest(url: endpoint.url, response: Polaris.HoldRequest.GetListResponse.self, authorization: true) { (response, error) in
+            DispatchQueue.main.async { completion(response) }
+        }
+    }
+    
     // TODO: HoldRequestReply
     // TODO: HoldRequestSuspend
     // TODO: HoldRequestSuspendAllForPatron

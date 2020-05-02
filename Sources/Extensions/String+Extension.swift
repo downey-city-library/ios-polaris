@@ -29,7 +29,9 @@ extension String {
         if let start = self.firstIndex(of: "("), let end = self.lastIndex(of: "-") {
 
             let trimmedString = self[start...end].trimmingCharacters(in: ["(","-"])
-            let dateInterval = TimeInterval(trimmedString)! / 1000.0
+            guard let interval = TimeInterval(trimmedString) else { return nil }
+            
+            let dateInterval = interval / 1000.0
             
             return Date(timeIntervalSince1970: dateInterval)
         } else {

@@ -40,7 +40,7 @@ extension HTTPClient.Endpoint {
                 return basePublic + "/holdrequest"
                 
             case .getList(let branchID, let branchTypeID, let statusID):
-                return baseProtected + "/\(Polaris.authenticatedStaffUser?.access?.token ?? "")/circulation/requests/list?branch=\(branchID)&branch-type=\(branchTypeID)&requeststatus=\(statusID)"
+                return baseProtected + "/\(Polaris.authenticatedStaffUser?.access?.token ?? "")/circulation/requests/list?branch=\(branchID)&branchtype=\(branchTypeID)&requeststatus=\(statusID)"
                 
             case .reply(let requestGUID):
                 return basePublic + "/holdrequest/\(requestGUID)"
