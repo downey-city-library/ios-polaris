@@ -12,15 +12,15 @@ extension HTTPClient.Endpoint {
     
     enum Bib: PolarisEndpoint {
         
-        case booleanSearch(String, Polaris.Bib.BooleanSearchResponse.SortBy)
+        case booleanSearch(String, Polaris.Bib.BooleanSearchResponse.SortBy, Int)
         case get(Int)
         case getHoldings(Int)
         case keywordSearch(Polaris.Bib.KeywordSearchResponse.Qualifier, String)
         
         var string: String {
             switch self {
-            case .booleanSearch(let query, let sortby):
-                return basePublic + "/search/bibs/Boolean?q=\(query)&sortby=\(sortby.string)"
+            case .booleanSearch(let query, let sortby, let page):
+                return basePublic + "/search/bibs/Boolean?q=\(query)&sortby=\(sortby.string)&page=\(page)"
                 
             case .get(let bibID):
                 return basePublic + "/bib/\(bibID)"

@@ -38,10 +38,11 @@ extension PolarisAPI.Bib {
     /// - note: PAPI method name: `BibBooleanSearch`
     /// - parameter query: The terms used to conduct the keyword search.
     /// - parameter sortby: Determines how the results will be sorted.
+    /// - parameter page: The page of results to be returned. Default is 1.
     /// - parameter completion: The completion handler containting a list of bibliographic records matching the search criteria or an error if the request is not successful.
     
-    public static func booleanSearch(query: String, sortby: Polaris.Bib.BooleanSearchResponse.SortBy, completion: @escaping BibBooleanSearchCompletionHandler) {
-        let endpoint = HTTPClient.Endpoint.Bib.booleanSearch(query, sortby)
+    public static func booleanSearch(query: String, sortby: Polaris.Bib.BooleanSearchResponse.SortBy, page: Int = 1 , completion: @escaping BibBooleanSearchCompletionHandler) {
+        let endpoint = HTTPClient.Endpoint.Bib.booleanSearch(query, sortby, page)
         print(endpoint.string)
         HTTPClient.taskForGETRequest(url: endpoint.url, response: Polaris.Bib.BooleanSearchResponse.self) { (response, error) in
             DispatchQueue.main.async { completion(response) }
