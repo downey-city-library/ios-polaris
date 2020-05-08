@@ -38,8 +38,12 @@ extension String {
             
             let formatter = DateFormatter()
             formatter.dateFormat = "MMM dd yyyy"
-            
-            return formatter.date(from: self)
+            if let date = formatter.date(from: self) {
+                return date
+            } else {
+                formatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS"
+                return formatter.date(from: self)
+            }
         }
     }
     
