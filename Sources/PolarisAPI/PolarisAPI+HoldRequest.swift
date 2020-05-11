@@ -27,6 +27,11 @@ extension PolarisAPI.HoldRequest {
     
     public typealias HoldRequestGetListCompletionHander = (_ response: Polaris.HoldRequest.GetListResponse?) -> Void
     
+    /// A completion handler indicating that the API call to `HoldRequestReply` is completed.
+    /// - parameter response: An object containing a response message to the reply request. If there was an issue with the request, the response will include an error describing the failure.
+    
+    public typealias HoldRequestReplyCompletionHandler = (_ response: Polaris.HoldRequest.ReplyResponse?) -> Void
+    
     // TODO: HoldRequestActivate
     // TODO: HoldRequestActivateAllForPatron
     
@@ -86,10 +91,6 @@ extension PolarisAPI.HoldRequest {
         let body = request
         
         HTTPClient.taskForPOSTRequest(url: endpoint.url, body: body, response: Polaris.HoldRequest.CreateResponse.self) { (response, error) in
-            print("completion handler for taskForPostRequest:")
-            print("response:", response as Any)
-            print("error:", error as Any)
-            
             DispatchQueue.main.async { completion(response) }
         }
     }
@@ -111,7 +112,23 @@ extension PolarisAPI.HoldRequest {
         }
     }
     
-    // TODO: HoldRequestReply
+    // MARK: - HoldRequestReply
+    
+    /// Send a reply message responding to the results of a previous HoldRequestCreate or HoldRequestReply procedure call.
+    /// - important: The HoldRequestCreate procedure must be called before executing this procedure. The RequestGUID, TxnGroupQualifier and TxnQualifier returned by the HoldRequestCreate procedure will be used as input parameters for this procedure call. These three values connect the messages together to create an ILL conversation. After calling the HoldRequestReply procedure, one or more calls to the HoldRequestReply procedure may be required. The message exchange is complete when a StatusType of Error (1) or Answer (2) is returned or if an error is raised via a database exception.
+    /// - note: PAPI method name: `HoldRequestReply`
+    /// - parameter request: The reply object containing the transaction qualifier and group qualifier, among various other properties.
+    /// - parameter completion: The completion handler containing the response from the ILS or an error if the request is not successful.
+    
+    public static func reply(_ guid: String, request: Polaris.HoldRequest.ReplyRequest, completion: @escaping HoldRequestReplyCompletionHandler) {
+        let endpoint = HTTPClient.Endpoint.HoldRequest.reply(guid)
+        let body = request
+        
+        HTTPClient.taskForPUTRequest(url: endpoint.url, body: body, response: Polaris.HoldRequest.ReplyResponse.self) { (response, error) in
+            DispatchQueue.main.async { completion(response) }
+        }
+    }
+    
     // TODO: HoldRequestSuspend
     // TODO: HoldRequestSuspendAllForPatron
 }

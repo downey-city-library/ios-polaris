@@ -1,5 +1,5 @@
 //
-//  Polaris+HoldRequest+CreateResponse+StatusValue.swift
+//  Polaris+HoldRequest+StatusValue.swift
 //  Polaris
 //
 //  Created by Andrew Despres on 4/26/20.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Polaris.HoldRequest.CreateResponse {
+extension Polaris.HoldRequest {
     
     public enum StatusValue: Int, Decodable {
         
@@ -26,15 +26,15 @@ extension Polaris.HoldRequest.CreateResponse {
 }
 
 // MARK: - Initialization
-extension Polaris.HoldRequest.CreateResponse.StatusValue {
+extension Polaris.HoldRequest.StatusValue {
     
     public init(from decoder: Decoder) throws {
-        self = try Polaris.HoldRequest.CreateResponse.StatusValue(from: decoder, default: .unknown)
+        self = try Polaris.HoldRequest.StatusValue(from: decoder, default: .unknown)
     }
 }
 
 // MARK: - Properties
-extension Polaris.HoldRequest.CreateResponse.StatusValue {
+extension Polaris.HoldRequest.StatusValue {
     
     public var description: String {
         switch self {
