@@ -31,10 +31,11 @@ extension HTTPClient.Endpoint {
                 return basePublic + "/patron/\(barcode)/holdrequests/0/inactive"
                 
             case .cancel(let barcode, let requestID, let workstationID, let userID):
-                return basePublic + "/patron/\(barcode)/holdrequests/\(requestID)/cancelled?wsid=\(workstationID)&userid\(userID)"
+                print("PolarisEndpoint workstationID", workstationID)
+                return basePublic + "/patron/\(barcode)/holdrequests/\(requestID)/cancelled?wsid=\(workstationID)&userid=\(userID)"
                 
             case .cancelAll(let barcode, let workstationID, let userID):
-                return basePublic + "/patron/\(barcode)/holdrequests/0/cancelled?wsid=\(workstationID)&userid\(userID)"
+                return basePublic + "/patron/\(barcode)/holdrequests/0/cancelled?wsid=\(workstationID)&userid=\(userID)"
                 
             case .create:
                 return basePublic + "/holdrequest"

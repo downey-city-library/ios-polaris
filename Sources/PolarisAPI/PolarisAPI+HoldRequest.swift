@@ -46,13 +46,16 @@ extension PolarisAPI.HoldRequest {
     /// - note: PAPI method name: `HoldRequestCancel`
     /// - parameter barcode: The barcode of the patron with the hold request.
     /// - parameter requestID: The hold request ID number.
+    /// - parameter request: The PUT body request containing the user ID and workstation ID.
     /// - parameter userID: The ID of the staff member making the cancel request.
     /// - parameter workstationID: The ID of the workstation being used to generate the request.
     /// - parameter completion: The completion handler containing the response from the ILS or an error if the request is not successful.
     
-    public static func cancel(barcode: String, requestID: Int, userID: Int, workstationID: Int, completion: @escaping HoldRequestCancelCompletionHandler) {
+    public static func cancel(barcode: String, requestID: Int, request: Polaris.HoldRequest.CancelRequest, userID: Int, workstationID: Int, completion: @escaping HoldRequestCancelCompletionHandler) {
         let endpoint = HTTPClient.Endpoint.HoldRequest.cancel(barcode, requestID, workstationID, userID)
-        HTTPClient.taskForPUTRequest(url: endpoint.url, response: Polaris.HoldRequest.CancelResponse.self) { (response, error) in
+        let body = request
+        
+        HTTPClient.taskForPUTRequest(url: endpoint.url, body: body, response:  Polaris.HoldRequest.CancelResponse.self) { (response, error) in
             DispatchQueue.main.async { completion(response) }
         }
     }
