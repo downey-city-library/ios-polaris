@@ -101,7 +101,7 @@ internal class HTTPClient {
                 return
             }
             
-            print("Data from GET Request", String(bytes: data, encoding: .utf8)!)
+//            print("Data from GET Request", String(bytes: data, encoding: .utf8)!)
             
             do {
                 let responseObject = try decoder.decode(ResponseType.self, from: data)
@@ -149,7 +149,7 @@ internal class HTTPClient {
                 return
             }
             
-            print("Data from POST Request", String(bytes: data, encoding: .utf8)!)
+//            print("Data from POST Request", String(bytes: data, encoding: .utf8)!)
             
             do {
                 let responseObject = try decoder.decode(ResponseType.self, from: data)
@@ -191,7 +191,7 @@ internal class HTTPClient {
                 return
             }
             
-            print("Data from PUT Request", String(bytes: data, encoding: .utf8)!)
+//            print("Data from PUT Request", String(bytes: data, encoding: .utf8)!)
             
             do {
                 let responseObject = try decoder.decode(ResponseType.self, from: data)
@@ -241,7 +241,7 @@ internal class HTTPClient {
                 return
             }
             
-            print("Data from PUT Request", String(bytes: data, encoding: .utf8)!)
+//            print("Data from PUT Request", String(bytes: data, encoding: .utf8)!)
             
             do {
                 let responseObject = try decoder.decode(ResponseType.self, from: data)

@@ -38,7 +38,7 @@ extension Polaris.Bib.GetResponse.Authors {
             guard let author = author else { return }
             
             let parts = components(of: author)
-            print("parts:", parts)
+//            print("parts:", parts)
             
             let commas = parts.count - 1
 
