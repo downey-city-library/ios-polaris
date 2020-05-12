@@ -19,16 +19,16 @@ extension HTTPClient.Endpoint {
         case create
         case getList(Int, Int, Int)
         case reply(String)
-        case suspend(String, String)
+        case suspend(String, Int)
         case suspendAll(String)
         
         var string: String {
             switch self {
             case .activate(let barcode, let requestID):
-                return basePublic + "/patron/\(barcode)/holdrequests/\(requestID)/inactive"
+                return basePublic + "/patron/\(barcode)/holdrequests/\(requestID)/active"
                 
             case .activateAll(let barcode):
-                return basePublic + "/patron/\(barcode)/holdrequests/0/inactive"
+                return basePublic + "/patron/\(barcode)/holdrequests/0/active"
                 
             case .cancel(let barcode, let requestID, let workstationID, let userID):
                 print("PolarisEndpoint workstationID", workstationID)
@@ -47,10 +47,10 @@ extension HTTPClient.Endpoint {
                 return basePublic + "/holdrequest/\(requestGUID)"
                 
             case .suspend(let barcode, let requestID):
-                return basePublic + "/patron/\(barcode)/holdrequests/\(requestID)/active"
+                return basePublic + "/patron/\(barcode)/holdrequests/\(requestID)/inactive"
                 
             case .suspendAll(let barcode):
-                return basePublic + "/patron/\(barcode)/holdrequests/0/active"
+                return basePublic + "/patron/\(barcode)/holdrequests/0/inactive"
             }
         }
     }

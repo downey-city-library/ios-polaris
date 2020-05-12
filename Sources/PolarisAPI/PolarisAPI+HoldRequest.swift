@@ -32,6 +32,11 @@ extension PolarisAPI.HoldRequest {
     
     public typealias HoldRequestReplyCompletionHandler = (_ response: Polaris.HoldRequest.ReplyResponse?) -> Void
     
+    /// A completion handler indicating that the API call to `HoldRequestSuspend` is completed.
+    /// - parameter response: An object containing a response object to the suspend request. If there was an issue with the request, the response will include an error describing the failure.
+    
+    public typealias HoldRequestSuspendCompletionHandler = (_ response: Polaris.HoldRequest.SuspendResponse?) -> Void
+    
     // TODO: HoldRequestActivate
     // TODO: HoldRequestActivateAllForPatron
     
@@ -132,6 +137,19 @@ extension PolarisAPI.HoldRequest {
         }
     }
     
-    // TODO: HoldRequestSuspend
+    // MARK: - HoldRequestSuspend
+    
+    public static func suspend(patronBarcode: String, requestID: Int, request: Polaris.HoldRequest.SuspendRequest, completion: @escaping HoldRequestSuspendCompletionHandler) {
+        let endpoint = HTTPClient.Endpoint.HoldRequest.suspend(patronBarcode, requestID)
+        print("endpoint", endpoint.string)
+        
+        let body = request
+        print("body", body)
+        
+        HTTPClient.taskForPUTRequest(url: endpoint.url, body: body, response: Polaris.HoldRequest.SuspendResponse.self) { (response, error) in
+            DispatchQueue.main.async { completion(response) }
+        }
+    }
+    
     // TODO: HoldRequestSuspendAllForPatron
 }
