@@ -11,21 +11,31 @@ import Foundation
 public struct Polaris {
 
     // MARK: - Private Properties
-    private static var _activePatron: Patron?
+//    private static var _activePatron: Patron?
     
     // MARK: - Public Properties
-    public static var activePatron: Patron? {
-        get {
-            if _activePatron == nil { _activePatron = Patron() }
-            return _activePatron
-        }
-        set { _activePatron = newValue }
-    }
+//    public static var activePatron: Patron? {
+//        get {
+//            if _activePatron == nil { _activePatron = Patron() }
+//            return _activePatron
+//        }
+//        set { _activePatron = newValue }
+//    }
     
     static public internal(set) var authenticatedPatron: Authenticate.AuthenticatedPatron?
     static public internal(set) var authenticatedStaffUser: Authenticate.AuthenticatedStaffUser?
     
+    public struct Authenticate {
+        
+        public typealias AuthenticatedPatron = PatronResponse
+        public typealias AuthenticatedStaffUser = StaffResponse
+    }
+    
     public struct Bib {}
     
     public struct HoldRequest {}
+    
+    public struct Item {}
+    
+    public struct Patron {}
 }
