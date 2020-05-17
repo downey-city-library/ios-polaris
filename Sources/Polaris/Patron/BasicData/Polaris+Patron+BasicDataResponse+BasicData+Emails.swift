@@ -33,16 +33,16 @@ extension Polaris.Patron.BasicDataResponse.BasicData {
         }
         
         // MARK: - Public Setters
-//        public func alternate(string: String?) {
-//            guard let string = string else { return }
-//            
-//            _alternate = string
-//        }
+        public mutating func set(alternate email: String?) {
+            guard let email = email else { return }
+            
+            self.alternate = email
+        }
         
-//        public func primary(string: String?) {
-//            guard let string = string else { return }
-//            
-//            _primary = string
-//        }
+        public mutating func set(primary email: String?) {
+            guard let email = email else { return }
+            
+            self.primary = email
+        }
     }
 }

@@ -18,7 +18,7 @@ extension Polaris.Patron.BasicDataResponse {
         public private(set) var balances: Balances
         public private(set) var barcode: String?
         public private(set) var birthdate: Date?
-        public private(set) var emails: Emails
+        public var emails: Emails
         public private(set) var holdRequestCounts: HoldRequestCounts
         public private(set) var id: Int?
         public private(set) var itemCounts: ItemCounts
