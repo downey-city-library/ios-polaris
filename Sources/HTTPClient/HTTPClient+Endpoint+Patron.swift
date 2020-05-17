@@ -29,7 +29,7 @@ extension HTTPClient.Endpoint {
                 return baseProtected + "/\(accessToken)/patron/barcode?patronid=\(patronID)"
                 
             case .basicData(let barcode):
-                return basePublic + "/patron/\(barcode)/basicdata"
+                return basePublic + "/patron/\(barcode)/basicdata?addresses=1"
                 
             case .holdRequests(let barcode, let endpoint):
                 return basePublic + "/patron/\(barcode)/holdrequests/\(endpoint)"
