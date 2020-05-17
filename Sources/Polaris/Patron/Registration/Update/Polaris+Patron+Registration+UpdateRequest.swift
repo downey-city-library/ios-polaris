@@ -20,6 +20,7 @@ extension Polaris.Patron.Registration {
         public var readingListFlag: Int?
         public var emailFormat: Int?
         public var deliveryOptionID: Int?
+        public var deliveryOption: Int?
         public var emailAddress: String?
         public var phoneVoice1: String?
         public var password: String?
@@ -61,6 +62,7 @@ extension Polaris.Patron.Registration {
             case readingListFlag = "ReadingListFlag"
             case emailFormat = "EmailFormat"
             case deliveryOptionID = "DeliveryOptionID"
+            case deliveryOption = "DeliveryOption"
             case emailAddress = "EmailAddress"
             case phoneVoice1 = "PhoneVoice1"
             case password = "Password"

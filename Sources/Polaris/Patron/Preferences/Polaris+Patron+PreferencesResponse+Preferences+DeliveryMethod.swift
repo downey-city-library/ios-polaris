@@ -14,13 +14,13 @@ extension Polaris.Patron.PreferencesResponse.Preferences {
         
         // MARK: - Properties
         public private(set) var description: String?
-        public private(set) var id: Int?
+        public private(set) var ID: Int?
 
         // MARK: - Coding Keys
         private enum CodingKeys: String, CodingKey {
 
             case description = "DeliveryMethodDescription"
-            case id = "DeliveryMethodID"
+            case ID = "DeliveryMethodID"
         }
 
         // MARK: - Initialization
@@ -29,7 +29,12 @@ extension Polaris.Patron.PreferencesResponse.Preferences {
             let data = try decoder.container(keyedBy: CodingKeys.self)
 
             description = try? data.decode(String.self, forKey: .description)
-            id = try? data.decode(Int.self, forKey: .id)
+            ID = try? data.decode(Int.self, forKey: .ID)
+        }
+        
+        // MARK: - Public Setters
+        public mutating func set(ID: Int) {
+            self.ID = ID
         }
     }
 }

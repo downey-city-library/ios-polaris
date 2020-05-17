@@ -14,14 +14,23 @@ extension Polaris.Patron.PreferencesResponse {
         
         // MARK: - Properties
         public private(set) var deliveryEmail: DeliveryEmail
-        public private(set) var deliveryMethod: DeliveryMethod
+        public var deliveryMethod: Polaris.Patron.DeliveryMethod
         public private(set) var readingList: ReadingList
+
+        // MARK: - Coding Keys
+        private enum CodingKeys: String, CodingKey {
+
+            case ID = "DeliveryMethodID"
+        }
         
         // MARK: - Initialization
         public init(from decoder: Decoder) throws {
             
+            let data = try decoder.container(keyedBy: CodingKeys.self)
+            
             deliveryEmail = try DeliveryEmail(from: decoder)
-            deliveryMethod = try DeliveryMethod(from: decoder)
+//            deliveryMethod = try DeliveryMethod(from: decoder)
+            deliveryMethod = try data.decode(Polaris.Patron.DeliveryMethod.self, forKey: .ID)
             readingList = try ReadingList(from: decoder)
         }
     }
