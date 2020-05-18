@@ -139,6 +139,13 @@ extension PolarisAPI.HoldRequest {
     
     // MARK: - HoldRequestSuspend
     
+    /// Suspend a single hold request.
+    /// - note: PAPI method name: `HoldRequestSuspend`
+    /// - parameter patronBarcode: The barcode of the patron with the hold request.
+    /// - parameter requestID: The ID of the hold request.
+    /// - parameter request: The request object with the activation date and ID of the staff user making the request.
+    /// - parameter completion: The completion handler containing the response from the ILS or an error if the request is not successful.
+    
     public static func suspend(patronBarcode: String, requestID: Int, request: Polaris.HoldRequest.SuspendRequest, completion: @escaping HoldRequestSuspendCompletionHandler) {
         let endpoint = HTTPClient.Endpoint.HoldRequest.suspend(patronBarcode, requestID)
         print("endpoint", endpoint.string)
