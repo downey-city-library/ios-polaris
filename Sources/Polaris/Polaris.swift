@@ -38,4 +38,6 @@ public struct Polaris {
     public struct Item {}
     
     public struct Patron {}
+    
+    public struct RecordSet {}
 }
