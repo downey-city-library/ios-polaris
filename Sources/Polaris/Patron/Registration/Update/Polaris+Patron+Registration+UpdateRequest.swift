@@ -128,17 +128,17 @@ extension Polaris.Patron.Registration {
             // Phones
             if let newPhone1 = newPhone1 {
                 self.phoneVoice1 = newPhone1.number
-                if newPhone1.carrier != .noCarrier { self.phone1CarrierID = newPhone1.carrier.id }
+                if newPhone1.carrier != nil { self.phone1CarrierID = newPhone1.carrier }
             }
             
             if let newPhone2 = newPhone2 {
                 self.phoneVoice2 = newPhone2.number
-                if newPhone2.carrier != .noCarrier { self.phone2CarrierID = newPhone2.carrier.id }
+                if newPhone2.carrier != nil { self.phone2CarrierID = newPhone2.carrier }
             }
             
             if let newPhone3 = newPhone3 {
                 self.phoneVoice3 = newPhone3.number
-                if newPhone3.carrier != .noCarrier { self.phone3CarrierID = newPhone3.carrier.id }
+                if newPhone3.carrier != nil { self.phone3CarrierID = newPhone3.carrier }
             }
             
             // SMS / TXT Messaging
