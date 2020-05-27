@@ -25,7 +25,7 @@ extension Polaris.Patron.BasicDataResponse {
         public private(set) var lastActivityDate: Date?
         public private(set) var messageCounts: MessageCounts
         public private(set) var name: Name
-        public private(set) var phones: Phones
+        public var phones: Phones
         public private(set) var registrationDate: Date?
         
         // MARK: - Coding Keys

@@ -13,28 +13,27 @@ extension Polaris.Patron.BasicDataResponse.BasicData {
     public struct Phone {
         
         // MARK: - Properties
-        public private(set) var carrier: Polaris.Patron.PhoneCarrier
+        public private(set) var carrier: Int?
         public private(set) var number: String?
         
         // MARK: - Initialization
         internal init(number: String?, carrier: Int?) {
-            
-            if let carrier = carrier { self.carrier = Polaris.Patron.PhoneCarrier(rawValue: carrier) ?? .noCarrier }
-            else { self.carrier = .noCarrier }
+
+            self.carrier = carrier
             self.number = number
         }
         
         // MARK: - Public Setters
-//        public func carrier(id: Int?) {
-//            guard let id = id else { return }
-//
-//            _carrier = PhoneCarrier(rawValue: id) ?? .noCarrier
-//        }
+        public mutating func set(carrier ID: Int?) {
+            guard let ID = ID else { return }
+
+            self.carrier = ID
+        }
         
-//        public func number(string: String?) {
-//            guard let string = string else { return }
-//
-//            _number = string
-//        }
+        public mutating func set(number: String?) {
+            guard let number = number else { return }
+
+            self.number = number
+        }
     }
 }

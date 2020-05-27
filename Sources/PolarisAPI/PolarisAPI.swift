@@ -22,18 +22,5 @@ public struct PolarisAPI {
     
     public struct RecordSet {}
     
-    // TODO: HeadingsSearch
-    // TODO: CollectionsGet
-    // TODO: DatesClosed
-    // TODO: LimitFiltersGet
-    // TODO: NotificationUpdate
-    // TODO: OrganizationsGet
-    // TODO: PickupBranchesGet
-    // TODO: PatronCodesGetResult
-    // TODO: ShelfLocationsGet
-    // TODO: RemoteStorageItemsGet
-    // TODO: SAMobilePhoneCarriersGetResult
-    // TODO: SortOptionsGet
-    // TODO: UpdatePickupBranchID
-    // TODO: RequestsUpdateStatus
+    public struct System {}
 }

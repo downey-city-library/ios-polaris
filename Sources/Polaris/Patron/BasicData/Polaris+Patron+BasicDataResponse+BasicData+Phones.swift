@@ -13,10 +13,10 @@ extension Polaris.Patron.BasicDataResponse.BasicData {
     public struct Phones: Decodable {
         
         // MARK: - Properties
-        public private(set) var cell: String?
-        public private(set) var phone1: Phone
-        public private(set) var phone2: Phone
-        public private(set) var phone3: Phone
+        public var cell: String?
+        public var phone1: Phone
+        public var phone2: Phone
+        public var phone3: Phone
         
         // MARK: - Coding Keys
         private enum CodingKeys: String, CodingKey {

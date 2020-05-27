@@ -40,4 +40,6 @@ public struct Polaris {
     public struct Patron {}
     
     public struct RecordSet {}
+    
+    public struct System {}
 }
