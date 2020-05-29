@@ -35,9 +35,9 @@ extension Polaris.Patron.ItemsResponse {
         public private(set) var overdueChargeTransactionID: Int
         public private(set) var displayInPAC: Bool
         public private(set) var electronicItem: Bool
-        public private(set) var vendorName: String
-        public private(set) var vendorAccountName: String
-        public private(set) var vendorObjectIdentifier: Int
+        public private(set) var vendorName: String?
+        public private(set) var vendorAccountName: String?
+        public private(set) var vendorObjectIdentifier: Int?
         public private(set) var ISBN: [String]?
         public private(set) var ISSN: String?
         public private(set) var OCLC: String?
@@ -98,21 +98,21 @@ extension Polaris.Patron.ItemsResponse {
             callNumber = try data.decode(String.self, forKey: .callNumber)
             checkoutDate = try? data.decode(String.self, forKey: .checkoutDate).toDate()
             dueDate = try? data.decode(String.self, forKey: .dueDate).toDate()
-            renewalCount = try data.decode(Int.self, forKey: .renewalCount)
-            renewalLimit = try data.decode(Int.self, forKey: .renewalLimit)
+            renewalCount = try Int(data.decode(String.self, forKey: .renewalCount)) ?? 0
+            renewalLimit = try Int(data.decode(String.self, forKey: .renewalLimit)) ?? 0
             assignedBranchID = try data.decode(Int.self, forKey: .assignedBranchID)
             assignedBranchName = try data.decode(String.self, forKey: .assignedBranchName)
             loaningBranchID = try data.decode(Int.self, forKey: .loaningBranchID)
             loaningBranchName = try data.decode(String.self, forKey: .loaningBranchName)
-            billingNoticeSent = try data.decode(Bool.self, forKey: .billingNoticeSent)
+            billingNoticeSent = try Bool(truncating: data.decode(Int.self, forKey: .billingNoticeSent) as NSNumber)
             replacementChargeTransactionID = try data.decode(Int.self, forKey: .replacementChargeTransactionID)
             processingChargeTransactionID = try data.decode(Int.self, forKey: .processingChargeTransactionID)
             overdueChargeTransactionID = try data.decode(Int.self, forKey: .overdueChargeTransactionID)
-            displayInPAC = try data.decode(Bool.self, forKey: .displayInPAC)
+            displayInPAC = try Bool(truncating: data.decode(Int.self, forKey: .displayInPAC) as NSNumber)
             electronicItem = try data.decode(Bool.self, forKey: .electronicItem)
-            vendorName = try data.decode(String.self, forKey: .vendorName)
-            vendorAccountName = try data.decode(String.self, forKey: .vendorAccountName)
-            vendorObjectIdentifier = try data.decode(Int.self, forKey: .vendorObjectIdentifier)
+            vendorName = try? data.decode(String.self, forKey: .vendorName)
+            vendorAccountName = try? data.decode(String.self, forKey: .vendorAccountName)
+            vendorObjectIdentifier = try? data.decode(Int.self, forKey: .vendorObjectIdentifier)
             ISBN = try? data.decode([String].self, forKey: .ISBN)
             ISSN = try? data.decode(String.self, forKey: .ISSN)
             OCLC = try? data.decode(String.self, forKey: .OCLC)
