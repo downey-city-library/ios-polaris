@@ -31,5 +31,10 @@ extension Polaris.Bib.GetHoldingsResponse.Holding {
             `in` = try? data.decode(Int.self, forKey: .in)
             total = try? data.decode(Int.self, forKey: .total)
         }
+        
+        public init(`in`: Int? = nil, total: Int? = nil) {
+            self.in = `in`
+            self.total = total
+        }
     }
 }

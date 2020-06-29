@@ -34,5 +34,14 @@ extension Polaris.Bib.GetHoldingsResponse.Holding {
             lastCirculated = try? data.decode(String.self, forKey: .lastCirculated).toDate()
             status = try? data.decode(String.self, forKey: .status)
         }
+        
+        public init(
+            dueDate: Date? = nil,
+            lastCirculated: Date? = nil,
+            status: String? = nil) {
+            self.dueDate = dueDate
+            self.lastCirculated = lastCirculated
+            self.status = status
+        }
     }
 }

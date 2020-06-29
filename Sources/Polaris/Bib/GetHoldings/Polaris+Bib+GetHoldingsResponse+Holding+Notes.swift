@@ -34,5 +34,14 @@ extension Polaris.Bib.GetHoldingsResponse.Holding {
             `public` = try? data.decode(String.self, forKey: .public)
             textualHoldings = try? data.decode(String.self, forKey: .textualHoldings)
         }
+        
+        public init(
+            holdings: String? = nil,
+            `public`: String? = nil,
+            textualHoldings: String? = nil) {
+            self.holdings = holdings
+            self.public = `public`
+            self.textualHoldings = textualHoldings
+        }
     }
 }

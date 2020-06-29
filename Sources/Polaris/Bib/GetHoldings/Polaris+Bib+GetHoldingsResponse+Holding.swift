@@ -58,5 +58,34 @@ extension Polaris.Bib.GetHoldingsResponse {
             statements = try Statements(from: decoder)
             volume = try? data.decode(String.self, forKey: .volume)
         }
+        
+        public init(
+            barcode: String? = nil,
+            callNumber: String? = nil,
+            canBeHeld: Bool? = nil,
+            circulation: Polaris.Bib.GetHoldingsResponse.Holding.Circulation,
+            collection: Polaris.Bib.GetHoldingsResponse.Holding.Collection,
+            designation: String? = nil,
+            itemCounts: Polaris.Bib.GetHoldingsResponse.Holding.ItemCounts,
+            location: Polaris.Bib.GetHoldingsResponse.Holding.Location,
+            materialType: String? = nil,
+            notes: Polaris.Bib.GetHoldingsResponse.Holding.Notes,
+            shelfLocation: String? = nil,
+            statements: Polaris.Bib.GetHoldingsResponse.Holding.Statements,
+            volume: String? = nil) {
+            self.barcode = barcode
+            self.callNumber = callNumber
+            self.canBeHeld = canBeHeld
+            self.circulation = circulation
+            self.collection = collection
+            self.designation = designation
+            self.itemCounts = itemCounts
+            self.location = location
+            self.materialType = materialType
+            self.notes = notes
+            self.shelfLocation = shelfLocation
+            self.statements = statements
+            self.volume = volume
+        }
     }
 }
