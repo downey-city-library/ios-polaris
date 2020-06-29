@@ -211,5 +211,107 @@ extension Polaris.HoldRequest.GetListResponse {
             sortTitle = try? data.decode(String.self, forKey: .sortTitle)
             sortAuthor = try? data.decode(String.self, forKey: .sortAuthor)
         }
+        
+        public init(requestID: Int,
+                    statusID: Int,
+                    status: String,
+                    pickupBranchID: Int,
+                    pickupBranch: String,
+                    activationDate: Date? = nil,
+                    expirationDate: Date? = nil,
+                    statusDate: Date? = nil,
+                    bibID: Int,
+                    constituentBibID: Int,
+                    browseAuthor: String? = nil,
+                    browseTitle: String,
+                    tomID: Int,
+                    tom: String,
+                    isItemLevelHold: Bool,
+                    isBorrowByMail: Bool,
+                    patronID: Int,
+                    patronBarcode: String,
+                    patronBranchID: Int,
+                    patronBranch: String,
+                    patronFullName: String,
+                    patronCodeID: Int,
+                    patronCode: String,
+                    emailAddress: String? = nil,
+                    altEmailAddress: String? = nil,
+                    phoneVoice1: String? = nil,
+                    smsAddress: String? = nil,
+                    itemRecordID: Int,
+                    itemBarcode: String? = nil,
+                    itemBranchID: Int,
+                    itemBranch: String? = nil,
+                    callNumber: String? = nil,
+                    copyNumber: String? = nil,
+                    volumeNumber: String? = nil,
+                    pages: String? = nil,
+                    assignedCollectionID: Int,
+                    collectionName: String? = nil,
+                    materialTypeID: Int,
+                    materialType: String? = nil,
+                    shelfLocationID: Int,
+                    shelfLocation: String? = nil,
+                    publicationYear: Int,
+                    publisher: String? = nil,
+                    designation: String? = nil,
+                    edition: String? = nil,
+                    staffDisplayNotes: String? = nil,
+                    nonPublicNotes: String? = nil,
+                    PACDisplayNotes: String? = nil,
+                    sortTitle: String? = nil,
+                    sortAuthor: String? = nil) {
+            self.requestID = requestID
+            self.statusID = statusID
+            self.status = status
+            self.pickupBranchID = pickupBranchID
+            self.pickupBranch = pickupBranch
+            self.activationDate = activationDate
+            self.expirationDate = expirationDate
+            self.statusDate = statusDate
+            self.bibID = bibID
+            self.constituentBibID = constituentBibID
+            self.browseAuthor = browseAuthor
+            self.browseTitle = browseTitle
+            self.tomID = tomID
+            self.tom = tom
+            self.isItemLevelHold = isItemLevelHold
+            self.isBorrowByMail = isBorrowByMail
+            self.patronID = patronID
+            self.patronBarcode = patronBarcode
+            self.patronBranchID = patronBranchID
+            self.patronBranch = patronBranch
+            self.patronFullName = patronFullName
+            self.patronCodeID = patronCodeID
+            self.patronCode = patronCode
+            self.emailAddress = emailAddress
+            self.altEmailAddress = altEmailAddress
+            self.phoneVoice1 = phoneVoice1
+            self.smsAddress = smsAddress
+            self.itemRecordID = itemRecordID
+            self.itemBarcode = itemBarcode
+            self.itemBranchID = itemBranchID
+            self.itemBranch = itemBranch
+            self.callNumber = callNumber
+            self.copyNumber = copyNumber
+            self.volumeNumber = volumeNumber
+            self.pages = pages
+            self.assignedCollectionID = assignedCollectionID
+            self.collectionName = collectionName
+            self.materialTypeID = materialTypeID
+            self.materialType = materialType
+            self.shelfLocationID = shelfLocationID
+            self.shelfLocation = shelfLocation
+            self.publicationYear = publicationYear
+            self.publisher = publisher
+            self.designation = designation
+            self.edition = edition
+            self.staffDisplayNotes = staffDisplayNotes
+            self.nonPublicNotes = nonPublicNotes
+            self.PACDisplayNotes = PACDisplayNotes
+            self.sortTitle = sortTitle
+            self.sortAuthor = sortAuthor
+        }
     }
 }
