@@ -34,5 +34,11 @@ extension Polaris.Patron.Blocks.CirculationResponse {
             last = try data.decode(String.self, forKey: .last)
             middle = try? data.decode(String.self, forKey: .middle)
         }
+        
+        public init(first: String, last: String, middle: String? = nil) {
+            self.first = first
+            self.last = last
+            self.middle = middle
+        }
     }
 }

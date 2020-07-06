@@ -68,5 +68,36 @@ extension Polaris.Patron.Blocks {
             patronCode = try data.decode(Int.self, forKey: .patronCode)
             patronId = try data.decode(Int.self, forKey: .patronId)
         }
+        
+        public init(
+            error: PolarisError? = nil,
+            assignedBranchId: Int,
+            assignedBranchName: String,
+            barcode: String,
+            blocks: [Polaris.Patron.Blocks.CirculationResponse.Block],
+            canCirculate: Bool,
+            emailAddress: String? = nil,
+            expirationDate: Date? = nil,
+            isValid: Bool,
+            name: Polaris.Patron.Blocks.CirculationResponse.Name,
+            overridePasswordUsed: Bool,
+            patronBarcode: String,
+            patronCode: Int,
+            patronId: Int) {
+            self.error = error
+            self.assignedBranchId = assignedBranchId
+            self.assignedBranchName = assignedBranchName
+            self.barcode = barcode
+            self.blocks = blocks
+            self.canCirculate = canCirculate
+            self.emailAddress = emailAddress
+            self.expirationDate = expirationDate
+            self.isValid = isValid
+            self.name = name
+            self.overridePasswordUsed = overridePasswordUsed
+            self.patronBarcode = patronBarcode
+            self.patronCode = patronCode
+            self.patronId = patronId
+        }
     }
 }

@@ -34,5 +34,11 @@ extension Polaris.Patron.Blocks.CirculationResponse {
             patronId = try data.decode(Int.self, forKey: .patronId)
             patronName = try data.decode(String.self, forKey: .patronName)
         }
+        
+        public init(description: String, patronId: Int, patronName: String) {
+            self.description = description
+            self.patronId = patronId
+            self.patronName = patronName
+        }
     }
 }
