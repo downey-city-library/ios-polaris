@@ -101,9 +101,12 @@ extension Polaris.Patron.Registration {
             patronBranchID: Int,
             password: String? = nil,
             newBorrowerType: Int? = nil,
-            newPhone1: Phone? = nil,
-            newPhone2: Phone? = nil,
-            newPhone3: Phone? = nil,
+            phoneVoice1: String? = nil,
+            phoneVoice2: String? = nil,
+            phoneVoice3: String? = nil,
+            phoneCarrier1: Int? = nil,
+            phoneCarrier2: Int? = nil,
+            phoneCarrier3: Int? = nil,
             newEmail1: String? = nil,
             newEmail2: String? = nil,
             emailFormat: EmailFormat? = nil,
@@ -126,20 +129,29 @@ extension Polaris.Patron.Registration {
             if let password = password { self.password = password }
             
             // Phones
-            if let newPhone1 = newPhone1 {
-                self.phoneVoice1 = newPhone1.number
-                if newPhone1.carrier != nil { self.phone1CarrierID = newPhone1.carrier }
-            }
+            if let phoneVoice1 = phoneVoice1 { self.phoneVoice1 = phoneVoice1 }
+            if let phoneVoice2 = phoneVoice2 { self.phoneVoice2 = phoneVoice2 }
+            if let phoneVoice3 = phoneVoice3 { self.phoneVoice3 = phoneVoice3 }
             
-            if let newPhone2 = newPhone2 {
-                self.phoneVoice2 = newPhone2.number
-                if newPhone2.carrier != nil { self.phone2CarrierID = newPhone2.carrier }
-            }
+            // Carriers
+            if let phoneCarrier1 = phoneCarrier1 { self.phone1CarrierID = phoneCarrier1 }
+            if let phoneCarrier2 = phoneCarrier2 { self.phone2CarrierID = phoneCarrier2 }
+            if let phoneCarrier3 = phoneCarrier3 { self.phone3CarrierID = phoneCarrier3 }
             
-            if let newPhone3 = newPhone3 {
-                self.phoneVoice3 = newPhone3.number
-                if newPhone3.carrier != nil { self.phone3CarrierID = newPhone3.carrier }
-            }
+//            if let newPhone1 = newPhone1 {
+//                self.phoneVoice1 = newPhone1.number
+//                if newPhone1.carrier != nil { self.phone1CarrierID = newPhone1.carrier }
+//            }
+//
+//            if let newPhone2 = newPhone2 {
+//                self.phoneVoice2 = newPhone2.number
+//                if newPhone2.carrier != nil { self.phone2CarrierID = newPhone2.carrier }
+//            }
+//
+//            if let newPhone3 = newPhone3 {
+//                self.phoneVoice3 = newPhone3.number
+//                if newPhone3.carrier != nil { self.phone3CarrierID = newPhone3.carrier }
+//            }
             
             // SMS / TXT Messaging
             if let enableSMS = enableSMS {

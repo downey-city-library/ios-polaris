@@ -49,5 +49,15 @@ extension Polaris.Patron.BasicDataResponse.BasicData {
             phone2 = Phone(number: number2, carrier: carrier2)
             phone3 = Phone(number: number3, carrier: carrier3)
         }
+        
+        // MARK: - Public Setters
+        public mutating func set(phone id: Int? = nil, toNumber number: String?) {
+            
+            switch id {
+            case 2: self.phone2 = Phone(number: number, carrier: phone2.carrier)
+            case 3: self.phone3 = Phone(number: number, carrier: phone3.carrier)
+            default: self.phone1 = Phone(number: number, carrier: phone1.carrier)
+            }
+        }
     }
 }
