@@ -21,7 +21,7 @@ extension Polaris.Patron.BasicDataResponse {
         public var emails: Emails
         public private(set) var holdRequestCounts: HoldRequestCounts
         public private(set) var id: Int?
-        public private(set) var itemCounts: ItemCounts
+        public var itemCounts: ItemCounts
         public private(set) var lastActivityDate: Date?
         public private(set) var messageCounts: MessageCounts
         public private(set) var name: Name
