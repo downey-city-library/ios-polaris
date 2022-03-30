@@ -34,6 +34,7 @@ extension PolarisAPI.Patron.Registration {
         let body = request
         
         HTTPClient.taskForPOSTRequest(url: endpoint.url, body: body, response: Polaris.Patron.Registration.CreateResponse.self) { (response, error) in
+            print("error", error)
             DispatchQueue.main.async { completion(response) }
         }
     }
