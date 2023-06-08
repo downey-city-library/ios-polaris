@@ -27,8 +27,8 @@ public struct Polaris {
     
     public struct Authenticate {
         
-        public typealias AuthenticatedPatron = PatronResponse
-        public typealias AuthenticatedStaffUser = StaffResponse
+        public typealias AuthenticatedPatron = AuthenticatePatronResponse
+        public typealias AuthenticatedStaffUser = AuthenticateStaffResponse
     }
     
     public struct Bib {}

@@ -23,6 +23,7 @@ public enum PolarisError: Int, Error {
     case invalidItemID = -2000
     case invalidItemBarcode = -2001
     case duplicateItemBarcode = -2002
+    case itemOut = -2003
     
     // MARK: - Patron Errors
     case failedToInsertAddress = -201
@@ -147,10 +148,10 @@ public enum PolarisError: Int, Error {
     // MARK: - Properties
     public var _code: Int { return self.rawValue }
     public var localizedDescription: String {
-        return NSLocalizedString("\(PolarisError.self)_\(self)", tableName: nil, bundle: Bundle.main, value: self.description, comment: "")
+        return NSLocalizedString("\(PolarisError.self)_\(self)", tableName: nil, bundle: Bundle.main, value: self.message, comment: "")
     }
     
-    fileprivate var description: String {
+    public var message: String {
         switch self {
         // General Errors
         case .generalError: return "FAILURE - General."
@@ -165,6 +166,7 @@ public enum PolarisError: Int, Error {
         case .invalidItemID: return "Invalid item record ID specified."
         case .invalidItemBarcode: return "Invalid item barcode specified."
         case .duplicateItemBarcode: return "Duplicate item barcode specified."
+        case .itemOut: return "Item has a circulation status of Out."
             
         // Patron Errors
         case .failedToInsertAddress: return "Failed to insert entry in addresses table."
