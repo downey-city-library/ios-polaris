@@ -1,25 +1,17 @@
-//
-//  Polaris+Bib+GetResponse+Titles.swift
-//  Polaris
-//
-//  Created by Andrew Despres on 4/27/20.
-//  Copyright © 2020 Downey City Library. All rights reserved.
-//
-
 import Foundation
 
-extension Polaris.Bib.GetResponse {
+extension Polaris.Bib.BibGetResponse {
     
     public struct Titles {
         
-        // MARK: - Properties
+        // MARK: - PROPERTIES
         public private(set) var added: [String] = []
         public private(set) var uniform: String?
         public private(set) var main: String?
         public private(set) var former: String?
         public private(set) var later: String?
         
-        // MARK: - Setters
+        // MARK: - SETTERS
         mutating func setAdded(to value: String) {
             added.append(value)
         }

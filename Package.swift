@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "Polaris",
     platforms: [
-        .iOS(.v11),
+        .iOS("15.0"),
         .macOS("12.0")
     ],
     products: [

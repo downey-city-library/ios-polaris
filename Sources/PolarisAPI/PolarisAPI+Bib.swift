@@ -1,95 +1,119 @@
-//
-//  PolarisAPI+Bib.swift
-//  Polaris
-//
-//  Created by Andrew Despres on 4/26/20.
-//  Copyright © 2020 Downey City Library. All rights reserved.
-//
-
 import Foundation
 
 extension PolarisAPI.Bib {
     
-    // MARK: - Typealiases
-    
-    /// A completion handler indicating that the API call to`BibBooleanSearch` is completed.
-    /// - parameter response: A response object containing a list of bibliographic records matching the search criteria. If there was an issue with the request, the response will include an error describing the failure.
-    
-    public typealias BibBooleanSearchCompletionHandler = (_ response: Polaris.Bib.BooleanSearchResponse?) -> Void
-    
-    /// A completion handler indicating that the API call to `BibGet` is completed.
-    /// - parameter response: A response object containing bibliographic data for the specified record ID. If there was an issue with the request, the response will include an error describing the failure.
-    
-    public typealias BibGetCompletionHandler = (_ response: Polaris.Bib.GetResponse?) -> Void
-    
-    /// A completion handler indicating that the API call to`BibHoldingsGet` is completed.
-    /// - parameter response: A response object containing holdings data for the specified bibliographic record ID. If there was an issue with the request, the response will include an error describing the failure.
-    
-    public typealias BibHoldingsGetCompletionHandler = (_ response: Polaris.Bib.GetHoldingsResponse?) -> Void
-    
-    /// A completion handler indicating that the API call to`BibKeywordSearch` is completed.
-    /// - parameter response: A response object containing a list of bibliographic records matching the search criteria. If there was an issue with the request, the response will include an error describing the failure.
-    
-    public typealias BibKeywordSearchCompletionHandler = (_ response: Polaris.Bib.KeywordSearchResponse?) -> Void
+    // MARK: - TYPEALIASES
+    public typealias Qualifier = Polaris.Qualifier
+    public typealias SortBy = Polaris.SortBy
     
     // MARK: - BibBooleanSearch
     
-    /// Returns list of bibliographic records that match the search criteria.
-    /// - note: PAPI method name: `BibBooleanSearch`
+    /// Returns a list of bibliographic records that match search criteria. For Boolean searches,
+    /// you may opt to include the SORTBY clause when using the q query string parameter.
+    /// This returns search results that are sorted in the specified sort order.
+    /// - note: PAPI Method Name: `BibBooleanSearch`
     /// - parameter query: The terms used to conduct the keyword search.
     /// - parameter sortby: Determines how the results will be sorted.
+    /// - parameter resultsPerPage: Determines how many results are returned per page. Default is 10.
     /// - parameter page: The page of results to be returned. Default is 1.
-    /// - parameter completion: The completion handler containting a list of bibliographic records matching the search criteria or an error if the request is not successful.
+    /// - parameter limit: Partial CCL command. Use LimitFiltersGet for valid options.
+    /// - parameter omitFromTransactionLog: Do not record search transaction in the Polaris Transactions database.
     
-    public static func booleanSearch(query: String, sortby: Polaris.Bib.BooleanSearchResponse.SortBy, page: Int = 1 , completion: @escaping BibBooleanSearchCompletionHandler) {
-        let endpoint = HTTPClient.Endpoint.Bib.booleanSearch(query, sortby, page)
-        print(endpoint.string)
-        HTTPClient.taskForGETRequest(url: endpoint.url, response: Polaris.Bib.BooleanSearchResponse.self) { (response, error) in
-            DispatchQueue.main.async { completion(response) }
-        }
+    public static func booleanSearch(
+        query: String,
+        sortby: SortBy?,
+        resultsPerPage: Int?,
+        page: Int?,
+        limit: String?,
+        omitFromTransactionLog: Bool?
+    ) async throws -> [Polaris.Bib.BibBooleanSearchResponse.Bib] {
+        let endpoint = HTTPClient.Endpoint.Bib.booleanSearch(
+            query: query,
+            sortby: sortby,
+            resultsPerPage: resultsPerPage,
+            page: page,
+            limit: limit,
+            omitFromTransactionLog: omitFromTransactionLog
+        )
+        return try await PolarisAPI.performRequest(
+            endpoint: endpoint,
+            responseType: Polaris.Bib.BibBooleanSearchResponse.self,
+            authorization: true
+        ).bibs
     }
     
     // MARK: - BibGet
     
     /// Returns bibliographic information for a specified record.
-    /// - note: PAPI method name: `BibGet`
-    /// - parameter ID: The bibliographic ID number.
-    /// - parameter completion: The completion handler containing the bibliographic information or an error if the request is not successful.
-    
-    public static func get(byID ID: Int, completion: @escaping BibGetCompletionHandler) {
-        let endpoint = HTTPClient.Endpoint.Bib.get(ID)
-        HTTPClient.taskForGETRequest(url: endpoint.url, response: Polaris.Bib.GetResponse.self) { (response, error) in
-            DispatchQueue.main.async { completion(response) }
-        }
+    /// - note: PAPI Method Name: `BibGet`
+    /// - parameter id: The bibliographic ID number.
+  
+    public static func get(
+        bibID id: Int
+    ) async throws -> Polaris.Bib.BibGetResponse {
+        let endpoint = HTTPClient.Endpoint.Bib.get(
+            id: id
+        )
+        return try await PolarisAPI.performRequest(
+            endpoint: endpoint,
+            responseType: Polaris.Bib.BibGetResponse.self,
+            authorization: true
+        )
     }
         
     // MARK: - BibHoldingsGet
     
     /// Returns the holdings for a specified bibliographic record.
-    /// - note: PAPI method name: `BibHoldingsGet`
-    /// - parameter ID: The bibliographic ID number.
-    /// - parameter completion: The completion handler containting the holdings information or an error if the request is not successful.
+    /// - note: PAPI Method Name: `BibHoldingsGet`
+    /// - parameter id: The bibliographic ID number.
     
-    public static func getHoldings(forBib ID: Int, completion: @escaping BibHoldingsGetCompletionHandler) {
-        let endpoint = HTTPClient.Endpoint.Bib.getHoldings(ID)
-        HTTPClient.taskForGETRequest(url: endpoint.url, response: Polaris.Bib.GetHoldingsResponse.self) { (response, error) in
-            DispatchQueue.main.async { completion(response) }
-        }
+    public static func holdings(
+        bibID id: Int
+    ) async throws -> [Polaris.Bib.BibHoldingsGetResponse.Holding] {
+        let endpoint = HTTPClient.Endpoint.Bib.holdings(
+            id: id
+        )
+        return try await PolarisAPI.performRequest(
+            endpoint: endpoint,
+            responseType: Polaris.Bib.BibHoldingsGetResponse.self,
+            authorization: true
+        ).holdings
     }
     
     // MARK: - BibKeywordSearch
     
     /// Returns list of bibliographic records that match the search criteria.
-    /// - note: PAPI method name: `BibKeywordSearch`
+    /// - note: PAPI Method Name: `BibKeywordSearch`
     /// - parameter qualifier: The index referenced in the search.
     /// - parameter query: The terms used to conduct the keyword search.
-    /// - parameter completion: The completion handler containting a list of bibliographic records matching the search criteria or an error if the request is not successful.
-    
-    public static func keywordSearch(qualifier: Polaris.Bib.KeywordSearchResponse.Qualifier, query: String, completion: @escaping BibKeywordSearchCompletionHandler) {
-        let endpoint = HTTPClient.Endpoint.Bib.keywordSearch(qualifier, query)
-        HTTPClient.taskForGETRequest(url: endpoint.url, response: Polaris.Bib.KeywordSearchResponse.self) { (response, error) in
-            DispatchQueue.main.async { completion(response) }
-        }
-    }
+    /// - parameter sortby: Determines how the results will be sorted.
+    /// - parameter resultsPerPage: Determines how many results are returned per page. Default is 10.
+    /// - parameter page: The page of results to be returned. Default is 1.
+    /// - parameter limit: Partial CCL command. Use LimitFiltersGet for valid options.
+    /// - parameter omitFromTransactionLog: Do not record search transaction in the Polaris Transactions database.
 
+    public static func keywordSearch(
+        qualifier: Polaris.Qualifier,
+        query: String,
+        sortby: SortBy?,
+        resultsPerPage: Int?,
+        page: Int?,
+        limit: String?,
+        omitFromTransactionLog: Bool?
+    ) async throws -> [Polaris.Bib.BibKeywordSearchResponse.Bib] {
+        let endpoint = HTTPClient.Endpoint.Bib.keywordSearch(
+            qualifier: qualifier,
+            query: query,
+            sortby: sortby,
+            resultsPerPage: resultsPerPage,
+            page: page,
+            limit: limit,
+            omitFromTransactionLog: omitFromTransactionLog
+        )
+        return try await PolarisAPI.performRequest(
+            endpoint: endpoint,
+            responseType: Polaris.Bib.BibKeywordSearchResponse.self,
+            authorization: false
+        ).bibs
+    }
 }

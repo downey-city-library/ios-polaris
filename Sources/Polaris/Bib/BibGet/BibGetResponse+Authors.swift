@@ -1,44 +1,36 @@
-//
-//  Polaris+Bib+GetResponse+Authors.swift
-//  Polaris
-//
-//  Created by Andrew Despres on 4/27/20.
-//  Copyright © 2020 Downey City Library. All rights reserved.
-//
-
 import Foundation
 
-extension Polaris.Bib.GetResponse {
+extension Polaris.Bib.BibGetResponse {
     
     public struct Authors {
         
-        // MARK: - Properties
+        // MARK: - PROPERTIES
         public private(set) var added: [Author] = []
         public private(set) var main: Author?
         
-        // MARK: - Setters
+        // MARK: - SETTERS
         mutating func setAdded(to value: String) { added.append(Author(value)) }
         mutating func setMain(to value: String) { main = Author(value) }
     }
 }
 
-extension Polaris.Bib.GetResponse.Authors {
+extension Polaris.Bib.BibGetResponse.Authors {
     
     public struct Author {
         
-        // MARK: - Properties
+        // MARK: - PROPERTIES
         public private(set) var birth: String?
         public private(set) var death: String?
         public private(set) var name: Name
         
-        // MARK: - Initialization
+        // MARK: - INITIALIZATION
         public init(_ author: String?) {
             name = Name()
             
             guard let author = author else { return }
             
             let parts = components(of: author)
-//            print("parts:", parts)
+            print("parts:", parts)
             
             let commas = parts.count - 1
 
@@ -82,23 +74,23 @@ extension Polaris.Bib.GetResponse.Authors {
             }
         }
         
-        // MARK: - Private Methods
+        // MARK: - PRIVATE METHODS
         private func components(of string: String) -> [String] {
             let components = string.components(separatedBy: ",")
             var cleanedComponents: [String] = []
-            
+
             for element in components {
                 var text = element
-                
+
                 if (text.filter { $0 == "(" }.count) >= 1 {
                     if let index = text.firstIndex(of: "(") {
                         let substring = text[..<index]
                         text = String(substring)
                     }
                 }
-                
+
                 text = text.trimmingCharacters(in: .whitespacesAndNewlines)
-                
+
                 if (text.filter { $0 == "." }.count) < 2 {
                     text = text.trimmingCharacters(in: ["."])
                 }
@@ -106,7 +98,7 @@ extension Polaris.Bib.GetResponse.Authors {
                     cleanedComponents.append(text)
                 }
             }
-            
+
             return cleanedComponents
         }
         
@@ -117,17 +109,17 @@ extension Polaris.Bib.GetResponse.Authors {
     }
 }
 
-extension Polaris.Bib.GetResponse.Authors.Author {
+extension Polaris.Bib.BibGetResponse.Authors.Author {
     
     public struct Name {
         
-        // MARK: - Properties
+        // MARK: - PROPERTIES
         public private(set) var first: String?
         public private(set) var full: String?
         public private(set) var last: String?
         public private(set) var lastFirst: String?
         
-        // MARK: - Setters
+        // MARK: - SETTERS
         mutating func setFirst(to value: String) {
             first = trim(value)
         }
@@ -152,7 +144,7 @@ extension Polaris.Bib.GetResponse.Authors.Author {
             } else { lastFirst = first }
         }
         
-        // MARK: - Private Methods
+        // MARK: - PRIVATE METHODS
         private func trim(_ string: String) -> String {
             return string.trimmingCharacters(in: .whitespacesAndNewlines).trimmingCharacters(in: .punctuationCharacters)
         }

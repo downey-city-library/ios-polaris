@@ -1,18 +1,10 @@
-//
-//  Polaris+Bib+BooleanSearchResponse+Bib.swift
-//  Polaris
-//
-//  Created by Andrew Despres on 4/15/20.
-//  Copyright © 2020 Downey City Library. All rights reserved.
-//
-
 import Foundation
 
-extension Polaris.Bib.BooleanSearchResponse {
+extension Polaris.Bib.BibBooleanSearchResponse {
     
     public struct Bib: Decodable {
         
-        // MARK: - Properties
+        // MARK: - PROPERTIES
         public private(set) var author: String?
         public private(set) var callNumber: String?
         public private(set) var controlNumber: String
@@ -51,9 +43,8 @@ extension Polaris.Bib.BooleanSearchResponse {
         public private(set) var vernacularTitle: String?
         public private(set) var webLink: String?
         
-        // MARK: - Coding Keys
+        // MARK: - CODING KEYS
         private enum CodingKeys: String, CodingKey {
-            
             case author = "Author"
             case callNumber = "CallNumber"
             case controlNumber = "ControlNumber"
@@ -93,48 +84,47 @@ extension Polaris.Bib.BooleanSearchResponse {
             case webLink = "WebLink"
         }
         
-        // MARK: - Initialization
+        // MARK: - INTIALIZATION
         public init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
             
-            let data = try decoder.container(keyedBy: CodingKeys.self)
-            
-            author = try? data.decode(String.self, forKey: .author)
-            callNumber = try? data.decode(String.self, forKey: .callNumber)
-            controlNumber = try data.decode(String.self, forKey: .controlNumber)
-            courseReserveCount = try data.decode(Int.self, forKey: .courseReserveCount)
-            currentHoldRequests = try data.decode(Int.self, forKey: .currentHoldRequests)
-            description = try? data.decode(String.self, forKey: .description)
-            edition = try? data.decode(String.self, forKey: .edition)
-            fiction = try? data.decode(String.self, forKey: .fiction)
-            holdingsNote = try? data.decode(String.self, forKey: .holdingsNote)
-            holdingsStatement = try? data.decode(String.self, forKey: .holdingsStatement)
-            isbn = try? data.decode(String.self, forKey: .isbn)
-            kwic = try? data.decode(String.self, forKey: .kwic)
-            localControlNumber = try? data.decode(String.self, forKey: .localControlNumber)
-            localItemsIn = try data.decode(Int.self, forKey: .localItemsIn)
-            localItemsTotal = try data.decode(Int.self, forKey: .localItemsTotal)
-            medium = try? data.decode(String.self, forKey: .medium)
-            oclc = try? data.decode(String.self, forKey: .oclc)
-            position = try data.decode(Int.self, forKey: .position)
-            primaryTypeOfMaterial = try data.decode(Int.self, forKey: .primaryTypeOfMaterial)
-            publicationDate = try? data.decode(String.self, forKey: .publicationDate)
-            publisher = try? data.decode(String.self, forKey: .publisher)
-            retentionStatement = try? data.decode(String.self, forKey: .retentionStatement)
-            series = try? data.decode(String.self, forKey: .series)
-            seriesSuggestedQuery = try? data.decode(String.self, forKey: .seriesSuggestedQuery)
-            summary = try? data.decode(String.self, forKey: .summary)
-            systemItemsIn = try data.decode(Int.self, forKey: .systemItemsIn)
-            systemItemsTotal = try data.decode(Int.self, forKey: .systemItemsTotal)
-            targetAudience = try? data.decode(String.self, forKey: .targetAudience)
-            thumbnailLink = try? data.decode(String.self, forKey: .thumbnailLink)
-            title = try data.decode(String.self, forKey: .title)
-            typeOfMaterial = try? data.decode(String.self, forKey: .typeOfMaterial)
-            upc = try? data.decode(String.self, forKey: .upc)
-            vernacularAuthor = try? data.decode(String.self, forKey: .vernacularAuthor)
-            vernacularPublisher = try? data.decode(String.self, forKey: .vernacularPublisher)
-            vernacularSeries = try? data.decode(String.self, forKey: .vernacularSeries)
-            vernacularTitle = try? data.decode(String.self, forKey: .vernacularTitle)
-            webLink = try? data.decode(String.self, forKey: .webLink)
+            author = try container.decodeIfPresent(String.self, forKey: .author)
+            callNumber = try container.decodeIfPresent(String.self, forKey: .callNumber)
+            controlNumber = try container.decode(String.self, forKey: .controlNumber)
+            courseReserveCount = try container.decode(Int.self, forKey: .courseReserveCount)
+            currentHoldRequests = try container.decode(Int.self, forKey: .currentHoldRequests)
+            description = try container.decodeIfPresent(String.self, forKey: .description)
+            edition = try container.decodeIfPresent(String.self, forKey: .edition)
+            fiction = try container.decodeIfPresent(String.self, forKey: .fiction)
+            holdingsNote = try container.decodeIfPresent(String.self, forKey: .holdingsNote)
+            holdingsStatement = try container.decodeIfPresent(String.self, forKey: .holdingsStatement)
+            isbn = try container.decodeIfPresent(String.self, forKey: .isbn)
+            kwic = try container.decodeIfPresent(String.self, forKey: .kwic)
+            localControlNumber = try container.decodeIfPresent(String.self, forKey: .localControlNumber)
+            localItemsIn = try container.decode(Int.self, forKey: .localItemsIn)
+            localItemsTotal = try container.decode(Int.self, forKey: .localItemsTotal)
+            medium = try container.decodeIfPresent(String.self, forKey: .medium)
+            oclc = try container.decodeIfPresent(String.self, forKey: .oclc)
+            position = try container.decode(Int.self, forKey: .position)
+            primaryTypeOfMaterial = try container.decode(Int.self, forKey: .primaryTypeOfMaterial)
+            publicationDate = try container.decodeIfPresent(String.self, forKey: .publicationDate)
+            publisher = try container.decodeIfPresent(String.self, forKey: .publisher)
+            retentionStatement = try container.decodeIfPresent(String.self, forKey: .retentionStatement)
+            series = try container.decodeIfPresent(String.self, forKey: .series)
+            seriesSuggestedQuery = try container.decodeIfPresent(String.self, forKey: .seriesSuggestedQuery)
+            summary = try container.decodeIfPresent(String.self, forKey: .summary)
+            systemItemsIn = try container.decode(Int.self, forKey: .systemItemsIn)
+            systemItemsTotal = try container.decode(Int.self, forKey: .systemItemsTotal)
+            targetAudience = try container.decodeIfPresent(String.self, forKey: .targetAudience)
+            thumbnailLink = try container.decodeIfPresent(String.self, forKey: .thumbnailLink)
+            title = try container.decode(String.self, forKey: .title)
+            typeOfMaterial = try container.decodeIfPresent(String.self, forKey: .typeOfMaterial)
+            upc = try container.decodeIfPresent(String.self, forKey: .upc)
+            vernacularAuthor = try container.decodeIfPresent(String.self, forKey: .vernacularAuthor)
+            vernacularPublisher = try container.decodeIfPresent(String.self, forKey: .vernacularPublisher)
+            vernacularSeries = try container.decodeIfPresent(String.self, forKey: .vernacularSeries)
+            vernacularTitle = try container.decodeIfPresent(String.self, forKey: .vernacularTitle)
+            webLink = try container.decodeIfPresent(String.self, forKey: .webLink)
         }
     }
 }

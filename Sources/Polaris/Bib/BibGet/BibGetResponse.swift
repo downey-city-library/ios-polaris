@@ -1,20 +1,11 @@
-//
-//  Polaris+Bib+GetResponse.swift
-//  Polaris
-//
-//  Created by Andrew Despres on 4/26/20.
-//  Copyright © 2020 Downey City Library. All rights reserved.
-//
-
 import Foundation
 
 extension Polaris.Bib {
     
-    public struct GetResponse: Decodable {
+    public struct BibGetResponse: PolarisResponse, Decodable {
         
-        // MARK: - Properties
+        // MARK: - PROPERTIES
         public private(set) var error: PolarisError?
-        
         public private(set) var publisher: Publisher
         public private(set) var description: String?
         public private(set) var edition: String?
@@ -44,17 +35,16 @@ extension Polaris.Bib {
         public private(set) var targetAudience: String?
         public private(set) var medium: String?
         
-        // MARK: - Coding Keys
+        // MARK: - CODING KEYS
         private enum CodingKeys: String, CodingKey {
-            
             case rows = "BibGetRows"
             case errorCode = "PAPIErrorCode"
         }
         
-        // MARK: - Initialization
+        // MARK: - INITIALIZATION
         public init(from decoder: Decoder) throws {
-            let data = try decoder.container(keyedBy: CodingKeys.self)
-            let errorCode = try data.decode(Int.self, forKey: .errorCode)
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            let errorCode = try container.decode(Int.self, forKey: .errorCode)
             
             error = errorCode == 0 ? nil : PolarisError(rawValue: errorCode)
             
@@ -63,7 +53,7 @@ extension Polaris.Bib {
             publisher = Publisher()
             titles = Titles()
             
-            if let rows = try? data.decode([Row].self, forKey: .rows) {
+            if let rows = try? container.decode([Row].self, forKey: .rows) {
                 for row in rows {
                     switch row.elementID {
                     case 2: publisher.setName(to: row.value)
@@ -103,7 +93,6 @@ extension Polaris.Bib {
                     case 43: CODEN = row.value
                     case 44: targetAudience = row.value
                     case 46: medium = row.value
-                        
                     default: break
                     }
                 }

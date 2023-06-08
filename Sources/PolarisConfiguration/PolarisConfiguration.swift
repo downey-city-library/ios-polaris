@@ -1,11 +1,3 @@
-//
-//  PolarisConfiguration.swift
-//  Polaris
-//
-//  Created by Andrew Despres on 3/13/19.
-//  Copyright © 2019 Downey City Library. All rights reserved.
-//
-
 import Foundation
 
 public class PolarisConfiguration {
@@ -27,6 +19,7 @@ public class PolarisConfiguration {
         internal var domain = ""
         internal var password = ""
         internal var username = ""
+        internal var workstation = -1
     }
     
     internal struct URL {
@@ -45,6 +38,7 @@ public class PolarisConfiguration {
         print("-- Domain:", shared.staffUser.domain)
         print("-- Username:", shared.staffUser.username)
         print("-- Password:", shared.staffUser.password)
+        print("-- Workstation:", shared.staffUser.workstation)
         
         print("\nURLs:")
         print("-- Protected:", shared.url.protected)
@@ -71,6 +65,7 @@ public class PolarisConfiguration {
         self.staffUser.domain = plistContents.object(forKey: "DOMAIN") as? String ?? ""
         self.staffUser.password = plistContents.object(forKey: "PASSWORD") as? String ?? ""
         self.staffUser.username = plistContents.object(forKey: "USERNAME") as? String ?? ""
+        self.staffUser.workstation = plistContents.object(forKey: "WORKSTATION") as? Int ?? -1
         self.url.protected = plistContents.object(forKey: "URL_PROTECTED") as? String ?? ""
         self.url.public = plistContents.object(forKey: "URL_PUBLIC") as? String ?? ""
     }

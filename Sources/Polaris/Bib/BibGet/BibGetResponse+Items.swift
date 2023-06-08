@@ -1,32 +1,24 @@
-//
-//  Polaris+Bib+GetResponse+Items.swift
-//  Polaris
-//
-//  Created by Andrew Despres on 4/27/20.
-//  Copyright © 2020 Downey City Library. All rights reserved.
-//
-
 import Foundation
 
-extension Polaris.Bib.GetResponse {
+extension Polaris.Bib.BibGetResponse {
     
     public struct Items {
         
-        // MARK: - Properties
+        // MARK: - PROPERTIES
         public var local = Counts()
         public var system = Counts()
     }
 }
 
-extension Polaris.Bib.GetResponse.Items {
+extension Polaris.Bib.BibGetResponse.Items {
     
     public struct Counts {
         
-        // MARK: - Properties
+        // MARK: - PROPERTIES
         public private(set) var available: Int?
         public private(set) var total: Int?
         
-        // MARK: - Setters
+        // MARK: - SETTERS
         mutating func setAvailable(to value: String) {
             available = Int(value)
         }

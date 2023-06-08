@@ -13,6 +13,7 @@ protocol PolarisEndpoint {
     var accessToken: String { get }
     var string: String { get }
     var url: URL { get }
+    var httpMethod: String { get }
 }
 
 extension PolarisEndpoint {

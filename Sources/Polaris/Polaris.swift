@@ -35,9 +35,19 @@ public struct Polaris {
     
     public struct HoldRequest {}
     
+    public struct ILLRequest {}
+    
     public struct Item {}
     
-    public struct Patron {}
+    public struct Patron {
+        
+        public struct Account {}
+        public struct Blocks {}
+        public struct Message {}
+        public struct ReadingHistory {}
+        public struct Registration {}
+        public struct TitleList {}
+    }
     
     public struct RecordSet {}
     
