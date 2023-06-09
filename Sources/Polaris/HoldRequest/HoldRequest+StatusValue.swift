@@ -1,17 +1,9 @@
-//
-//  Polaris+HoldRequest+StatusValue.swift
-//  Polaris
-//
-//  Created by Andrew Despres on 4/26/20.
-//  Copyright © 2020 Downey City Library. All rights reserved.
-//
-
 import Foundation
 
 extension Polaris.HoldRequest {
     
     public enum StatusValue: Int, Decodable {
-        
+        case aborted = 0
         case success = 1
         case conditionalAvailableLocally = 3
         case conditionalAcceptILLPolicy = 4
@@ -20,24 +12,24 @@ extension Polaris.HoldRequest {
         case conditionalAcceptLocalHoldPolicy = 7
         case errorSelectPickupLocation = 2
         case errorRequestsNotAllowed = 26
-        case errorLogin = 0
         case unknown = -1
     }
 }
 
-// MARK: - Initialization
+// MARK: - INITIALIZATION
 extension Polaris.HoldRequest.StatusValue {
     
     public init(from decoder: Decoder) throws {
-        self = try Polaris.HoldRequest.StatusValue(from: decoder, default: .unknown)
+        self = try Self(from: decoder, default: .unknown)
     }
 }
 
-// MARK: - Properties
+// MARK: - PROPERTIES
 extension Polaris.HoldRequest.StatusValue {
     
     public var description: String {
         switch self {
+        case .aborted: return "Hold request not placed"
         case .success: return "Hold request placed"
         case .conditionalAvailableLocally: return "Conditional: Item available locally"
         case .conditionalAcceptILLPolicy: return "Conditional: Accept ILL policy"
@@ -46,7 +38,6 @@ extension Polaris.HoldRequest.StatusValue {
         case .conditionalAcceptLocalHoldPolicy: return "Conditional: Accept local hold policy"
         case .errorSelectPickupLocation: return "Error: Select pickup location"
         case .errorRequestsNotAllowed: return "Error: Requests are not permitted for this title"
-        case .errorLogin: return "Error: Login"
         case .unknown: return "Error: Response not defined"
         }
     }

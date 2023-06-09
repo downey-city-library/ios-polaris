@@ -1,17 +1,8 @@
-//
-//  Polaris+HoldRequest+StatusType.swift
-//  Polaris
-//
-//  Created by Andrew Despres on 4/26/20.
-//  Copyright © 2020 Downey City Library. All rights reserved.
-//
-
 import Foundation
 
 extension Polaris.HoldRequest {
     
     public enum StatusType: Int, Decodable {
-        
         case answer = 2
         case conditional = 3
         case error = 1
@@ -19,15 +10,15 @@ extension Polaris.HoldRequest {
     }
 }
 
-// MARK: - Initialization
+// MARK: - INITIALIZATION
 extension Polaris.HoldRequest.StatusType {
 
     public init(from decoder: Decoder) throws {
-        self = try Polaris.HoldRequest.StatusType(from: decoder, default: .unknown)
+        self = try Self(from: decoder, default: .unknown)
     }
 }
 
-// MARK: - Properties
+// MARK: - PROPERTIES
 extension Polaris.HoldRequest.StatusType {
     
     public var description: String {

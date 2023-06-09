@@ -1,11 +1,3 @@
-//
-//  String+Extension.swift
-//  Polaris
-//
-//  Created by Andrew Despres on 3/12/19.
-//  Copyright © 2019 Downey City Library. All rights reserved.
-//
-
 import Foundation
 import CommonCrypto
 
@@ -42,6 +34,11 @@ extension String {
                 return date
             } else {
                 formatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS"
+                
+                if formatter.date(from: self) == nil {
+                    formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+                    return formatter.date(from: self)
+                }
                 return formatter.date(from: self)
             }
         }

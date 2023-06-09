@@ -1,14 +1,6 @@
-//
-//  Polaris+HoldRequest+ReplyRequest+State.swift
-//  Polaris
-//
-//  Created by Andrew Despres on 5/11/20.
-//  Copyright © 2020 Downey City Library. All rights reserved.
-//
-
 import Foundation
 
-extension Polaris.HoldRequest.ReplyRequest {
+extension Polaris.HoldRequest.HoldRequestReplyRequest {
     
     public enum State: Int {
         case availableLocally = 1

@@ -1,89 +1,117 @@
-//
-//  PolarisAPI+Hold.swift
-//  Polaris
-//
-//  Created by Andrew Despres on 4/26/20.
-//  Copyright © 2020 Downey City Library. All rights reserved.
-//
-
 import Foundation
 
 extension PolarisAPI.HoldRequest {
     
-    // MARK: - Typealiases
+    // MARK: - HoldRequestActivate
     
-    /// A completion handler indicating that the API call to `HoldRequestCancel` is completed.
-    /// - parameter response: An object containing a response message for the cancel request. If there was an issue with the request, the response will include an error describing the failure.
+    /// Suspend a single hold request.
+    /// - note: PAPI method name: `HoldRequestSuspend`
+    /// - parameter barcode: The barcode of the patron with the hold request.
+    /// - parameter id: The ID of the hold request.
     
-    public typealias HoldRequestCancelCompletionHandler = (_ response: Polaris.HoldRequest.CancelResponse?) -> Void
+    public static func activate(
+        barcode: String,
+        id: Int
+    ) async throws -> [Polaris.HoldRequest.HoldRequestActivateResponse.ActivatedHold] {
+        let endpoint = HTTPClient.Endpoint.HoldRequest.activate(
+            barcode: barcode,
+            id: id
+        )
+        let request = Polaris.HoldRequest.HoldRequestActivateRequest(
+            user: Polaris.authenticatedStaffUser?.id ?? -1,
+            activationDate: Date()
+        )
+        return try await PolarisAPI.performRequest(
+            endpoint: endpoint,
+            requestBody: request,
+            responseType: Polaris.HoldRequest.HoldRequestActivateResponse.self
+        ).activatedHolds
+    }
     
-    /// A completion handler indicating that the API call to `HoldRequestCreate` is completed.
-    /// - parameter response: An object containing a response message for the hold request. If there was an issue with the request, the response will include an error describing the failure.
+    // MARK: - HoldRequestActivateAllForPatron
     
-    public typealias HoldRequestCreateCompletionHandler = (_ response: Polaris.HoldRequest.CreateResponse?) -> Void
+    /// Suspend all hold requests for a patron.
+    /// - note: PAPI method name: `HoldRequestSuspend`
+    /// - parameter barcode: The barcode of the patron with the hold requests.
     
-    /// A completion handler indicating that the API call to `HoldRequestGetList` is completed.
-    /// - parameter response: An object containing a list of hold requests. If there was an issue with the request, the response will include an error describing the failure.
-    
-    public typealias HoldRequestGetListCompletionHander = (_ response: Polaris.HoldRequest.GetListResponse?) -> Void
-    
-    /// A completion handler indicating that the API call to `HoldRequestReply` is completed.
-    /// - parameter response: An object containing a response message to the reply request. If there was an issue with the request, the response will include an error describing the failure.
-    
-    public typealias HoldRequestReplyCompletionHandler = (_ response: Polaris.HoldRequest.ReplyResponse?) -> Void
-    
-    /// A completion handler indicating that the API call to `HoldRequestSuspend` is completed.
-    /// - parameter response: An object containing a response object to the suspend request. If there was an issue with the request, the response will include an error describing the failure.
-    
-    public typealias HoldRequestSuspendCompletionHandler = (_ response: Polaris.HoldRequest.SuspendResponse?) -> Void
-    
-    // TODO: HoldRequestActivate
-    // TODO: HoldRequestActivateAllForPatron
+    public static func activateAll(
+        barcode: String
+    ) async throws -> [Polaris.HoldRequest.HoldRequestActivateResponse.ActivatedHold] {
+        let endpoint = HTTPClient.Endpoint.HoldRequest.activateAll(
+            barcode: barcode
+        )
+        let request = Polaris.HoldRequest.HoldRequestActivateRequest(
+            user: Polaris.authenticatedStaffUser?.id ?? -1,
+            activationDate: Date()
+        )
+        return try await PolarisAPI.performRequest(
+            endpoint: endpoint,
+            requestBody: request,
+            responseType: Polaris.HoldRequest.HoldRequestActivateResponse.self
+        ).activatedHolds
+    }
     
     // MARK: - HoldRequestCancel
     
     /// Cancel a single hold request for a specific patron.
     /// - note: The following hold statuses can be cancelled:
-    ///   - 1 - inactive
-    ///   - 2 - active
-    ///   - 4 - pending
-    ///   - 5 - shipped (if enabled by the library)
+    ///   -- 1 - inactive
+    ///   -- 2 - active
+    ///   -- 4 - pending
+    ///   -- 5 - shipped (if enabled by the library)
     /// - note: PAPI method name: `HoldRequestCancel`
     /// - parameter barcode: The barcode of the patron with the hold request.
-    /// - parameter requestID: The hold request ID number.
-    /// - parameter request: The PUT body request containing the user ID and workstation ID.
-    /// - parameter userID: The ID of the staff member making the cancel request.
-    /// - parameter workstationID: The ID of the workstation being used to generate the request.
-    /// - parameter completion: The completion handler containing the response from the ILS or an error if the request is not successful.
+    /// - parameter id: The hold request ID number.
     
-    public static func cancel(barcode: String, requestID: Int, request: Polaris.HoldRequest.CancelRequest, userID: Int, workstationID: Int, completion: @escaping HoldRequestCancelCompletionHandler) {
-        let endpoint = HTTPClient.Endpoint.HoldRequest.cancel(barcode, requestID, workstationID, userID)
-        let body = request
-        
-        HTTPClient.taskForPUTRequest(url: endpoint.url, body: body, response:  Polaris.HoldRequest.CancelResponse.self) { (response, error) in
-            DispatchQueue.main.async { completion(response) }
-        }
+    public static func cancel(
+        barcode: String,
+        id: Int
+    ) async throws -> [Polaris.HoldRequest.HoldRequestCancelResponse.CancelledHold] {
+        let endpoint = HTTPClient.Endpoint.HoldRequest.cancel(
+            barcode: barcode,
+            id: id,
+            workstation: Polaris.authenticatedStaffUser?.workstation ?? -1,
+            user: Polaris.authenticatedStaffUser?.id ?? -1
+        )
+//        let request = Polaris.HoldRequest.CancelRequest(
+//            userID: userID,
+//            workstationID: workstationID
+//        )
+        return try await PolarisAPI.performRequest(
+            endpoint: endpoint,
+//            requestBody: request,
+            responseType: Polaris.HoldRequest.HoldRequestCancelResponse.self
+        ).cancelledHolds
     }
     
     // MARK: - HoldRequestCancelAllForPatron
     
     /// Cancel all hold requests for a specific patron.
     /// - note: The following hold statuses can be cancelled:
-    ///   - 1 - inactive
-    ///   - 2 - active
-    ///   - 4 - pending
-    ///   - 5 - shipped (if enabled by the library)
+    ///   -- 1 - inactive
+    ///   -- 2 - active
+    ///   -- 4 - pending
+    ///   -- 5 - shipped (if enabled by the library)
     /// - note: PAPI method name: `HoldRequestCancelAllForPatron`
     /// - parameter barcode: The barcode of the patron with the hold request.
-    /// - parameter userID: The ID of the staff member making the cancel request.
-    /// - parameter workstationID: The ID of the workstation being used to generate the request.
-    /// - parameter completion: The completion handler containing the response from the ILS or an error if the request is not successful.
     
-    public static func cancelAll(barcode: String, userID: Int, workstationID: Int, completion: @escaping HoldRequestCancelCompletionHandler) {
-        let endpoint = HTTPClient.Endpoint.HoldRequest.cancelAll(barcode, workstationID, userID)
-        HTTPClient.taskForPUTRequest(url: endpoint.url, response: Polaris.HoldRequest.CancelResponse.self) { (response, error) in
-            DispatchQueue.main.async { completion(response) }
-        }
+    public static func cancelAll(
+        barcode: String
+    ) async throws -> [Polaris.HoldRequest.HoldRequestCancelResponse.CancelledHold] {
+        let endpoint = HTTPClient.Endpoint.HoldRequest.cancelAll(
+            barcode: barcode,
+            workstation: Polaris.authenticatedStaffUser?.workstation ?? -1,
+            user: Polaris.authenticatedStaffUser?.id ?? -1
+        )
+//        let request = Polaris.HoldRequest.CancelRequest(
+//            userID: userID,
+//            workstationID: workstationID
+//        )
+        return try await PolarisAPI.performRequest(
+            endpoint: endpoint,
+//            requestBody: request,
+            responseType: Polaris.HoldRequest.HoldRequestCancelResponse.self
+        ).cancelledHolds
     }
     
     // MARK: - HoldRequestCreate
@@ -92,32 +120,41 @@ extension PolarisAPI.HoldRequest {
     /// - important: This process is based on a “messaging” system and will allow a Polaris patron to place a local hold request. After calling the `create` method, one or more calls to the `reply` method may be required. The message exchange is complete when a StatusType of Error (1) or Answer (2) is returned or if an error is raised by a database exception.
     /// - note: PAPI method name: `HoldRequestCreate`
     /// - parameter request: The object to be POSTed containing the patron barcode, biographic ID among various other properties.
-    /// - parameter completion: The completion handler containing the response from the ILS or an error if the request is not successful.
     
-    public static func create(_ request: Polaris.HoldRequest.CreateRequest, completion: @escaping HoldRequestCreateCompletionHandler) {
+    public static func create(
+        _ request: Polaris.HoldRequest.HoldRequestCreateRequest
+    ) async throws -> Polaris.HoldRequest.HoldRequestCreateResponse {
         let endpoint = HTTPClient.Endpoint.HoldRequest.create
-        let body = request
-        
-        HTTPClient.taskForPOSTRequest(url: endpoint.url, body: body, response: Polaris.HoldRequest.CreateResponse.self) { (response, error) in
-            DispatchQueue.main.async { completion(response) }
-        }
+        return try await PolarisAPI.performRequest(
+            endpoint: endpoint,
+            requestBody: request,
+            responseType: Polaris.HoldRequest.HoldRequestCreateResponse.self
+        )
     }
     
     // MARK: - HoldRequestGetList
     
     /// Returns a list of hold requests that match the criteria specified by the user. The data returned includes the detailed request, patron, item, and title information.
     /// - note: PAPI method name: `HoldRequestGetList`
-    /// - parameter branchID: The branch ID for the request list.
+    /// - parameter branch: The branch ID for the request list.
     /// - parameter branchType: The type of branch specified. Valid values include: 1 - Patron's Branch; 2 - Pickup Branch; 3 - Item Branch.
-    /// - parameter requestStatus: The desired status of requests returned.
-    /// - parameter completion: The completion handler containing the response from the ILS or an error if the request is not successful.
+    /// - parameter status: The desired status of requests returned.
     
-    public static func getList(branchID: Int, branchType: Int, requestStatus: Int, completion: @escaping HoldRequestGetListCompletionHander) {
-        let endpoint = HTTPClient.Endpoint.HoldRequest.getList(branchID, branchType, requestStatus)
-        
-        HTTPClient.taskForGETRequest(url: endpoint.url, response: Polaris.HoldRequest.GetListResponse.self, authorization: true) { (response, error) in
-            DispatchQueue.main.async { completion(response) }
-        }
+    public static func getList(
+        branch: Int,
+        branchType: Int,
+        status: Int
+    ) async throws -> [Polaris.HoldRequest.HoldRequestGetListResponse.HoldRequest] {
+        let endpoint = HTTPClient.Endpoint.HoldRequest.getList(
+            branch: branch,
+            branchType: branchType,
+            status: status
+        )
+        return try await PolarisAPI.performRequest(
+            endpoint: endpoint,
+            responseType: Polaris.HoldRequest.HoldRequestGetListResponse.self,
+            authorization: true
+        ).holdRequests
     }
     
     // MARK: - HoldRequestReply
@@ -125,38 +162,91 @@ extension PolarisAPI.HoldRequest {
     /// Send a reply message responding to the results of a previous HoldRequestCreate or HoldRequestReply procedure call.
     /// - important: The HoldRequestCreate procedure must be called before executing this procedure. The RequestGUID, TxnGroupQualifier and TxnQualifier returned by the HoldRequestCreate procedure will be used as input parameters for this procedure call. These three values connect the messages together to create an ILL conversation. After calling the HoldRequestReply procedure, one or more calls to the HoldRequestReply procedure may be required. The message exchange is complete when a StatusType of Error (1) or Answer (2) is returned or if an error is raised via a database exception.
     /// - note: PAPI method name: `HoldRequestReply`
-    /// - parameter request: The reply object containing the transaction qualifier and group qualifier, among various other properties.
-    /// - parameter completion: The completion handler containing the response from the ILS or an error if the request is not successful.
+    /// - parameter answer: Answer to conditional create request. Valid answers include: yes or no.
+    /// - parameter response: The original create request.
+    /// - parameter organizationID: The ID of the oranization.
     
-    public static func reply(_ guid: String, request: Polaris.HoldRequest.ReplyRequest, completion: @escaping HoldRequestReplyCompletionHandler) {
-        let endpoint = HTTPClient.Endpoint.HoldRequest.reply(guid)
-        let body = request
-        
-        HTTPClient.taskForPUTRequest(url: endpoint.url, body: body, response: Polaris.HoldRequest.ReplyResponse.self) { (response, error) in
-            DispatchQueue.main.async { completion(response) }
+    public static func reply(
+        _ answer: Polaris.HoldRequest.HoldRequestReplyRequest.Answer,
+        to response: Polaris.HoldRequest.HoldRequestCreateResponse,
+        organizationID: Int
+    ) async throws -> Polaris.HoldRequest.HoldRequestReplyResponse {
+        let endpoint = HTTPClient.Endpoint.HoldRequest.reply(
+            guid: response.guid
+        )
+        var state: Polaris.HoldRequest.HoldRequestReplyRequest.State
+        switch response.status.value {
+        case .conditionalAcceptILLPolicy: state = .illPolicy
+        case .conditionalAcceptLocalHoldPolicy: state = .localPolicy
+        case .conditionalAvailableLocally: state = .availableLocally
+        case .conditionalExistingHolds: state = .existingHolds
+        case .conditionalNoItemsAttached: state = .noItems
+        default: state = .noItems
         }
+        let request = Polaris.HoldRequest.HoldRequestReplyRequest(
+            groupQualifier: response.transaction.groupQualifier,
+            transactionQualifier: response.transaction.qualifier,
+            organization: organizationID,
+            answer: answer,
+            state: state
+        )
+        return try await PolarisAPI.performRequest(
+            endpoint: endpoint,
+            requestBody: request,
+            responseType: Polaris.HoldRequest.HoldRequestReplyResponse.self
+        )
     }
     
     // MARK: - HoldRequestSuspend
     
     /// Suspend a single hold request.
     /// - note: PAPI method name: `HoldRequestSuspend`
-    /// - parameter patronBarcode: The barcode of the patron with the hold request.
-    /// - parameter requestID: The ID of the hold request.
-    /// - parameter request: The request object with the activation date and ID of the staff user making the request.
-    /// - parameter completion: The completion handler containing the response from the ILS or an error if the request is not successful.
+    /// - parameter id: The ID of the hold request.
+    /// - parameter activationDate: The date in which the hold should reactivate.
+    /// - parameter barcode: The barcode of the patron with the hold request.
     
-    public static func suspend(patronBarcode: String, requestID: Int, request: Polaris.HoldRequest.SuspendRequest, completion: @escaping HoldRequestSuspendCompletionHandler) {
-        let endpoint = HTTPClient.Endpoint.HoldRequest.suspend(patronBarcode, requestID)
-        print("endpoint", endpoint.string)
-        
-        let body = request
-        print("body", body)
-        
-        HTTPClient.taskForPUTRequest(url: endpoint.url, body: body, response: Polaris.HoldRequest.SuspendResponse.self) { (response, error) in
-            DispatchQueue.main.async { completion(response) }
-        }
+    public static func suspend(
+        _ id: Int,
+        until activationDate: Date,
+        barcode: String
+    ) async throws -> [Polaris.HoldRequest.HoldRequestSuspendResponse.SuspendedHold] {
+        let endpoint = HTTPClient.Endpoint.HoldRequest.suspend(
+            barcode: barcode,
+            id: id
+        )
+        let request = Polaris.HoldRequest.HoldRequestSuspendRequest(
+            user: Polaris.authenticatedStaffUser?.id ?? -1,
+            activationDate: activationDate
+        )
+        return try await PolarisAPI.performRequest(
+            endpoint: endpoint,
+            requestBody: request,
+            responseType: Polaris.HoldRequest.HoldRequestSuspendResponse.self
+        ).suspendedHolds
     }
     
-    // TODO: HoldRequestSuspendAllForPatron
+    // MARK: - HoldRequestSuspendAllForPatron
+    
+    /// Suspend all hold requests for a patron.
+    /// - note: PAPI method name: `HoldRequestSuspend`
+    /// - parameter activationDate: The date in which the holds should reactivate.
+    /// - parameter barcode: The barcode of the patron with the hold requests.
+    
+    public static func suspendAll(
+        until activationDate: Date,
+        barcode: String
+    ) async throws -> [Polaris.HoldRequest.HoldRequestSuspendResponse.SuspendedHold] {
+        let endpoint = HTTPClient.Endpoint.HoldRequest.suspendAll(
+            barcode: barcode
+        )
+        let request = Polaris.HoldRequest.HoldRequestSuspendRequest(
+            user: Polaris.authenticatedStaffUser?.id ?? -1,
+            activationDate: activationDate
+        )
+        return try await PolarisAPI.performRequest(
+            endpoint: endpoint,
+            requestBody: request,
+            responseType: Polaris.HoldRequest.HoldRequestSuspendResponse.self
+        ).suspendedHolds
+    }
 }
