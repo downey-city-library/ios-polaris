@@ -1,31 +1,78 @@
-//
-//  HTTPClient+Endpoint+Item.swift
-//  Polaris
-//
-//  Created by Andrew Despres on 5/13/20.
-//  Copyright © 2020 Downey City Library. All rights reserved.
-//
-
 import Foundation
 
 extension HTTPClient.Endpoint {
     
     enum Item: PolarisEndpoint {
     
-        case renew(String, Int)
-        case renewAll(String)
-        case updateBarcode(Int)
+        // MARK: - ENDPOINTS
+        /// PAPI Method Name: `ItemRenew`
+        /// - parameter barcode: PatronBarcode
+        /// - parameter id: ID
+        /// - note: HTTP Method: PUT
         
+        case renew(
+            barcode: String,
+            id: Int
+        )
+        
+        /// PAPI Method Name: `ItemRenewAllForPatron`
+        /// - parameter barcode: PatronBarcode
+        /// - note: HTTP Method: PUT
+        
+        case renewAll(
+            barcode: String
+        )
+        
+        /// PAPI Method Name: `ItemUpdateBarcode`
+        /// - parameter barcode: BarcodeOrID
+        /// - parameter id: BarcodeOrID
+        /// - parameter workstation: wsid
+        /// - note: HTTP Method: PUT 
+        
+        case updateBarcode(
+            barcode: String?,
+            id: Int?,
+            workstation: Int
+        )
+        
+        // MARK: - URL STRING
         var string: String {
+            var urlComponents: URLComponents?
+            
             switch self {
-            case .renew(let barcode, let ID):
-                return basePublic + "/patron/\(barcode)/itemsout/\(ID)"
+            case .renew(let barcode, let id):
+                urlComponents = URLComponents(string: basePublic)
+                urlComponents?.path += "/patron/\(barcode)/itemsout/\(id)"
                 
             case .renewAll(let barcode):
-                return basePublic + "/patron/\(barcode)/itemsout/0"
+                urlComponents = URLComponents(string: basePublic)
+                urlComponents?.path += "/patron/\(barcode)/itemsout/0"
                 
-            case .updateBarcode(let ID):
-                return baseProtected + "/\(accessToken)/cataloging/items/\(ID)/barcode"
+            case .updateBarcode(let barcode, let id, let workstation):
+                urlComponents = URLComponents(string: baseProtected)
+                urlComponents?.path += "/\(accessToken)/cataloging/items/\(barcode ?? "\(id ?? -1)")/barcode"
+                urlComponents?.queryItems = [
+                    URLQueryItem(name: "wsid", value: "\(workstation)")
+                ]
+                if barcode != nil {
+                    urlComponents?.queryItems?.append(URLQueryItem(name: "isBarcode", value: "1"))
+                }
+            }
+            
+            return urlComponents?.url?.absoluteString ?? ""
+        }
+        
+        // MARK: - HTTP METHOD
+        var httpMethod: String {
+            switch self {
+            case .renew(_, _):
+                return HTTPClient.HTTPMethod.put
+                
+            case .renewAll(_):
+                return HTTPClient.HTTPMethod.put
+                
+            case .updateBarcode(_, _, _):
+                return HTTPClient.HTTPMethod.put
             }
         }
     }
