@@ -1,55 +1,24 @@
-//
-//  PolarisAPI+Patron.swift
-//  Polaris
-//
-//  Created by Andrew Despres on 4/26/20.
-//  Copyright © 2020 Downey City Library. All rights reserved.
-//
-
 import Foundation
 
 extension PolarisAPI.Patron {
-    
-    // MARK: - Typealiases
-    
-    /// A completion handler indicating that the API call to `PatronBasicDataGet` is completed.
-    /// - parameter response: An object containing basic patron data. If there was an issue with the request, the response will include an error describing the failure.
-    
-    public typealias PatronBasicDataGetCompletionHandler = (_ response: Polaris.Patron.BasicDataResponse?) -> Void
-    
-    /// A completion handler indicating that the API call to `PatronHoldRequestsGet` is completed.
-    /// - parameter response: An object containing hold requests for a specific patron. If there was an issue with the request, the response will include an error describing the failure.
-    
-    public typealias PatronHoldRequestsGetCompletionHandler = (_ response: Polaris.Patron.HoldsResponse?) -> Void
-    
-    /// A completion handler indicating that the API call to `PatronItemsOutGet` is completed.
-    /// - parameter response: An object containing items checked out to a specific patron. If there was an issue with the request, the response will include an error describing the failure.
-    
-    public typealias PatronItemsOutGetCompletionHandler = (_ response: Polaris.Patron.ItemsResponse?) -> Void
-    
-    /// A completion handler indicating that the API call to `PatronPreferencesGet` is completed.
-    /// - parameter response: An object containing preferences for a specific patron. If there was an issue with the request, the response will include an error describing the failure.
-    
-    public typealias PatronPreferencesGetCompletionHandler = (_ response: Polaris.Patron.PreferencesResponse?) -> Void
-    
-    /// A completion handler indicating that the API call to `PatronSearch` is completed.
-    /// - parameter response: An object containing a list of patrons. If there was an issue with the request, the response will include an error describing the failure.
-    
-    public typealias PatronSearchCompletionHandler = (_ response: Polaris.Patron.SearchResponse?) -> Void
     
     // MARK: - PatronBasicDataGet
     
     /// Returns basic name, address, circulation counts, and account balances for a patron.
     /// - note: PAPI method name: `PatronBasicDataGet`
     /// - parameter barcode: The barcode of the patron.
-    /// - parameter completion: The completion handler containing the response from the ILS or an error if the request is not successful.
-    
-    public static func basicData(barcode: String, completion: @escaping PatronBasicDataGetCompletionHandler) {
-        let endpoint = HTTPClient.Endpoint.Patron.basicData(barcode)
-        
-        HTTPClient.taskForGETRequest(url: endpoint.url, response: Polaris.Patron.BasicDataResponse.self, authorization: true) { (response, error) in
-            DispatchQueue.main.async { completion(response) }
-        }
+
+    public static func basicData(
+        barcode: String
+    ) async throws -> Polaris.Patron.BasicDataResponse {
+        let endpoint = HTTPClient.Endpoint.Patron.basicData(
+            barcode: barcode
+        )
+        return try await PolarisAPI.performRequest(
+            endpoint: endpoint,
+            responseType: Polaris.Patron.BasicDataResponse.self,
+            authorization: true
+        )
     }
     
     // MARK: - PatronHoldRequestsGet
@@ -58,17 +27,43 @@ extension PolarisAPI.Patron {
     /// - note: PAPI method name: `PatronHoldRequestsGet`
     /// - parameter barcode: The barcode of the patron.
     /// - parameter set: The status of the holds to be returned.
-    /// - parameter completion: The completion handler containing the response from the ILS or an error if the request is not successful.
     
-    public static func holdRequests(barcode: String, set: Polaris.HoldRequest.Set, completion: @escaping PatronHoldRequestsGetCompletionHandler) {
-        let endpoint = HTTPClient.Endpoint.Patron.holdRequests(barcode, set.string)
-        
-        HTTPClient.taskForGETRequest(url: endpoint.url, response: Polaris.Patron.HoldsResponse.self, authorization: true) { (response, error) in
-            DispatchQueue.main.async { completion(response) }
-        }
+    public static func holdRequests(
+        barcode: String,
+        set: Polaris.Patron.HoldRequestSet
+    ) async throws -> Polaris.Patron.PatronHoldRequestsGetResponse {
+        let endpoint = HTTPClient.Endpoint.Patron.holdRequests(
+            barcode: barcode,
+            endpoint: set.string
+        )
+        return try await PolarisAPI.performRequest(
+            endpoint: endpoint,
+            responseType: Polaris.Patron.PatronHoldRequestsGetResponse.self,
+            authorization: true
+        )
     }
     
-    // TODO: TODO - PatronILLRequestsGet
+    // MARK: - PatronILLRequestsGet
+    
+    /// This method returns a list of ILL requests placed by the specified patron. The list can be filtered by the status of the request.
+    /// - note: PAPI method name: `PatronILLRequestsGet`
+    /// - parameter barcode: The barcode of the patron.
+    /// - parameter set: The status of the requests to be returned.
+    
+    public static func ILLRequests(
+        barcode: String,
+        set: Polaris.Patron.ILLRequestSet
+    ) async throws -> Polaris.Patron.PatronILLRequestsGetResponse {
+        let endpoint = HTTPClient.Endpoint.Patron.ILLRequests(
+            barcode: barcode,
+            endpoint: set.string
+        )
+        return try await PolarisAPI.performRequest(
+            endpoint: endpoint,
+            responseType: Polaris.Patron.PatronILLRequestsGetResponse.self,
+            authorization: true
+        )
+    }
     
     // MARK: - PatronItemsOutGet
     
@@ -77,14 +72,20 @@ extension PolarisAPI.Patron {
     /// - note: PAPI method name: `PatronItemsOutGet`
     /// - parameter barcode: The barcode of the patron.
     /// - parameter set: The status of the items to be returned.
-    /// - parameter completion: The completion handler containing the response from the ILS or an error if the request is not successful.
     
-    public static func itemsOut(barcode: String, set: Polaris.Item.Set, completion: @escaping PatronItemsOutGetCompletionHandler) {
-        let endpoint = HTTPClient.Endpoint.Patron.items(barcode, set.string)
-        
-        HTTPClient.taskForGETRequest(url: endpoint.url, response: Polaris.Patron.ItemsResponse.self, authorization: true) { (response, error) in
-            DispatchQueue.main.async { completion(response) }
-        }
+    public static func itemsOut(
+        barcode: String,
+        set: Polaris.Item.Set
+    ) async throws -> Polaris.Patron.PatronItemsOutGetResponse {
+        let endpoint = HTTPClient.Endpoint.Patron.items(
+            barcode: barcode,
+            endpoint: set.string
+        )
+        return try await PolarisAPI.performRequest(
+            endpoint: endpoint,
+            responseType: Polaris.Patron.PatronItemsOutGetResponse.self,
+            authorization: true
+        )
     }
     
     // MARK: - PatronPreferencesGet
@@ -92,17 +93,38 @@ extension PolarisAPI.Patron {
     /// Return preferences for a patron including reading list, email format, and notification type.
     /// - note: PAPI method name: `PatronPreferencesGet`
     /// - parameter barcode: The barcode of the patron.
-    /// - parameter completion: The completion handler containing the response from the ILS or an error if the request is not successful.
-    
-    public static func preferences(barcode: String, completion: @escaping PatronPreferencesGetCompletionHandler) {
-        let endpoint = HTTPClient.Endpoint.Patron.preferences(barcode)
-        
-        HTTPClient.taskForGETRequest(url: endpoint.url, response: Polaris.Patron.PreferencesResponse.self, authorization: true) { (response, error) in
-            DispatchQueue.main.async { completion(response) }
-        }
+
+    public static func preferences(
+        barcode: String
+    ) async throws -> Polaris.Patron.PatronPreferencesGetResponse {
+        let endpoint = HTTPClient.Endpoint.Patron.preferences(
+            barcode: barcode
+        )
+        return try await PolarisAPI.performRequest(
+            endpoint: endpoint,
+            responseType: Polaris.Patron.PatronPreferencesGetResponse.self,
+            authorization: true
+        )
     }
         
-    // TODO: TODO - PatronSavedSearchesGet
+    // MARK: - PatronSavedSearchesGet
+    
+    /// Returns list of saved searches to the specified patron.
+    /// - note: PAPI method name:  `PatronSavedSearchesGet`
+    /// - parameter barcode: The patron's barcode.
+    
+    public static func savedSearches(
+        barcode: String
+    ) async throws -> [Polaris.Patron.PatronSavedSearchesGetResponse.SavedSearch] {
+        let endpoint = HTTPClient.Endpoint.Patron.savedSearches(
+            barcode: barcode
+        )
+        return try await PolarisAPI.performRequest(
+            endpoint: endpoint,
+            responseType: Polaris.Patron.PatronSavedSearchesGetResponse.self,
+            authorization: true
+        ).savedSearches
+    }
     
     // MARK: - PatronSearch
     
@@ -112,19 +134,67 @@ extension PolarisAPI.Patron {
     /// - parameter query: Common Command Language (CCL) snippet. Must be URL encoded.
     /// - parameter results: Maximum number of patrons to return default is 5.
     /// - parameter page: Page number - default is 1.
-    /// - parameter completion: The completion handler containing the response from the ILS or an error if the request is not successful.
+    /// - parameter sort: The sort order of the return values.
     
-    public static func search(query: String, resultsPerPage results: Int = 5, page: Int = 1, completion: @escaping PatronSearchCompletionHandler) {
-        let endpoint = HTTPClient.Endpoint.Patron.search(query, results, page)
-        
-        HTTPClient.taskForGETRequest(url: endpoint.url, response: Polaris.Patron.SearchResponse.self, authorization: true) { (response, error) in
-            DispatchQueue.main.async { completion(response) }
-        }
+    public static func search(
+        query: String,
+        resultsPerPage results: Int = 5,
+        page: Int = 1,
+        sort: String? = nil
+    ) async throws -> Polaris.Patron.PatronSearchResponse {
+        let endpoint = HTTPClient.Endpoint.Patron.search(
+            query: query,
+            resultsPerPage: results,
+            page: page,
+            sort: sort
+        )
+        print(endpoint.string)
+        return try await PolarisAPI.performRequest(
+            endpoint: endpoint,
+            responseType: Polaris.Patron.PatronSearchResponse.self,
+            authorization: true
+        )
     }
     
-    // TODO: TODO - PatronUpdateUserName
-    // TODO: TODO - PatronValidate
-    // TODO: TODO - Patron_GetBarcodeFromID
+    // MARK: - PatronUpdateUserName
+    
+    /// This method allows a third party to add/update a patron’s username.
+    /// - note: PAPI method name: `PatronUpdateUserName`
+    /// - parameter username: The new username associated with the patron.
+    /// - parameter barcode: The patron’s barcode.
+    
+    public static func update(
+        username: String,
+        barcode: String
+    ) async throws -> Bool {
+        let endpoint = HTTPClient.Endpoint.Patron.updateUsername(
+            barcode: barcode,
+            username: username
+        )
+        return try await PolarisAPI.performRequest(
+            endpoint: endpoint,
+            responseType: Polaris.Patron.PatronUpdateUsernameResponse.self
+        ).error == nil
+    }
+    
+    // MARK: - PatronValidate
+    
+    /// Validate that a patron is part of the Polaris database.
+    /// - note: PAPI method name: `PatronValidate`
+    /// - parameter barcode: The barcode of the patron. 
+    
+    public static func validate(
+        _ barcode: String
+    ) async throws -> Polaris.Patron.PatronValidateResponse {
+        let endpoint = HTTPClient.Endpoint.Patron.validate(
+            barcode: barcode
+        )
+        return try await PolarisAPI.performRequest(
+            endpoint: endpoint,
+            responseType: Polaris.Patron.PatronValidateResponse.self,
+            authorization: true
+        )
+    }
     
     public struct Account {}
     

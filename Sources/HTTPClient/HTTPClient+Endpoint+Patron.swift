@@ -1,59 +1,182 @@
-//
-//  HTTPClient+Endpoint+Patron.swift
-//  Polaris
-//
-//  Created by Andrew Despres on 5/12/20.
-//  Copyright © 2020 Downey City Library. All rights reserved.
-//
-
 import Foundation
 
 extension HTTPClient.Endpoint {
     
     enum Patron: PolarisEndpoint {
         
-        case barcodeFromID(Int)
-        case basicData(String)
-        case holdRequests(String, String)
-        case ILLRequests(String)
-        case items(String, String)
-        case preferences(String)
-        case savedSearches(String)
-        case search(String, Int, Int)
-        case updateUsername(String, String)
-        case validate(String)
+        // MARK: - ENDPOINTS
+        /// PAPI Method Name: `PatronBasicDataGet`
+        /// - parameter barcode: PatronBarcode
+        /// - note: HTTP Method: GET
         
+        case basicData(
+            barcode: String
+        )
+        
+        /// PAPI Method Name: `PatronHoldRequestsGet`
+        /// - parameter barcode: PatronBarcode
+        /// - parameter endpoint: endpoint
+        /// - note: HTTP Method: GET
+        
+        case holdRequests(
+            barcode: String,
+            endpoint: String
+        )
+        
+        /// PAPI Method Name: `PatronILLRequestsGet`
+        /// - parameter barcode: PatronBarcode
+        /// - parameter endpoint: endpoint
+        /// - note: HTTP Method: GET
+        
+        case ILLRequests(
+            barcode: String,
+            endpoint: String
+        )
+        
+        /// PAPI Method Name: `PatronItemsOutGet`
+        /// - parameter barcode: PatronBarcode
+        /// - parameter endpoint: ID
+        /// - note: HTTP Method: GET
+        
+        case items(
+            barcode: String,
+            endpoint: String
+        )
+        
+        /// PAPI Method Name: `PatronPreferencesGet`
+        /// - parameter barcode: PatronBarcode
+        /// - note: HTTP Method: GET
+        
+        case preferences(
+            barcode: String
+        )
+        
+        /// PAPI Method Name: `PatronSavedSearchesGet`
+        /// - parameter barcode: PatronBarcode
+        /// - note: HTTP Method: GET
+        
+        case savedSearches(
+            barcode: String
+        )
+        
+        /// PAPI Method Name: `PatronSearch`
+        /// - parameter query: q
+        /// - parameter resultsPerPage: patronsperpage
+        /// - parameter page: page
+        /// - parameter sort: sort
+        /// - note: HTTP Method: GET
+        
+        case search(
+            query: String,
+            resultsPerPage: Int,
+            page: Int,
+            sort: String?
+        )
+        
+        /// PAPI Method Name: `PatronUpdateUserName`
+        /// - parameter barcode: PatronBarcode
+        /// - parameter username: NewUsername
+        /// - note: HTTP Method: PUT
+        
+        case updateUsername(
+            barcode: String,
+            username: String
+        )
+        
+        /// PAPI Method Name: `PatronValidate`
+        /// - parameter barcode: PatronBarcode
+        /// - note: HTTP Method: GET
+        
+        case validate(
+            barcode: String
+        )
+        
+        // MARK: - URL STRING
         var string: String {
+            var urlComponents: URLComponents?
+            
             switch self {
-            case .barcodeFromID(let patronID):
-                return baseProtected + "/\(accessToken)/patron/barcode?patronid=\(patronID)"
-                
             case .basicData(let barcode):
-                return basePublic + "/patron/\(barcode)/basicdata?addresses=1"
+                urlComponents = URLComponents(string: basePublic)
+                urlComponents?.path += "/patron/\(barcode)/basicdata"
+                urlComponents?.queryItems = [
+                    URLQueryItem(name: "addresses", value: "1")
+                ]
                 
             case .holdRequests(let barcode, let endpoint):
-                return basePublic + "/patron/\(barcode)/holdrequests/\(endpoint)"
+                urlComponents = URLComponents(string: basePublic)
+                urlComponents?.path += "/patron/\(barcode)/holdrequests/\(endpoint)"
                 
-            case .ILLRequests(let barcode):
-                return basePublic + "/patron/\(barcode)/illrequests/all"
+            case .ILLRequests(let barcode, let endpoint):
+                urlComponents = URLComponents(string: basePublic)
+                urlComponents?.path += "/patron/\(barcode)/illrequests/\(endpoint)"
                 
             case .items(let barcode, let endpoint):
-                return basePublic + "/patron/\(barcode)/itemsout/\(endpoint)"
+                urlComponents = URLComponents(string: basePublic)
+                urlComponents?.path += "/patron/\(barcode)/itemsout/\(endpoint)"
                 
             case .preferences(let barcode):
-                return basePublic + "/patron/\(barcode)/preferences"
+                urlComponents = URLComponents(string: basePublic)
+                urlComponents?.path += "/patron/\(barcode)/preferences"
                 
             case .savedSearches(let barcode):
-                return basePublic + "/patron/\(barcode)/savedsearches"
+                urlComponents = URLComponents(string: basePublic)
+                urlComponents?.path += "/patron/\(barcode)/savedsearches"
                 
-            case .search(let query, let resultsPerPage, let page):
-                return baseProtected + "/\(accessToken)/search/patrons/boolean?q=\(query)&patronsperpage=\(resultsPerPage)&page=\(page)"
+            case .search(let query, let resultsPerPage, let page, let sort):
+                urlComponents = URLComponents(string: baseProtected)
+                urlComponents?.path += "/\(accessToken)/search/patrons/boolean"
+                urlComponents?.queryItems = [
+                    URLQueryItem(name: "q", value: "\(query)"),
+                    URLQueryItem(name: "patronsperpage", value: "\(resultsPerPage)"),
+                    URLQueryItem(name: "page", value: "\(page)")
+                ]
+                if let sort {
+                    urlComponents?.queryItems?.append(URLQueryItem(name: sort, value: sort))
+                }
                 
             case .updateUsername(let barcode, let username):
-                return basePublic + "/patron/\(barcode)/username/\(username)"
+                urlComponents = URLComponents(string: basePublic)
+                urlComponents?.path += "/patron/\(barcode)/username/\(username)"
                 
             case .validate(let barcode):
-                return basePublic + "/patron/\(barcode)"
+                urlComponents = URLComponents(string: basePublic)
+                urlComponents?.path += "/patron/\(barcode)"
+            }
+            
+            return urlComponents?.url?.absoluteString ?? ""
+        }
+        
+        // MARK: - HTTP METHOD
+        var httpMethod: String {
+            
+            switch self {
+            case .basicData(_):
+                return HTTPClient.HTTPMethod.get
+                
+            case .holdRequests(_, _):
+                return HTTPClient.HTTPMethod.get
+                
+            case .ILLRequests(_, _):
+                return HTTPClient.HTTPMethod.get
+                
+            case .items(_, _):
+                return HTTPClient.HTTPMethod.get
+                
+            case .preferences(_):
+                return HTTPClient.HTTPMethod.get
+                
+            case .savedSearches(_):
+                return HTTPClient.HTTPMethod.get
+                
+            case .search(_, _, _, _):
+                return HTTPClient.HTTPMethod.get
+                
+            case .updateUsername(_, _):
+                return HTTPClient.HTTPMethod.put
+                
+            case .validate(_):
+                return HTTPClient.HTTPMethod.get
             }
         }
     }
