@@ -1,78 +1,313 @@
-//
-//  HTTPClient+Endpoint+System.swift
-//  Polaris
-//
-//  Created by Andrew Despres on 5/22/20.
-//  Copyright © 2020 Downey City Library. All rights reserved.
-//
-
 import Foundation
 
 extension HTTPClient.Endpoint {
     
     enum System: PolarisEndpoint {
         
-        case carriers
-        case collections
-        case datesClosed
-        case headingSearch(String, String, Int, Int)
-        case limitFilters
-        case organizations(String)
-        case patronCodes
-        case pickupBranches
-        case remoteStorageItems(Int, String, String, Int, Int)
-        case shelfLocations(Int)
-        case sortOptions
-        case updateNotification(Int)
-        case updatePickupBranchID(String, Int, Int, Int, Int)
-        case updateRequestStatus(Int, String, Int?, Int?)
+        // MARK: - ENDPOINTS
+        /// PAPI Method Name: `SAMobilePhoneCarriersGetResult`
+        /// - note: HTTP Method: GET
         
+        case mobilePhoneCarriers
+        
+        /// PAPI Method Name: `CollectionsGet`
+        /// - note: HTTP Method: GET
+        
+        case collections
+        
+        /// PAPI Method Name: `DatesClosedGet`
+        /// - note: HTTP Method: GET
+        
+        case datesClosed
+        
+        /// PAPI Method Name: `LimitFiltersGet`
+        /// - note: HTTP Method: GET
+        
+        case limitFilters
+        
+        /// PAPI Method Name: `OrganizationsGet`
+        /// - parameter endpoint: endpoint
+        /// - note: HTTP Method: GET
+        
+        case organizations(
+            endpoint: String
+        )
+        
+        /// PAPI Method Name: `PatronCodesGetResult`
+        /// - note: HTTP Method: GET
+        
+        case patronCodes
+        
+        /// PAPI Method Name: `PickupBranchesGet`
+        /// - note: HTTP Method: GET
+        
+        case pickupBranches
+        
+        /// PAPI Method Name: `RemoteStorageItemsGet`
+        /// - parameter branch: branch
+        /// - parameter startDate: startdate
+        /// - parameter endDate: enddate
+        /// - parameter maxItems: maxitems
+        /// - parameter listType: listtype
+        /// - parameter startPosition: startitemrecordid
+        /// - note: HTTP Method: GET
+        
+        case remoteStorageItems(
+            branch: Int,
+            startDate: String,
+            endDate: String,
+            maxItems: Int,
+            listType: Int,
+            startPosition: Int?
+        )
+        
+        /// PAPI Method Name: `HeadingsSearch`
+        /// - parameter qualifier: Qualifiername
+        /// - parameter startPoint: startpoint
+        /// - parameter numnberOfResults: numterms
+        /// - parameter position: preferredpos
+        /// - parameter omitFromTransactionLog: notran
+        /// - note: HTTP Method: GET
+        
+        case searchHeadings(
+            qualifier: String,
+            startingPoint: String?,
+            numberOfResults: Int,
+            position: Int,
+            omitFromTransactionLog: Bool?
+        )
+        
+        /// PAPI Method Name: `ShelfLocationsGet`
+        /// - parameter organization: orgID
+        /// - note: HTTP Method: GET
+        
+        case shelfLocations(
+            organization: Int
+        )
+        
+        /// PAPI Method Name: `SortOptionsGet`
+        /// - note: HTTP Method: GET
+        
+        case sortOptions
+        
+        /// PAPI Method Name: `NotificationUpdate`
+        /// - parameter type: NotificationTypeID
+        /// - note: HTTP Method: PUT
+        
+        case updateNotification(
+            type: Int
+        )
+        
+        /// PAPI Method Name: `UpdatePickupBranchID`
+        /// - parameter barcode: PatronBarcode
+        /// - parameter id: RequestID
+        /// - parameter workstation: wsid
+        /// - parameter user: userid
+        /// - parameter branch: pickupbranchid
+        /// - note: HTTP Method: PUT
+        
+        case updatePickupBranchID(
+            barcode: String,
+            id: Int,
+            workstation: Int,
+            user: Int,
+            branch: Int
+        )
+        
+        /// PAPI Method Name: `RequestsUpdateStatus`
+        /// - parameter id: RequestID
+        /// - parameter action: action
+        /// - parameter item: itemid
+        /// - parameter deny: denyreason
+        /// - note: HTTP Method: PUT
+        
+        case updateRequestStatus(
+            id: Int,
+            action: String,
+            item: Int?,
+            deny: Int?
+        )
+        
+        // MARK: - URL STRING
         var string: String {
+            var urlComponents: URLComponents?
+            
             switch self {
-            case .carriers:
-                return baseProtected + "/\(accessToken)/sysadmin/mobilephonecarriers"
+            case .mobilePhoneCarriers:
+                urlComponents = URLComponents(string: baseProtected)
+                urlComponents?.path += "/\(accessToken)/sysadmin/mobilephonecarriers"
                 
             case .collections:
-                return basePublic + "/collections"
+                urlComponents = URLComponents(string: basePublic)
+                urlComponents?.path += "/collections"
                 
             case .datesClosed:
-                return basePublic + "/datesclosed"
-                
-            case .headingSearch (let qualifier, let term, let count, let position):
-                return basePublic + "/search/headings/\(qualifier)?startpoint=\(term)&numterms=\(count)&preferredpos=\(position)"
+                urlComponents = URLComponents(string: basePublic)
+                urlComponents?.path += "/datesclosed"
                 
             case .limitFilters:
-                return basePublic + "/limitfilters"
+                urlComponents = URLComponents(string: basePublic)
+                urlComponents?.path += "/limitfilters"
                 
-            case .organizations(let filter):
-                return basePublic + "/organizations/\(filter)"
+            case .organizations(
+                let filter
+            ):
+                urlComponents = URLComponents(string: basePublic)
+                urlComponents?.path += "/organizations/\(filter)"
                 
             case .patronCodes:
-                return basePublic + "/patroncodes"
+                urlComponents = URLComponents(string: basePublic)
+                urlComponents?.path += "/patroncodes"
                 
             case .pickupBranches:
-                return basePublic + "/pickupbranches"
+                urlComponents = URLComponents(string: basePublic)
+                urlComponents?.path += "/pickupbranches"
                 
-            case .remoteStorageItems(let branchID, let startDate, let endDate, let maxItems, let listType):
-                return baseProtected + "/\(accessToken)/cataloging/remotestorage/items?branch=\(branchID)&startdate=\(startDate)&enddate=\(endDate)&maxitems=\(maxItems)&listtype=\(listType)"
+            case .remoteStorageItems(
+                let branch,
+                let startDate,
+                let endDate,
+                let maxItems,
+                let listType,
+                let startPosition
+            ):
+                urlComponents = URLComponents(string: baseProtected)
+                urlComponents?.path += "/\(accessToken)/cataloging/remotestorage/items"
+                urlComponents?.queryItems = [
+                    URLQueryItem(name: "branch", value: "\(branch)"),
+                    URLQueryItem(name: "startdate", value: startDate),
+                    URLQueryItem(name: "enddate", value: endDate),
+                    URLQueryItem(name: "maxitems", value: "\(maxItems)"),
+                    URLQueryItem(name: "listtype", value: "\(listType)")
+                ]
+                if let startPosition {
+                    urlComponents?.queryItems?.append(URLQueryItem(name: "startitemrecordid", value: "\(startPosition)"))
+                }
                 
-            case .shelfLocations(let ID):
-                return basePublic + "/shelflocations?orgID=\(ID)"
+            case .searchHeadings(
+                let qualifier,
+                let startingPoint,
+                let numberOfResults,
+                let position,
+                let omitFromTransactionLog
+            ):
+                urlComponents = URLComponents(string: basePublic)
+                urlComponents?.path += "/search/headings/\(qualifier)"
+                urlComponents?.queryItems = [
+                    URLQueryItem(name: "numterms", value: "\(numberOfResults)"),
+                    URLQueryItem(name: "preferredpos", value: "\(position)")
+                ]
+                if let startingPoint {
+                    urlComponents?.queryItems?.append(
+                        URLQueryItem(name: "startpoint", value: startingPoint)
+                    )
+                }
+                if let omitFromTransactionLog, omitFromTransactionLog {
+                    urlComponents?.queryItems?.append(
+                        URLQueryItem(name: "notran", value: "1")
+                    )
+                }
+                
+            case .shelfLocations(
+                let organization
+            ):
+                urlComponents = URLComponents(string: basePublic)
+                urlComponents?.path += "/shelflocations"
+                urlComponents?.queryItems = [
+                    URLQueryItem(name: "orgID", value: "\(organization)")
+                ]
                 
             case .sortOptions:
-                return basePublic + "/sortoptions"
+                urlComponents = URLComponents(string: basePublic)
+                urlComponents?.path += "/sortoptions"
                 
-            case .updateNotification(let typeID):
-                return baseProtected + "/\(accessToken)/notification/\(typeID)"
+            case .updateNotification(
+                let type
+            ):
+                urlComponents = URLComponents(string: baseProtected)
+                urlComponents?.path += "/\(accessToken)/notification/\(type)"
                 
-            case .updatePickupBranchID(let barcode, let requestID, let userID, let workstationID, let branchID):
-                return basePublic + "/patron/\(barcode)/holdrequests/\(requestID)/pickupbranch?userid=\(userID)&wsid=\(workstationID)&pickupbranchid=\(branchID)"
+            case .updatePickupBranchID(
+                let barcode,
+                let id,
+                let user,
+                let workstation,
+                let branch
+            ):
+                urlComponents = URLComponents(string: basePublic)
+                urlComponents?.path += "/patron/\(barcode)/holdrequests/\(id)/pickupbranch"
+                urlComponents?.queryItems = [
+                    URLQueryItem(name: "userid", value: "\(user)"),
+                    URLQueryItem(name: "wsid", value: "\(workstation)"),
+                    URLQueryItem(name: "pickupbranchid", value: "\(branch)")
+                ]
                 
-            case .updateRequestStatus(let requestID, let action, let itemID, let reason):
-                var url = baseProtected + "/\(accessToken)/circulation/requests/\(requestID)/status?action=\(action)"
-                if let itemID = itemID { url += "&itemid=\(itemID)" }
-                if let reason = reason { url += "&denyreason=\(reason)" }
-                return url
+            case .updateRequestStatus(
+                let id,
+                let action,
+                let item,
+                let deny
+            ):
+                urlComponents = URLComponents(string: baseProtected)
+                urlComponents?.path += "/\(accessToken)/circulation/requests/\(id)/status"
+                urlComponents?.queryItems = [
+                    URLQueryItem(name: "action", value: action)
+                ]
+                if let item {
+                    urlComponents?.queryItems?.append(URLQueryItem(name: "itemid", value: "\(item)"))
+                }
+                if let deny {
+                    urlComponents?.queryItems?.append(URLQueryItem(name: "denyreason", value: "\(deny)"))
+                }
+            }
+            
+            return urlComponents?.url?.absoluteString ?? ""
+        }
+        
+        // MARK: - HTTP METHOD
+        var httpMethod: String {
+            switch self {
+            case .mobilePhoneCarriers:
+                return HTTPClient.HTTPMethod.get
+                
+            case .collections:
+                return HTTPClient.HTTPMethod.get
+                
+            case .datesClosed:
+                return HTTPClient.HTTPMethod.get
+                
+            case .limitFilters:
+                return HTTPClient.HTTPMethod.get
+                
+            case .organizations(_):
+                return HTTPClient.HTTPMethod.get
+                
+            case .patronCodes:
+                return HTTPClient.HTTPMethod.get
+                
+            case .pickupBranches:
+                return HTTPClient.HTTPMethod.get
+                
+            case .remoteStorageItems(_, _, _, _, _, _):
+                return HTTPClient.HTTPMethod.get
+                
+            case .searchHeadings(_, _, _, _, _):
+                return HTTPClient.HTTPMethod.get
+                
+            case .shelfLocations(_):
+                return HTTPClient.HTTPMethod.get
+                
+            case .sortOptions:
+                return HTTPClient.HTTPMethod.get
+                
+            case .updateNotification(_):
+                return HTTPClient.HTTPMethod.put
+                
+            case .updatePickupBranchID(_, _, _, _, _):
+                return HTTPClient.HTTPMethod.put
+                
+            case .updateRequestStatus(_, _, _, _):
+                return HTTPClient.HTTPMethod.put
             }
         }
     }
