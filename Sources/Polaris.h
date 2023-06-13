@@ -1,11 +1,3 @@
-//
-//  Polaris.h
-//  Polaris
-//
-//  Created by Andrew Despres on 3/12/19.
-//  Copyright © 2019 Downey City Library. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 
 //! Project version number for Polaris.

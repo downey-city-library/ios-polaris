@@ -3,11 +3,10 @@ import CommonCrypto
 
 extension String {
     
-    /**
-     Hash a string with a provided key.
-     - parameter key: The key used when encypting the string.
-     - returns: A hashed string.
-     */
+    /// Hash a string with a provided key.
+    /// - parameter key: The key used when encypting the string.
+    /// - returns: A hashed string.
+    
     internal func hmac(key: String) -> String {
         var digest = [UInt8](repeating: 0, count: Int(CC_SHA1_DIGEST_LENGTH))
         CCHmac(CCHmacAlgorithm(kCCHmacAlgSHA1), key, key.count, self, self.count, &digest)
@@ -17,6 +16,7 @@ extension String {
     
     /// Convert a string to a date.
     /// - returns: The date value of the string.  
+    
     func toDate() -> Date? {
         if let start = self.firstIndex(of: "("), let end = self.lastIndex(of: "-") {
 
@@ -46,6 +46,7 @@ extension String {
     
     /// Convert a string to an interger using dot notation.
     /// - returns: The interger value of the string (optional).
+    
     internal func toInt() -> Int? {
         return Int(self)
     }
