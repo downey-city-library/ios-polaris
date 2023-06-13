@@ -1,27 +1,50 @@
-//
-//  HTTPClient+Endpoint+Patron+Registration.swift
-//  Polaris
-//
-//  Created by Andrew Despres on 5/12/20.
-//  Copyright © 2020 Downey City Library. All rights reserved.
-//
-
 import Foundation
 
 extension HTTPClient.Endpoint.Patron {
     
     enum Registration: PolarisEndpoint {
     
-        case create
-        case update(String)
+        // MARK: - ENDPOINTS
+        /// PAPI Method Name: `PatronRegistrationCreate`
+        /// - note: HTTP Method: POST
         
+        case create
+        
+        /// PAPI Method Name: `PatronRegistrationUpdate`
+        /// - parameter barcode: PatronBarcode
+        /// - note: HTTP Method: PUT
+        
+        case update(
+            barcode: String
+        )
+        
+        // MARK: - URL STRING
         var string: String {
+            var urlComponents: URLComponents?
+            
             switch self {
             case .create:
-                return HTTPClient.Endpoint.basePublic + "/patron"
+                urlComponents = URLComponents(string: HTTPClient.Endpoint.basePublic)
+                urlComponents?.path += "/patron"
                 
-            case .update(let barcode):
-                return HTTPClient.Endpoint.basePublic + "/patron/\(barcode)"
+            case .update(
+                let barcode
+            ):
+                urlComponents = URLComponents(string: HTTPClient.Endpoint.basePublic)
+                urlComponents?.path += "/patron/\(barcode)"
+            }
+            
+            return urlComponents?.url?.absoluteString ?? ""
+        }
+        
+        // MARK: - HTTP METHOD
+        var httpMethod: String {
+            switch self {
+            case .create:
+                return HTTPClient.HTTPMethod.post
+                
+            case .update(_):
+                return HTTPClient.HTTPMethod.put
             }
         }
     }

@@ -1,22 +1,14 @@
-//
-//  Polaris+Patron+Registration+CreateRequest.swift
-//  Polaris
-//
-//  Created by Andrew Despres on 3/29/19.
-//  Copyright © 2019 Downey City Library. All rights reserved.
-//
-
 import Foundation
 
 extension Polaris.Patron.Registration {
  
-    public struct CreateRequest: Encodable {
+    public struct PatronRegistrationCreateRequest: Encodable {
         
-        // MARK: - Public Properties
-        public var logonBranchID: Int
-        public var logonUserID: Int
-        public var logonWorkstationID: Int
-        public var patronBranchID: Int
+        // MARK: - PROPERTIES
+        public var branch: Int
+        public var user: Int
+        public var workstation: Int
+        public var patronBranch: Int
         
         public var postalCode: Int = 0
         public var zipPlusFour: String = ""
@@ -57,13 +49,12 @@ extension Polaris.Patron.Registration {
         public var expirationDate: String = ""
         public var addressCheckDate: String = ""
         
-        // MARK: - Coding Keys
+        // MARK: - CODING KEYS
         private enum CodingKeys: String, CodingKey {
-            
-            case logonBranchID = "LogonBranchID"
-            case logonUserID = "LogonUserID"
-            case logonWorkstationID = "LogonWorkstationID"
-            case patronBranchID = "PatronBranchID"
+            case branch = "LogonBranchID"
+            case user = "LogonUserID"
+            case workstation = "LogonWorkstationID"
+            case patronBranch = "PatronBranchID"
             
             case postalCode = "PostalCode"
             case zipPlusFour = "ZipPlusFour"
@@ -105,13 +96,17 @@ extension Polaris.Patron.Registration {
             case addressCheckDate = "AddrCheckDate"
         }
         
-        // MARK: - Initialization
-        public init(logonBranchID: Int, logonUserID: Int, logonWorkstationID: Int, patronBranchID: Int) {
-            
-            self.logonBranchID = logonBranchID
-            self.logonUserID = logonUserID
-            self.logonWorkstationID = logonWorkstationID
-            self.patronBranchID = patronBranchID
+        // MARK: - INITIALIZATION
+        public init(
+            branch: Int,
+            user: Int,
+            workstation: Int,
+            patronBranch: Int
+        ) {
+            self.branch = branch
+            self.user = user
+            self.workstation = workstation
+            self.patronBranch = patronBranch
         }
     }
 }

@@ -1,21 +1,13 @@
-//
-//  Polaris+Patron+Registration+UpdateRequest.swift
-//  Polaris
-//
-//  Created by Andrew Despres on 8/6/19.
-//  Copyright © 2020 Downey City Library. All rights reserved.
-//
-
 import Foundation
 
 extension Polaris.Patron.Registration {
     
-    public struct UpdateRequest: Encodable {
+    public struct PatronRegistrationUpdateRequest: Encodable {
         
-        // MARK: - Properties
-        public var logonBranchID: Int
-        public var logonUserID: Int
-        public var logonWorkstationID: Int
+        // MARK: - PROPERTIES
+        public var branch: Int
+        public var user: Int
+        public var workstation: Int
         
         public var readingListFlag: Int?
         public var emailFormat: Int?
@@ -53,12 +45,12 @@ extension Polaris.Patron.Registration {
     //    public var country: String = ""
     //    public var addressTypeID: Int
         
-        // MARK: - Coding Keys
+        // MARK: - CODING KEYS
         private enum CodingKeys: String, CodingKey {
+            case branch = "LogonBranchID"
+            case user = "LogonUserID"
+            case workstation = "LogonWorkstationID"
             
-            case logonBranchID = "LogonBranchID"
-            case logonUserID = "LogonUserID"
-            case logonWorkstationID = "LogonWorkstationID"
             case readingListFlag = "ReadingListFlag"
             case emailFormat = "EmailFormat"
             case deliveryOptionID = "DeliveryOptionID"
@@ -93,12 +85,12 @@ extension Polaris.Patron.Registration {
     //        case addressTypeID = "AddressTypeID"
         }
         
-        // MARK: - Initialization
+        // MARK: - INITIALIZATION
         public init(
-            logonBranchID: Int,
-            logonUserID: Int,
-            logonWorkstationID: Int,
-            patronBranchID: Int,
+            branch: Int,
+            user: Int,
+            workstation: Int,
+//            patronBranch: Int,
             password: String? = nil,
             newBorrowerType: Int? = nil,
             phoneVoice1: String? = nil,
@@ -114,9 +106,9 @@ extension Polaris.Patron.Registration {
             deliveryOptionID: Int? = nil) {
             
             // System
-            self.logonBranchID = logonBranchID
-            self.logonUserID = logonUserID
-            self.logonWorkstationID = logonWorkstationID
+            self.branch = branch
+            self.user = user
+            self.workstation = workstation
             
             // Borrower Type
             if let newBorrowerType = newBorrowerType { self.patronCode = newBorrowerType }
@@ -138,21 +130,6 @@ extension Polaris.Patron.Registration {
             if let phoneCarrier2 = phoneCarrier2 { self.phone2CarrierID = phoneCarrier2 }
             if let phoneCarrier3 = phoneCarrier3 { self.phone3CarrierID = phoneCarrier3 }
             
-//            if let newPhone1 = newPhone1 {
-//                self.phoneVoice1 = newPhone1.number
-//                if newPhone1.carrier != nil { self.phone1CarrierID = newPhone1.carrier }
-//            }
-//
-//            if let newPhone2 = newPhone2 {
-//                self.phoneVoice2 = newPhone2.number
-//                if newPhone2.carrier != nil { self.phone2CarrierID = newPhone2.carrier }
-//            }
-//
-//            if let newPhone3 = newPhone3 {
-//                self.phoneVoice3 = newPhone3.number
-//                if newPhone3.carrier != nil { self.phone3CarrierID = newPhone3.carrier }
-//            }
-            
             // SMS / TXT Messaging
             if let enableSMS = enableSMS {
                 var shouldEnableSMS = false
@@ -161,18 +138,6 @@ extension Polaris.Patron.Registration {
                 
                 if shouldEnableSMS { self.enableSMS = enableSMS }
             }
-            
-            // MARK: - Properties Needing Real Values
-    //        self.addressCheckDate = ""                                                                // FIXME: addressCheckDate
-    //        if let deliveryOptionID = deliveryOptionID { self.deliveryOptionID = deliveryOptionID }   // FIXME: deliveryOptionID (existing value will come from PatronPreferencesGet)
-    //        if let emailFormat = emailFormat { self.emailFormat = emailFormat.value }                 // FIXME: emailFormat - existing value will come from PatronPreferencesGet
-    //        self.eReceiptOptionID = 0                                                                 // FIXME: eReceiptOptionID
-    //        self.excludeFromAlmostOverdueAutoRenew = false                                            // FIXME: excludeFromAlmostOverdueAutoRenew
-    //        self.excludeFromInactivePatron = false                                                    // FIXME: excludeFromInactivePatron
-    //        self.excludeFromPatronRecExpiration = false                                               // FIXME: excludeFromPatronRecExpiration
-    //        self.expirationDate = ""                                                                  // FIXME: expirationDate
-    //        self.readingListFlag = 1                                                                  // FIXME: readingListFlag (existing value will come from PatronPreferencesGet)
-    //        self.txtPhoneNumber = 0                                                                   // FIXME: txtPhoneNumber
         }
     }
 }
