@@ -132,7 +132,7 @@ extension HTTPClient.Endpoint {
                     URLQueryItem(name: "page", value: "\(page)")
                 ]
                 if let sort {
-                    urlComponents?.queryItems?.append(URLQueryItem(name: sort, value: sort))
+                    urlComponents?.queryItems?.append(URLQueryItem(name: "sort", value: sort))
                 }
                 
             case .updateUsername(let barcode, let username):

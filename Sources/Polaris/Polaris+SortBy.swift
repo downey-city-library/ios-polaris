@@ -10,7 +10,7 @@ extension Polaris {
         case callNumberAuthor = "CALLAU"
         case callNumberPublication = "CALLPD"
         case callNumberTitle = "CALLTI"
-        case mostPopular = "MP/sort.descending"
+        case mostPopular = "MP"
         case publication = "PD/sort.descending"
         case publicationAuthor = "PDAU"
         case publicationTitle = "PDTI"

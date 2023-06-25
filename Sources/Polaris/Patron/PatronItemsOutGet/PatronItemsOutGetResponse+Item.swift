@@ -30,7 +30,7 @@ extension Polaris.Patron.PatronItemsOutGetResponse {
         public let vendorName: String?
         public let vendorAccountName: String?
         public let vendorObjectIdentifier: Int?
-        public let ISBN: [String]?
+        public let ISBN: String?
         public let ISSN: String?
         public let OCLC: String?
         public let UPC: String?
@@ -103,7 +103,7 @@ extension Polaris.Patron.PatronItemsOutGetResponse {
             vendorName = try container.decodeIfPresent(String.self, forKey: .vendorName)
             vendorAccountName = try container.decodeIfPresent(String.self, forKey: .vendorAccountName)
             vendorObjectIdentifier = try container.decodeIfPresent(Int.self, forKey: .vendorObjectIdentifier)
-            ISBN = try container.decodeIfPresent([String].self, forKey: .ISBN)
+            ISBN = try container.decodeIfPresent(String.self, forKey: .ISBN)
             ISSN = try container.decodeIfPresent(String.self, forKey: .ISSN)
             OCLC = try container.decodeIfPresent(String.self, forKey: .OCLC)
             UPC = try container.decodeIfPresent(String.self, forKey: .UPC)

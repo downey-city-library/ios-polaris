@@ -7,7 +7,7 @@ extension Polaris.Bib.BibKeywordSearchResponse {
         // MARK: - PROPERTIES
         public let author: String?
         public let callNumber: String?
-        public let controlNumber: String
+        public let controlNumber: Int
         public let courseReserveCount: Int
         public let currentHoldRequests: Int
         public let description: String?
@@ -90,7 +90,7 @@ extension Polaris.Bib.BibKeywordSearchResponse {
             
             author = try container.decodeIfPresent(String.self, forKey: .author)
             callNumber = try container.decodeIfPresent(String.self, forKey: .callNumber)
-            controlNumber = try container.decode(String.self, forKey: .controlNumber)
+            controlNumber = try container.decode(String.self, forKey: .controlNumber).toInt()!
             courseReserveCount = try container.decode(Int.self, forKey: .courseReserveCount)
             currentHoldRequests = try container.decode(Int.self, forKey: .currentHoldRequests)
             description = try container.decodeIfPresent(String.self, forKey: .description)
