@@ -8,6 +8,7 @@ extension Polaris.Patron.PatronHoldRequestsGetResponse {
         public let id: Int
         public let bib: Int
         public let consituentBib: Int
+        public let status: RequestStatus
         public let statusID: Int
         public let statusDescription: String
         public let title: String
@@ -62,6 +63,7 @@ extension Polaris.Patron.PatronHoldRequestsGetResponse {
             id = try container.decode(Int.self, forKey: .id)
             bib = try container.decode(Int.self, forKey: .bib)
             consituentBib = try container.decode(Int.self, forKey: .constituentBib)
+            status = RequestStatus(rawValue: try container.decode(Int.self, forKey: .statusID)) ?? .unknown
             statusID = try container.decode(Int.self, forKey: .statusID)
             statusDescription = try container.decode(String.self, forKey: .statusDescription)
             title = try container.decode(String.self, forKey: .title)
@@ -83,6 +85,37 @@ extension Polaris.Patron.PatronHoldRequestsGetResponse {
             volumeNumber = try container.decodeIfPresent(String.self, forKey: .volumeNumber)
             PACDisplayNotes = try container.decodeIfPresent(String.self, forKey: .PACDisplayNotes)
             canSuspend = try container.decode(Bool.self, forKey: .canSuspend)
+        }
+    }
+}
+
+public extension Polaris.Patron.PatronHoldRequestsGetResponse.HoldRequest {
+    
+    enum RequestStatus: Int {
+        case inactive = 1
+        case active = 3
+        case pending = 4
+        case shipped = 5
+        case held = 6
+        case notSupplied = 7
+        case unclaimed = 8
+        case expired = 9
+        case cancelled = 16
+        case unknown = -1
+        
+        public var sortOrder: Int {
+            switch self {
+            case .inactive: return 4
+            case .active: return 2
+            case .pending: return 1
+            case .shipped: return 3
+            case .held: return 0
+            case .notSupplied: return 8
+            case .unclaimed: return 5
+            case .expired: return 6
+            case .cancelled: return 7
+            case .unknown: return 9
+            }
         }
     }
 }
