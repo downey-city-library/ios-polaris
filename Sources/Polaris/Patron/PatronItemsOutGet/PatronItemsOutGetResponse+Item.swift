@@ -2,7 +2,7 @@ import Foundation
 
 extension Polaris.Patron.PatronItemsOutGetResponse {
 
-    public struct Item: Decodable {
+    public struct Item: Decodable, Identifiable {
         
         // MARK: - PROPERTIES
         public let id: Int
