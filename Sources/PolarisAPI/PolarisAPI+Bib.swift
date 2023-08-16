@@ -100,7 +100,7 @@ extension PolarisAPI.Bib {
         page: Int?,
         limit: String?,
         omitFromTransactionLog: Bool?
-    ) async throws -> [Polaris.Bib.BibKeywordSearchResponse.Bib] {
+    ) async throws -> Polaris.Bib.BibKeywordSearchResponse {
         let endpoint = HTTPClient.Endpoint.Bib.keywordSearch(
             qualifier: qualifier,
             query: query,
@@ -114,6 +114,6 @@ extension PolarisAPI.Bib {
             endpoint: endpoint,
             responseType: Polaris.Bib.BibKeywordSearchResponse.self,
             authorization: false
-        ).bibs
+        )
     }
 }
