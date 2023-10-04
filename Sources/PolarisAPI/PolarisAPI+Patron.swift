@@ -148,11 +148,11 @@ extension PolarisAPI.Patron {
             page: page,
             sort: sort
         )
-        print(endpoint.string)
         return try await PolarisAPI.performRequest(
             endpoint: endpoint,
             responseType: Polaris.Patron.PatronSearchResponse.self,
-            authorization: true
+            authorization: true,
+            ignoreErrors: true
         )
     }
     

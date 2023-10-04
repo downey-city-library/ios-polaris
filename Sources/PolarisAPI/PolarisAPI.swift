@@ -99,7 +99,8 @@ public struct PolarisAPI {
     internal static func performRequest<ResponseType: PolarisResponse & Decodable>(
         endpoint: PolarisEndpoint,
         responseType: ResponseType.Type,
-        authorization isAuthorizationRequired: Bool
+        authorization isAuthorizationRequired: Bool,
+        ignoreErrors: Bool = false
     ) async throws -> ResponseType {
         do {
             var response: ResponseType
@@ -123,7 +124,7 @@ public struct PolarisAPI {
             }
             
             guard
-                response.error == nil
+                response.error == nil || ignoreErrors
             else {
                 throw response.error!
             }
