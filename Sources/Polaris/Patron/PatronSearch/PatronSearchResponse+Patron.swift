@@ -2,7 +2,7 @@ import Foundation
 
 extension Polaris.Patron.PatronSearchResponse {
     
-    public struct Patron: Decodable {
+    public struct Patron: Decodable, Identifiable, Hashable {
         
         // MARK: - PROPERTIES
         public let barcode: String
