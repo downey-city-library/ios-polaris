@@ -2,7 +2,7 @@ import Foundation
 
 extension Polaris.System.SAMobilePhoneCarriersGetResultResponse {
     
-    public struct MobilePhoneCarrier: Decodable {
+    public struct MobilePhoneCarrier: Decodable, Hashable {
         
         // MARK: - PROPERTIES
         public let id: Int
