@@ -25,6 +25,11 @@ extension HTTPClient.Endpoint {
         
         case limitFilters
         
+        /// PAPI Method Name: `MaterialTypesGet`
+        /// - note: HTTP Method: GET
+        
+        case materialTypes
+        
         /// PAPI Method Name: `OrganizationsGet`
         /// - parameter endpoint: endpoint
         /// - note: HTTP Method: GET
@@ -148,6 +153,10 @@ extension HTTPClient.Endpoint {
             case .limitFilters:
                 urlComponents = URLComponents(string: basePublic)
                 urlComponents?.path += "/limitfilters"
+                
+            case .materialTypes:
+                urlComponents = URLComponents(string: basePublic)
+                urlComponents?.path += "/materialtypes"
                 
             case .organizations(
                 let filter
@@ -277,6 +286,9 @@ extension HTTPClient.Endpoint {
                 return HTTPClient.HTTPMethod.get
                 
             case .limitFilters:
+                return HTTPClient.HTTPMethod.get
+                
+            case .materialTypes:
                 return HTTPClient.HTTPMethod.get
                 
             case .organizations(_):

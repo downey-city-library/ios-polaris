@@ -75,6 +75,21 @@ extension PolarisAPI.System {
         ).limitFilters
     }
     
+    // MARK: - MaterialTypesGet
+    
+    /// Returns a list of material types.
+    /// - note: PAPI method name: `MaterialTypesGet`
+    
+    public static func materialTypes() async throws -> [Polaris.System.MaterialTypesGetResponse.MaterialType] {
+        let endpoint = HTTPClient.Endpoint.System.materialTypes
+        return try await PolarisAPI.performRequest(
+            endpoint: endpoint,
+            responseType: Polaris.System.MaterialTypesGetResponse.self,
+            authorization: true,
+            ignoreErrors: true
+        ).materialTypes
+    }
+    
     // TODO: - TODO: NotificationUpdate
     
     /// The NotificationUpdate method will update the Notification Log and remove or update the Notification Queue entry. It is also responsible for updating related ItemCheckout data elements and rolling phone notification into print notification. This method should be called after a patron is contacted.
