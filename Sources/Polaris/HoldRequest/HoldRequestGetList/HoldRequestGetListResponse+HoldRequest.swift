@@ -2,7 +2,7 @@ import Foundation
 
 extension Polaris.HoldRequest.HoldRequestGetListResponse {
     
-    public struct HoldRequest: Decodable {
+    public struct HoldRequest: Decodable, Hashable {
         
         // MARK: - PROPERTIES
         public let requestID: Int
