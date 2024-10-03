@@ -19,7 +19,7 @@ public class PolarisConfiguration {
         internal var domain = ""
         internal var password = ""
         internal var username = ""
-        internal var workstation = -1
+        internal var workstation = 91
     }
     
     internal struct URL {
@@ -65,7 +65,7 @@ public class PolarisConfiguration {
         self.staffUser.domain = plistContents.object(forKey: "DOMAIN") as? String ?? ""
         self.staffUser.password = plistContents.object(forKey: "PASSWORD") as? String ?? ""
         self.staffUser.username = plistContents.object(forKey: "USERNAME") as? String ?? ""
-        self.staffUser.workstation = plistContents.object(forKey: "WORKSTATION") as? Int ?? -1
+        self.staffUser.workstation = plistContents.object(forKey: "WORKSTATION") as? Int ?? 91
         self.url.protected = plistContents.object(forKey: "URL_PROTECTED") as? String ?? ""
         self.url.public = plistContents.object(forKey: "URL_PUBLIC") as? String ?? ""
     }

@@ -65,6 +65,40 @@ extension PolarisAPI.Patron {
         )
     }
     
+    // MARK: - PatronItemCheckout
+    /// Attempt to checkout an item.
+    /// - parameter barcode: The barcode of the patron.
+    /// - parameter item: The barcode of the item to checkout.
+
+    public static func checkout(
+        barcode: String,
+        item: String
+    ) async throws -> Polaris.Patron.PatronItemCheckoutResponse {
+        guard
+            let authenticatedStaffUser = Polaris.authenticatedStaffUser
+        else {
+            throw PolarisError.polarisUserNotPermitted
+        }
+        print("staffUser: \(authenticatedStaffUser)")
+        
+        let endpoint = HTTPClient.Endpoint.Patron.checkout(
+            barcode: barcode,
+            item: item
+        )
+        let request = Polaris.Patron.PatronItemCheckoutRequest(
+            item: item,
+            branch: authenticatedStaffUser.branch,
+            user: authenticatedStaffUser.id,
+            workstation: authenticatedStaffUser.workstation
+        )
+        return try await PolarisAPI.performRequest(
+            endpoint: endpoint,
+            requestBody: request,
+            responseType: Polaris.Patron.PatronItemCheckoutResponse.self,
+            authorization: true
+        )
+    }
+    
     // MARK: - PatronItemsOutGet
     
     /// Returns list of items out to the specified patron.

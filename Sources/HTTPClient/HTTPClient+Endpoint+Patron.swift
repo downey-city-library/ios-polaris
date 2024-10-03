@@ -13,6 +13,15 @@ extension HTTPClient.Endpoint {
             barcode: String
         )
         
+        /// PAPI Method Name: `PatronCheckoutItem`
+        /// - parameter barcode: PatronBarcode
+        /// - parameter item: ItemBarcode
+
+        case checkout(
+            barcode: String,
+            item: String
+        )
+        
         /// PAPI Method Name: `PatronHoldRequestsGet`
         /// - parameter barcode: PatronBarcode
         /// - parameter endpoint: endpoint
@@ -103,6 +112,10 @@ extension HTTPClient.Endpoint {
                     URLQueryItem(name: "addresses", value: "1")
                 ]
                 
+            case .checkout(let barcode, let item):
+                urlComponents = URLComponents(string: basePublic)
+                urlComponents?.path += "/patron/\(barcode)/itemsout"
+                
             case .holdRequests(let barcode, let endpoint):
                 urlComponents = URLComponents(string: basePublic)
                 urlComponents?.path += "/patron/\(barcode)/holdrequests/\(endpoint)"
@@ -153,6 +166,9 @@ extension HTTPClient.Endpoint {
             switch self {
             case .basicData(_):
                 return HTTPClient.HTTPMethod.get
+                
+            case .checkout(_, _):
+                return HTTPClient.HTTPMethod.post
                 
             case .holdRequests(_, _):
                 return HTTPClient.HTTPMethod.get
