@@ -80,7 +80,7 @@ private extension HTTPClient {
             }
             
             secret = isAuthorizationRequired ? access.secret : ""
-            print("secret generated:", secret)
+//            print("secret generated:", secret)
         }
         
         let signature = getSignature(httpMethod: httpMethod, date: date, endpoint: url.absoluteString, secret: secret)
@@ -96,29 +96,29 @@ private extension HTTPClient {
             }
             
             request.addValue(authenticatedStaffUser.access!.token, forHTTPHeaderField: "X-PAPI-AccessToken")
-            print("added header to request")
+//            print("added header to request")
         }
 
         if let body {
             request.httpBody = body
-            print("added body to request")
+//            print("added body to request")
         }
 
         let (data, response) = try await URLSession.shared.data(for: request)
         
         if let json = String(data: data, encoding: .utf8) {
-            print("\n\nJSON: ", json)
+//            print("\n\nJSON: ", json)
         } else {
-            print("Invalid JSON Data.")
+//            print("Invalid JSON Data.")
         }
         
         guard (response as? HTTPURLResponse)?.statusCode == 200 else {
-            print(response)
+//            print(response)
             throw PolarisError.generalError
         }
         
         let responseObject = try decoder.decode(ResponseType.self, from: data)
-        print("\n\nresponseObject:", responseObject)
+//        print("\n\nresponseObject:", responseObject)
 
         return responseObject
     }
@@ -137,7 +137,7 @@ internal extension HTTPClient {
             response: ResponseType.Type,
             authorization isAuthorizationRequired: Bool = false
         ) async throws -> ResponseType {
-            print("taskForGetRequest<ResponseType: Decodable>")
+//            print("taskForGetRequest<ResponseType: Decodable>")
             return try await performRequest(
                 url: url,
                 httpMethod: HTTPMethod.get,
@@ -157,7 +157,7 @@ internal extension HTTPClient {
         response: ResponseType.Type,
         authorization isAuthorizationRequired: Bool = false
     ) async throws -> ResponseType {
-        print("taskForPostRequest<RequestType: Encodable, ResponseType: Decodable>")
+//        print("taskForPostRequest<RequestType: Encodable, ResponseType: Decodable>")
         let data = try encoder.encode(body)
         
         return try await performRequest(
@@ -177,7 +177,7 @@ internal extension HTTPClient {
         url: URL,
         response: ResponseType.Type
     ) async throws -> ResponseType {
-        print("taskForPutRequest<ResponseType: Decodable>")
+//        print("taskForPutRequest<ResponseType: Decodable>")
         return try await performRequest(
             url: url,
             httpMethod: HTTPMethod.put,
@@ -196,7 +196,7 @@ internal extension HTTPClient {
         body: RequestType,
         response: ResponseType.Type
     ) async throws -> ResponseType {
-        print("taskForPutRequest<RequestType: Encodable, ResponseType: Decodable>")
+//        print("taskForPutRequest<RequestType: Encodable, ResponseType: Decodable>")
 
         let data = try encoder.encode(body)
 
