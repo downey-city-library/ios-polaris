@@ -19,6 +19,7 @@ extension Polaris.Patron.BasicDataResponse {
         public let name: Name
         public let phones: Phones
         public let registrationDate: Date?
+        public let code: Int
         
         // MARK: - CODING KEYS
         private enum CodingKeys: String, CodingKey {
@@ -29,6 +30,7 @@ extension Polaris.Patron.BasicDataResponse {
             case id = "PatronID"
             case lastActivityDate = "LastActivityDate"
             case registrationDate = "RegistrationDate"
+            case code = "PatronCodeID"
         }
         
         // MARK: - INITIALIZATION
@@ -49,6 +51,7 @@ extension Polaris.Patron.BasicDataResponse {
             name = try Name(from: decoder)
             phones = try Phones(from: decoder)
             registrationDate = try container.decodeIfPresent(String.self, forKey: .registrationDate)?.toDate()
+            code = try container.decode(Int.self, forKey: .code)
         }
     }
 }
