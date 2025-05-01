@@ -26,7 +26,7 @@ extension PolarisAPI.Bib {
         page: Int?,
         limit: String?,
         omitFromTransactionLog: Bool?
-    ) async throws -> [Polaris.Bib.BibBooleanSearchResponse.Bib] {
+    ) async throws -> Polaris.Bib.BibBooleanSearchResponse {
         let endpoint = HTTPClient.Endpoint.Bib.booleanSearch(
             query: query,
             sortby: sortby,
@@ -35,11 +35,12 @@ extension PolarisAPI.Bib {
             limit: limit,
             omitFromTransactionLog: omitFromTransactionLog
         )
+        print(endpoint.string)
         return try await PolarisAPI.performRequest(
             endpoint: endpoint,
             responseType: Polaris.Bib.BibBooleanSearchResponse.self,
             authorization: true
-        ).bibs
+        )
     }
     
     // MARK: - BibGet
@@ -69,7 +70,7 @@ extension PolarisAPI.Bib {
     
     public static func holdings(
         bibID id: Int
-    ) async throws -> [Polaris.Bib.BibHoldingsGetResponse.Holding] {
+    ) async throws -> Polaris.Bib.BibHoldingsGetResponse {
         let endpoint = HTTPClient.Endpoint.Bib.holdings(
             id: id
         )
@@ -77,7 +78,7 @@ extension PolarisAPI.Bib {
             endpoint: endpoint,
             responseType: Polaris.Bib.BibHoldingsGetResponse.self,
             authorization: true
-        ).holdings
+        )
     }
     
     // MARK: - BibKeywordSearch
