@@ -11,20 +11,20 @@ public class PolarisConfiguration {
     internal var url = URL()
     
     internal struct Access {
-        internal var id = ""
-        internal var key = ""
+        internal var id = "API"
+        internal var key = "B33A7CD1-4CCE-4B7D-82D1-B6B876A40FA0"
     }
     
     internal struct StaffUser {
-        internal var domain = ""
-        internal var password = ""
-        internal var username = ""
+        internal var domain = "HPL"
+        internal var password = "Pacapi953"
+        internal var username = "dcl-apipac"
         internal var workstation = 91
     }
     
     internal struct URL {
-        internal var protected = ""
-        internal var `public` = ""
+        internal var protected = "https://dcl.polarislibrary.com/PAPIService/REST/protected/v1/1033/100/1"
+        internal var `public` = "https://dcl.polarislibrary.com/PAPIService/REST/public/v1/1033/100/1"
     }
     
     // MARK: - Public Methods
@@ -43,30 +43,5 @@ public class PolarisConfiguration {
         print("\nURLs:")
         print("-- Protected:", shared.url.protected)
         print("-- Public:", shared.url.public)
-    }
-    
-    // MARK: Initializer
-    private init() {
-        // Load the plist
-        guard let path = Bundle.main.path(forResource: "PolarisAPI-Info", ofType: "plist") else {
-            print("Property List 'PolarisAPI-Info' does not exist in this project. Please check that the file has been added to your project and is appropriately linked.")
-            return
-        }
-        
-        // Cast contents of plist as dictionary
-        guard let plistContents = NSDictionary(contentsOfFile: path) else {
-            print("There was a problem reading from the file 'PolarisAPI-Info.plist.' Please check to ensure that the file is a valid property list with all appropriate entries. See documentation for more information.")
-            return
-        }
-        
-        // Assign property values
-        self.access.id = plistContents.object(forKey: "ACCESS_ID") as? String ?? ""
-        self.access.key = plistContents.object(forKey: "ACCESS_KEY") as? String ?? ""
-        self.staffUser.domain = plistContents.object(forKey: "DOMAIN") as? String ?? ""
-        self.staffUser.password = plistContents.object(forKey: "PASSWORD") as? String ?? ""
-        self.staffUser.username = plistContents.object(forKey: "USERNAME") as? String ?? ""
-        self.staffUser.workstation = plistContents.object(forKey: "WORKSTATION") as? Int ?? 91
-        self.url.protected = plistContents.object(forKey: "URL_PROTECTED") as? String ?? ""
-        self.url.public = plistContents.object(forKey: "URL_PUBLIC") as? String ?? ""
     }
 }
